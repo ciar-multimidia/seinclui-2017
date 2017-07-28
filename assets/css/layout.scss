@@ -1,0 +1,218 @@
+@import 'normalize';
+@import 'bourbon/bourbon';
+@import 'padroes';
+@import 'icons';
+
+body {
+	font-size: 20px;
+	line-height: 1.5;
+	font-family: 'Roboto',sans-serif;
+	color: $cor3;
+}
+
+html, body {overflow-x: hidden}
+
+// cabecalho
+header {
+	background: $cor2;
+	display: block;
+	padding-bottom: 100px;
+	position: relative;
+
+	.container {
+		text-align: center;
+
+		img, svg {
+			max-width: 82%;
+			margin: 0 auto;
+			display: block;
+			height: inherit;
+		}
+
+		h1 {position: absolute; @include apenasleitura;}
+	}
+}
+
+
+
+
+// grid de colunas
+.grid {
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+
+    & > div {
+    	width: 50%;
+    	padding: 170px 15px 35px;
+    	position: relative;
+
+    	&.destacado {width: 60%;}
+    	&.reduzido {width: 40%}
+
+    	&.area-texto {padding-right: 70px;}
+    	
+    	&.area-video { padding-left: 70px;
+
+    		h3 {visibility: hidden;}
+    	}
+    }
+}
+
+
+.fullgrid {
+	padding: 170px 15px;
+}
+
+
+// videos
+video {
+	@include filter(grayscale(100%));
+	width: 100%;
+
+	&:hover, &.rodando {@include filter(grayscale(0%));}
+
+}
+
+// sessoes
+.sessao {
+	&.texto-video {
+		@include linear-gradient(90deg, $cor1 0%, $cor1 50%, $cor2 50%, $cor2 100%);
+
+		.grid {
+			& > div {
+				&.area-texto {background: $cor1;}
+				&.area-video {background: $cor2;
+					&:after {
+						width: 200vw;
+						height: 140px;
+						position: absolute;
+						content: " ";
+						bottom: 0;
+						left: 0;
+						background: url('../img/pattern-branco.svg') repeat-x left top / contain;
+						@include transform(scaleY(-1));
+					}
+				}
+			}
+		}
+
+		// excessao para o primeiro item
+		&:nth-of-type(1) .grid > div,
+		.sessao.vermelho + & .grid > div {
+			&.area-video {
+				&:before {
+					width: 200vw;
+					height: 140px;
+					position: absolute;
+					content: " ";
+					top: 0;
+					left: -200vw;
+					background: url('../img/pattern-vermelho.svg') repeat-x left top / contain;
+					@include transform(scaleX(-1));
+				}
+			}
+		}
+	}
+
+	&.branco {background: $cor1;}
+	&.vermelho {background: $cor2;}
+}
+
+
+// links de acesso para conteudo internos
+.maisconteudo {
+	margin-top: 70px;
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+    font-style: italic;
+
+	a {display: inline-block;}
+
+    a.continuar {
+    	font-size: 1.1em;
+
+    	&:before {
+    		font-family: 'fontello';
+    		content: '\e800';
+    		display: inline-block;
+    		font-style: normal;
+			margin-right: 8px;
+    	}
+    }	
+
+    a.saibamais {
+    	color: $cor3;
+    	font-size: 0.95em;
+
+    	&:after {
+			font-family: 'fontello';
+    		content: '\e804';
+    		display: inline-block;
+    		font-style: normal;
+			margin-left: 8px;
+    	}
+    }
+
+	.reduzido & {
+		a {display: block; width: 100%;}
+		a.saibamais {
+			margin-top: 20px;
+			&:before {
+				font-family: 'fontello';
+	    		content: '\e804';
+	    		display: inline-block;
+	    		font-style: normal;
+				margin-right: 8px;
+			}
+
+			&:after {display: none;}
+		}
+	}
+}
+
+
+// botao aumentar video
+button.deslizar {
+	width: 66px;
+	padding: 0; margin: 0;
+	height: 66px;
+	line-height: 63px;
+	background: $cor1;
+	color: $cor2;
+	position: absolute;
+	// overflow: hidden;
+	outline: 0;
+	border: 0;
+	font-size: 66px;
+	border-radius: 50%;
+	cursor: pointer;
+	top: 50%;
+	left: 0;
+	@include transform(translate(-50%,-50%));
+	@include transition(color 0.3s ease-in-out);
+
+	&:hover {color: $cor3}
+
+	&:before {
+		content: '\e801';
+		font-family: 'fontello';
+	}
+
+	&:after {
+		content: ""; position: absolute; border-radius: 50%;
+		width: 68px; height: 68px; top: 50%; left: 50%; 
+		@include transform(translate(-50%,-50%));
+		border: 6px solid $cor2;
+	}
+
+
+	.grid > div.area-video.destacado &:before {content: '\e800';}
+}
+
+
+// RESPONSIVO
+@import 'responsivo';

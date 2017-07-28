@@ -1,0 +1,113 @@
+@media (max-width: 1024px) {
+  body {font-size: 18px}
+
+  .grid > div {
+    padding-top: 125px;
+    padding-bottom: 50px;
+  }
+
+  .fullgrid {
+    padding-top: 125px;
+    padding-bottom: 125px;
+  }
+
+
+  .sessao {
+    &.texto-video {
+      .grid > div {
+        &.area-video:after {
+          height: 95px;
+        }
+      }
+
+      &.area-texto .grid > div, .sessao.vermelho + & .grid > div {
+        &.area-video:before {
+          height: 95px;
+        }
+      }
+    }
+  }
+
+}
+
+
+
+@media (max-width: 800px) {
+
+}
+
+
+
+@media (max-width: 768px) {
+  header {
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      content: "";
+      width: 100%;
+      display: block;
+      height: 55px;
+      background: url('../img/pattern-branco.svg') repeat-x center top / contain;
+      @include transform(scaleY(-1));
+    }
+  }
+
+
+  .grid > div {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+      &.area-texto {padding-right: 15px; width: 100%;}
+      &.area-video {padding-left: 15px; width: 100%;
+        h3 {display: none;}
+      }
+  }
+
+  .fullgrid {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+
+  .sessao {
+    &.texto-video {
+      .grid > div {
+        &.area-video:after {display: none;}
+      }
+
+      &.area-texto .grid > div, .sessao.vermelho + & .grid > div {
+        &.area-video:before {display: none;}
+      }
+    }
+  }
+
+  button.deslizar {display: none;}
+
+  .maisconteudo a {display: block; width: 100%;
+    &.saibamais {
+      margin-top: 20px;
+      &:before {
+        font-family: 'fontello';
+          content: '\e804';
+          display: inline-block;
+          font-style: normal;
+        margin-right: 8px;
+      }
+
+      &:after {display: none;}
+    }
+  }
+
+}
+
+
+@media (max-width: 480px) {
+  body {font-size: 16px}
+
+  .grid > div, .fullgrid {
+    padding: 35px 15px;
+  }
+
+
+}

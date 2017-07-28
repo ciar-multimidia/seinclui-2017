@@ -1,0 +1,65 @@
+// variaveis
+$cor1: #fff;
+$cor2: #f8465c;
+$cor3: #000;
+$largura-max: 1200px;
+
+// mixins
+@mixin apenasleitura() {
+	display: inline-block;
+	font-size: 0em;
+	opacity: 0;
+	line-height: 0;
+	color: transparent;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+// container
+.container {
+	width: 100%;
+	max-width: $largura-max;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+}
+
+// fontes
+@font-face {
+  font-family: 'Tiresias Infofont';
+  src: url('../fonts/TiresiasInfofont.eot?#iefix') format('embedded-opentype'),  
+	   url('../fonts/TiresiasInfofont.woff') format('woff'), 
+	   url('../fonts/TiresiasInfofont.ttf')  format('truetype'), 
+	   url('../fonts/TiresiasInfofont.svg#TiresiasInfofont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tiresias Infofont';
+  src: url('../fonts/TiresiasInfofontItalic.eot?#iefix') format('embedded-opentype'),  
+	   url('../fonts/TiresiasInfofontItalic.woff') format('woff'), 
+	   url('../fonts/TiresiasInfofontItalic.ttf')  format('truetype'), 
+	   url('../fonts/TiresiasInfofontItalic.svg#TiresiasInfofontItalic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+
+// titulos
+h2, h3, h4, h5 {
+	font-family: 'Tiresias Infofont';
+	text-transform: uppercase;
+}
+
+h2 {color: $cor2; font-size: 1.8em;}
+
+
+// links
+a, a:link, a:visited, a:active {
+	color: $cor2;
+	text-decoration: none;
+
+	&:hover {text-decoration: underline;}
+}
