@@ -55,11 +55,13 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-right-circle:before { content: '\e800'; } 
-.icon-left-circle:before { content: '\e801'; } 
-.icon-down-circle:before { content: '\e802'; } 
-.icon-up-circle:before { content: '\e803'; } 
-.icon-plus-circle:before { content: '\e804'; } 
-.icon-menu:before { content: '\f0c9'; } 
-.icon-american-sign-language-interpreting:before { content: '\f2a3'; } 
-.icon-sign-language:before { content: '\f2a7'; } 
+.icon-right-circle:before { content: '\e800'; }
+.icon-left-circle:before { content: '\e801'; }
+.icon-down-circle:before { content: '\e802'; }
+.icon-up-circle:before { content: '\e803'; }
+.icon-plus-circle:before { content: '\e804'; }
+.icon-play:before { content: '\e805'; }
+.icon-pause:before { content: '\e806'; }
+.icon-stop:before { content: '\e807'; }
+.icon-ccw:before { content: '\e808'; }
+.icon-menu:before { content: '\f0c9'; }

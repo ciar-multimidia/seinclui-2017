@@ -1,9 +1,12 @@
 jQuery(document).ready(function($) {
 
-	// 1o passo do documento: Injetar os SVGs atraves de ajax.
 	var SvgsParaInjetar = $('img.injetar');
 	SVGInjector(SvgsParaInjetar);
-
 	
+	var secoesBt = $('.sessao.texto-video .deslizar');
+
+	secoesBt.on('click', function(event) {
+		$(this).closest('.texto-video').toggleClass('video-destacado');
+	});
 
 });

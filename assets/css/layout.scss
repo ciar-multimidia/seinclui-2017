@@ -16,20 +16,101 @@ html, body {overflow-x: hidden}
 header {
 	background: $cor2;
 	display: block;
-	padding-bottom: 100px;
 	position: relative;
+	color: $cor1;
 
-	.container {
-		text-align: center;
+	// cabecalho principal
+	&.cabecalho {
+		padding-bottom: 100px;
 
-		img, svg {
-			max-width: 82%;
-			margin: 0 auto;
-			display: block;
-			height: inherit;
+		.container {
+			text-align: center;
+
+			img, svg {
+				max-width: 82%;
+				margin: 0 auto;
+				display: block;
+				height: inherit;
+			}
+
+			h1 {position: absolute; @include apenasleitura;}
+		}
+	}
+
+	// cabecalho textos internos
+	&.cabecalho-interno {
+
+		.container {
+			padding: 30px 10px;
+
+			nav {
+				width: 100%; position: relative;
+			    @include display(flex);
+			    @include flex-direction(row);
+			    @include flex-wrap(wrap);
+			    @include justify-content(space-between);
+			    @include align-items(center);
+
+			    &:before {
+			    	content: "";
+			    	position: absolute;
+			    	top: 50%;
+			    	left: 0;
+			    	width: 100%;
+			    	height: 0px;
+			    	border-top: 2px dashed $cor1; 
+			    }
+
+				a {
+					width: 40px;
+					height: 40px;
+					background: $cor2;
+					display: block;
+					position: relative;
+					border-radius: 50%; 
+
+					span {@include apenasleitura; position: absolute;}
+
+					&:before {
+						font-family: 'fontello';
+						line-height: 40px;
+						text-align: center;
+						font-size: 40px;
+						color: $cor1;
+						display: block;
+						@include transition(color 0.3s ease-in-out);
+					}
+
+					&.anterior:before {content: '\e801'}
+					&.proximo:before {content: '\e800'}
+
+					&.inicio {
+						width: 70px; height: 70px;
+						border: 2px dashed $cor1;
+						&:before {line-height: 70px; font-size: 37px; content: '\f0c9'}
+					}
+
+					&:hover {
+						text-decoration: none;
+						&:before {color: $cor3}
+					}
+				}
+			}
+
+			h1 {
+				text-align: center;
+				text-transform: uppercase;
+				font-size: 2.2em;
+			}
 		}
 
-		h1 {position: absolute; @include apenasleitura;}
+		&:after {
+	      content: "";
+	      width: 100%;
+	      display: block;
+	      height: 90px;
+	      background: $cor1 url('../img/pattern.png') repeat-x center bottom / 145px;
+	    }
 	}
 }
 
@@ -45,34 +126,31 @@ header {
 
     & > div {
     	width: 50%;
-    	padding: 170px 15px 35px;
+    	padding: 200px 15px 35px;
     	position: relative;
+    	@include transition(width 0.3s ease-in-out);
 
-    	&.destacado {width: 60%;}
-    	&.reduzido {width: 40%}
 
-    	&.area-texto {padding-right: 70px;}
-    	
-    	&.area-video { padding-left: 70px;
+    	&.area-texto {padding-right: 70px; width: 60%;}
+    	&.area-video { padding-left: 70px; width: 40%}
 
-    		h3 {visibility: hidden;}
-    	}
+    	article {z-index: 2; position: relative;}
+    }
+
+    .video-destacado & > div {
+    	&.area-texto {width: 40%;}
+    	&.area-video {width: 60%}
     }
 }
 
 
 .fullgrid {
-	padding: 170px 15px;
+	padding: 70px 15px 35px ;
 }
 
 
 // videos
-video {
-	@include filter(grayscale(100%));
-	width: 100%;
-
-	&:hover, &.rodando {@include filter(grayscale(0%));}
-
+video { width: 100%;  @include filter(grayscale(100%));
 }
 
 // sessoes
@@ -84,40 +162,137 @@ video {
 			& > div {
 				&.area-texto {background: $cor1;}
 				&.area-video {background: $cor2;
-					&:after {
+					&:before, &:after {
 						width: 200vw;
-						height: 140px;
+						height: 200px;
 						position: absolute;
 						content: " ";
+						background-color: $cor1;
+						background-image: url('../img/pattern.png');
+						background-repeat: repeat-x;
+						background-size: 145px;
+						z-index: 0;
+					}
+					&:before {
+						top: 0;
+						left: -200vw;
+						background-position: left top;
+						@include transform(scaleX(-1));
+						
+					}
+
+					&:after {
+						display: none;
 						bottom: 0;
 						left: 0;
-						background: url('../img/pattern-branco.svg') repeat-x left top / contain;
-						@include transform(scaleY(-1));
+						background-position: right top;
+						@include transform(scaleX(-1));
 					}
+
+					&.detalhe-inferior:after {display: block;}
 				}
 			}
 		}
 
-		// excessao para o primeiro item
-		&:nth-of-type(1) .grid > div,
-		.sessao.vermelho + & .grid > div {
-			&.area-video {
-				&:before {
-					width: 200vw;
-					height: 140px;
-					position: absolute;
-					content: " ";
-					top: 0;
-					left: -200vw;
-					background: url('../img/pattern-vermelho.svg') repeat-x left top / contain;
-					@include transform(scaleX(-1));
-				}
-			}
-		}
 	}
 
 	&.branco {background: $cor1;}
 	&.vermelho {background: $cor2;}
+}
+
+
+// config visual de video
+div.area-video .wrap-video {
+	margin-top: 50px;
+	width: 100%;
+	display: block;
+	position: relative;
+	z-index: 1;
+
+	&:before, &:after {
+		content: '';
+		@include transform(translateX(-50%));
+		left: 50%;
+		position: absolute;
+		display: none;
+	}
+
+	&:before {
+		width: 2px;
+		border-right: 2px dashed $cor1;
+		top: -110px;
+		height: 120px;
+	}
+
+	&:after {
+		background: $cor2 url('../img/icone-libras.png') no-repeat center center / 60%;
+		border: 2px solid $cor1;
+		position: absolute;
+		top: -120px;
+		width: 80px;
+		height: 80px;
+		color: $cor1;
+		border-radius: 50%;
+	}
+
+	.sessao.texto-video:nth-of-type(1) .grid > & {
+		&:before, &:after {display: block}
+	}	
+}
+
+
+.video {
+	position: relative;
+	display: block;
+
+	button {
+		width: 80px;
+	    height: 80px;
+	    font-size: 45px;
+		text-align: center;
+		display: block;
+		position: absolute;
+		z-index: 2;
+		top: 50%;
+		left: 50%;
+		background: transparentize($cor3,0.5);
+		border: 2px solid $cor1;
+		border-radius: 50%;
+		outline: 0;
+		cursor: pointer;
+		@include transform(translate(-50%,-50%));
+
+		&:before {
+			content: "\e805";
+			font-family: 'fontello';
+			color: $cor1;
+			margin-left: 12px;
+		}
+	} 
+
+	&:before, &:after {
+		width: 20%;
+		height: 0;
+		padding-bottom: 20%;
+		position: absolute;
+		background: url('../img/borda-video.svg') no-repeat center center / 105%;
+		content: "";
+		z-index: 2;
+	}
+
+	&:before {
+		top: 0; left: 0;
+		@include transform(scale(-1,-1));
+	}
+
+	&:after {
+		bottom: 0; right: 0;
+	}
+
+
+	.fullgrid & {
+		&:before, &:after {display: none;}
+	}
 }
 
 
@@ -157,7 +332,7 @@ video {
     	}
     }
 
-	.reduzido & {
+	.video-destacado .grid .area-texto & {
 		a {display: block; width: 100%;}
 		a.saibamais {
 			margin-top: 20px;
@@ -190,9 +365,9 @@ button.deslizar {
 	font-size: 66px;
 	border-radius: 50%;
 	cursor: pointer;
-	top: 50%;
+	top: 380px;
 	left: 0;
-	@include transform(translate(-50%,-50%));
+	@include transform(translateX(-50%));
 	@include transition(color 0.3s ease-in-out);
 
 	&:hover {color: $cor3}
@@ -204,14 +379,176 @@ button.deslizar {
 
 	&:after {
 		content: ""; position: absolute; border-radius: 50%;
-		width: 68px; height: 68px; top: 50%; left: 50%; 
+		width: 70px; height: 70px; top: 50%; left: 50%; 
 		@include transform(translate(-50%,-50%));
 		border: 6px solid $cor2;
 	}
 
 
-	.grid > div.area-video.destacado &:before {content: '\e800';}
+	.video-destacado .grid .area-video &:before {content: '\e800';}
 }
+
+
+
+// separador animado
+.separador {
+	width: 100%;
+
+	.container {
+	    @include display(flex);
+	    @include flex-direction(row);
+	    @include flex-wrap(wrap);
+	    @include justify-content(space-between);
+
+		& > div {
+		    width: 16.6666666667%;
+		    position: relative;
+		    height: 250px;
+
+			.linha {
+				background: $cor2;
+				bottom: -20px;
+				left: 50%;
+				@include transform(translateX(-50%));
+				position: absolute;
+				width: 3px; 
+				display: block;
+			}
+
+			.simbolo {
+				width: 100px; height: 100px;
+				position: absolute;
+				background: url('../img/simbolo.svg') no-repeat center center / contain;
+				@include animation(animaCatavento 6s linear infinite);
+			}
+
+			@include keyframes(animaCatavento) {
+				from {
+					@include transform(rotate(0deg));
+				}
+				to {
+					@include transform(rotate(-360deg));
+				}
+			}
+
+			&:nth-of-type(1), &:nth-of-type(3), &:nth-of-type(5) {
+				.linha {@include transform(rotate(13deg)); height: 100px}
+				.simbolo {
+					top: 121px;
+					left: calc(50% - 38px);
+					@include animation-duration(3s);
+				}
+			}
+
+			&:nth-of-type(2), &:nth-of-type(4), &:nth-of-type(6) {
+				.linha {@include transform(rotate(-13deg)); height: 190px}
+				.simbolo {
+					top: 33px;
+					left: calc(50% - 70px);
+				}
+			}
+		}
+	}
+
+	&:after {
+		content: "";
+		width: 100%;
+		display: block;
+		height: 50px;
+		background: $cor2;
+	}
+}
+
+
+
+// rodape home
+footer.rodape {
+	width: 100%;
+	background: $cor2;
+	color: $cor1;
+	display: block;
+	position: relative;
+	padding-bottom: 50px;
+
+	.container {
+	    @include display(flex);
+	    @include flex-direction(row);
+	    @include flex-wrap(wrap);
+	    @include justify-content(space-between);
+	    padding: 0 20px;
+
+	    .logos {
+		    @include display(flex);
+		    @include flex-direction(row);
+		    @include flex-wrap(wrap);
+		    @include justify-content(flex-start);
+		    @include align-items(flex-start);
+		    padding: 0 10px;
+		    width: calc(100% - 130px);
+
+		    img {
+		    	margin: 0 10px;
+
+		    	&:first-child, &:last-child {@include align-self(center);}
+		    }
+	    }	
+
+	    .ficha {
+	    	// outline: 1px solid; 
+	    	position: relative;
+	    	border: 2px dashed $cor2;
+	    	cursor: pointer;
+	    	width: 130px;
+	    	height: 110px;
+
+			a {
+				font-size: 30px;
+				padding: 20px;
+				text-transform: uppercase;
+				color: $cor1;
+				display: block;
+				line-height: 1;
+				position: relative;
+				z-index: 2;
+				width: 126px; height: 106px;
+
+				&:hover {text-decoration: none;}
+
+				span {font-size: 26px; text-transform: lowercase; display: block; margin-top: 10px}
+			}
+
+			&:before, &:after {
+				content: "";
+				width: 55px;
+				height: 55px;
+				position: absolute;
+				display: block;
+				border: 2px dashed $cor1;
+				@include transition(width 0.3s ease-in-out, height 0.3s ease-in-out);
+				z-index: 1;
+			}
+
+			&:before {
+				border-bottom: none;
+				border-right: none;
+				top: 0; left: 0;
+				width: 0; height: 0;
+				border-color: $cor2;
+			}
+
+			&:after {
+				border-top: none;
+				border-left: none;
+				bottom: 0; right: 0;
+			}
+
+			&:hover {
+				&:before, &:after {border-color: $cor1; width: 126px; height: 106px;}
+			}
+	    }
+	}
+}
+
 
 
 // RESPONSIVO

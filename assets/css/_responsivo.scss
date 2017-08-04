@@ -2,27 +2,22 @@
   body {font-size: 18px}
 
   .grid > div {
-    padding-top: 125px;
-    padding-bottom: 50px;
+    padding-top: 150px;
   }
 
   .fullgrid {
     padding-top: 125px;
-    padding-bottom: 125px;
   }
 
 
   .sessao {
     &.texto-video {
       .grid > div {
-        &.area-video:after {
-          height: 95px;
-        }
-      }
-
-      &.area-texto .grid > div, .sessao.vermelho + & .grid > div {
-        &.area-video:before {
-          height: 95px;
+        &.area-video {
+          &:after, &:before {
+            background-size: 95px; 
+            height: 110px;
+          }
         }
       }
     }
@@ -40,16 +35,20 @@
 
 @media (max-width: 768px) {
   header {
-    &:after {
+    &.cabecalho:after {
       position: absolute;
       left: 0;
       bottom: -1px;
       content: "";
       width: 100%;
       display: block;
-      height: 55px;
-      background: url('../img/pattern-branco.svg') repeat-x center top / contain;
-      @include transform(scaleY(-1));
+      height: 90px;
+      background: $cor1 url('../img/pattern.png') repeat-x center top / 76px;
+    }
+
+    &.cabecalho-interno:after {
+      height: 45px;
+      background-size: 76px;
     }
   }
 
@@ -59,9 +58,7 @@
     padding-bottom: 50px;
 
       &.area-texto {padding-right: 15px; width: 100%;}
-      &.area-video {padding-left: 15px; width: 100%;
-        h3 {display: none;}
-      }
+      &.area-video {padding-left: 15px; width: 100%;}
   }
 
   .fullgrid {
@@ -73,16 +70,25 @@
   .sessao {
     &.texto-video {
       .grid > div {
-        &.area-video:after {display: none;}
-      }
-
-      &.area-texto .grid > div, .sessao.vermelho + & .grid > div {
-        &.area-video:before {display: none;}
+        &.area-video {
+          &:after,&:before {display: none;}
+          &.detalhe-inferior:after {display: none;}
+        }
       }
     }
   }
 
   button.deslizar {display: none;}
+
+
+  div.area-video .video {
+    margin-top: 0;
+    &:before, &:after {display: none;}
+
+    .sessao.texto-video:nth-of-type(1) .grid > & {
+        &:before, &:after {display: none}
+    } 
+  }
 
   .maisconteudo a {display: block; width: 100%;
     &.saibamais {
@@ -99,6 +105,73 @@
     }
   }
 
+
+  .separador .container {
+    & > div {
+      height: 180px;
+
+      .linha {width: 2px;}
+      .simbolo { width: 60px; height: 60px; }
+
+      &:nth-of-type(1), &:nth-of-type(3), &:nth-of-type(5) {
+        .linha {height: 70px}
+        .simbolo {top: 103px; left: calc(50% - 22px); }
+      }
+
+      &:nth-of-type(2), &:nth-of-type(4), &:nth-of-type(6) {
+        .linha {height: 91px}
+        .simbolo {top: 76px; left: calc(50% - 39px); }
+      }
+    }
+  }
+
+
+  footer.rodape .container {
+    .logos {
+      width: 100%; 
+      @include justify-content(space-around);
+
+      img {margin: 20px 10px 0; width: auto; max-height: 60px;}
+    }
+
+    .ficha {
+      width: 100%;
+      height: auto;
+      margin-top: 40px;
+
+      &:after {display: none;}
+
+      &:before {
+        width: 55px; height: 2px;
+        border-color: $cor1;
+        left: 50%;
+        @include transform(translateX(-50%));
+      }
+
+      a {
+        padding: 10px 0 0 0;
+        font-size: 1.5em;
+        text-transform: capitalize;
+        text-align: center;
+        width: 100%;
+        height: auto;
+
+        span {display: inline-block; font-size: 1em;}
+      }
+
+      &:hover {
+        &:after {display: none;}
+        &:before {
+          width: 55px; height: 2px;
+          border-color: $cor1;
+          left: 50%;
+          @include transform(translateX(-50%));
+        }
+
+      }
+    }
+  }
+
 }
 
 
@@ -109,5 +182,24 @@
     padding: 35px 15px;
   }
 
+  .separador .container {
+    & > div {
+      width: 20%;
 
+      &:nth-of-type(6) {display: none;}
+    }
+  }
+
+}
+
+
+
+@media (max-width: 380px) {
+  .separador .container {
+    & > div {
+      width: 25%;
+
+      &:nth-of-type(5) {display: none;}
+    }
+  }
 }

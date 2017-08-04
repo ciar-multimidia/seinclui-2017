@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<header>
+<header class="cabecalho">
 	<div class="container">
 		<h1>Curso Se Inclui, Formação de Docentes</h1>
 		<img src="assets/img/logo.svg" class="injetar" alt="Logotipo do curso">
@@ -22,7 +22,7 @@
 <main>
 	<section class="sessao texto-video">
 		<div class="container grid">
-			<div class="area-texto destacado">
+			<div class="area-texto">
 				<article>
 					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas quo nisi repellat dignissimos magni, consectetur non atque animi molestias tempora!</p>
@@ -31,15 +31,30 @@
 					<p>Ducimus quasi natus totam magni, atque dignissimos, reprehenderit blanditiis, architecto sequi rem accusamus ipsum magnam modi deserunt placeat cum similique?</p>
 
 					<div class="maisconteudo">
-						<a href="#" class="continuar">Continue Lendo</a>
-						<a href="#" class="saibamais">Saiba mais</a>
+						<a href="textos/texto.html" class="continuar">Continue Lendo</a>
+						<a href="textos/texto.html#saibamais" class="saibamais">Saiba mais</a>
 					</div>
 				</article>
 			</div>
-			<div class="area-video reduzido">
-				<button class="deslizar"></button>
-				<h3>Vídeo em libras sobre Lorem ipsum dolor sit amet, consectetur adipisicing</h3>
-				<video src="videos/teste.mp4" controls="true"></video>
+			<div class="area-video">
+				<button class="deslizar" title="Expandir vídeo"></button>
+
+				<div class="wrap-video">
+					<div class="video">
+						<button onclick="playPause()" title="Começar vídeo"></button>
+						<video id="video1" src="videos/teste.mp4" poster="assets/img/poster.png"></video>
+						<script>
+							var myVideo = document.getElementById("video1"); 
+
+							function playPause() { 
+							    if (myVideo.paused) 
+							        myVideo.play(); 
+							    else 
+							        myVideo.pause(); 
+							} 
+						</script>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -51,18 +66,19 @@
 	<section class="sessao vermelho">
 		<div class="container fullgrid">
 
-			<video src="videos/teste.mp4" controls="true"></video>
+			<div class="video">
+				<button onclick="playPause()" title="Começar vídeo"></button>
+				<video src="videos/teste.mp4" poster="assets/img/poster.png"></video>
+			</div>
 
 		</div>
 	</section>
 
 
 
-
-
 	<section class="sessao texto-video">
 		<div class="container grid">
-			<div class="area-texto reduzido">
+			<div class="area-texto">
 				<article>
 					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas quo nisi repellat dignissimos magni, consectetur non atque animi molestias tempora!</p>
@@ -71,15 +87,19 @@
 					<p>Ducimus quasi natus totam magni, atque dignissimos, reprehenderit blanditiis, architecto sequi rem accusamus ipsum magnam modi deserunt placeat cum similique?</p>
 
 					<div class="maisconteudo">
-						<a href="#" class="continuar">Continue Lendo</a>
-						<a href="#" class="saibamais">Saiba mais</a>
+						<a href="textos/texto.html" class="continuar">Continue Lendo</a>
+						<a href="textos/texto.html#saibamais" class="saibamais">Saiba mais</a>
 					</div>
 				</article>
 			</div>
-			<div class="area-video destacado">
-				<button class="deslizar"></button>
-				<h3>Vídeo em libras sobre Lorem ipsum dolor sit amet, consectetur adipisicing</h3>
-				<video src="videos/teste.mp4" controls="true"></video>
+			<div class="area-video detalhe-inferior">
+				<button class="deslizar" title="Expandir vídeo"></button>
+
+				<div class="wrap-video">
+					<div class="video">
+						<video src="videos/teste.mp4" poster="assets/img/poster.png"></video>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -90,16 +110,52 @@
 	<section class="sessao branco">
 		<div class="container fullgrid">
 
-			<video src="videos/teste.mp4" controls="true"></video>
+			<div class="video">
+				<button onclick="playPause()" title="Começar vídeo"></button>
+				<video src="videos/teste.mp4" poster="assets/img/poster.png"></video>
+			</div>
+
 
 		</div>
 	</section>
 
 
 
+	<section class="separador" title="Grafismo: Cataventos animados.">
+		<div class="container">
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+		</div>
+	</section>
+
+
+
+
 	<section class="sessao texto-video">
 		<div class="container grid">
-			<div class="area-texto destacado">
+			<div class="area-texto">
 				<article>
 					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas quo nisi repellat dignissimos magni, consectetur non atque animi molestias tempora!</p>
@@ -108,15 +164,19 @@
 					<p>Ducimus quasi natus totam magni, atque dignissimos, reprehenderit blanditiis, architecto sequi rem accusamus ipsum magnam modi deserunt placeat cum similique?</p>
 
 					<div class="maisconteudo">
-						<a href="#" class="continuar">Continue Lendo</a>
-						<a href="#" class="saibamais">Saiba mais</a>
+						<a href="textos/texto.html" class="continuar">Continue Lendo</a>
+						<a href="textos/texto.html#saibamais" class="saibamais">Saiba mais</a>
 					</div>
 				</article>
 			</div>
-			<div class="area-video reduzido">
-				<button class="deslizar"></button>
-				<h3>Vídeo em libras sobre Lorem ipsum dolor sit amet, consectetur adipisicing</h3>
-				<video src="videos/teste.mp4" controls="true"></video>
+			<div class="area-video">
+				<button class="deslizar" title="Expandir vídeo"></button>
+
+				<div class="wrap-video">
+					<div class="video">
+						<video src="videos/teste.mp4" poster="assets/img/poster.png"></video>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -125,7 +185,7 @@
 
 	<section class="sessao texto-video">
 		<div class="container grid">
-			<div class="area-texto reduzido">
+			<div class="area-texto">
 				<article>
 					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas quo nisi repellat dignissimos magni, consectetur non atque animi molestias tempora!</p>
@@ -134,15 +194,19 @@
 					<p>Ducimus quasi natus totam magni, atque dignissimos, reprehenderit blanditiis, architecto sequi rem accusamus ipsum magnam modi deserunt placeat cum similique?</p>
 
 					<div class="maisconteudo">
-						<a href="#" class="continuar">Continue Lendo</a>
-						<a href="#" class="saibamais">Saiba mais</a>
+						<a href="textos/texto.html" class="continuar">Continue Lendo</a>
+						<a href="textos/texto.html#saibamais" class="saibamais">Saiba mais</a>
 					</div>
 				</article>
 			</div>
-			<div class="area-video destacado">
-				<button class="deslizar"></button>
-				<h3>Vídeo em libras sobre Lorem ipsum dolor sit amet, consectetur adipisicing</h3>
-				<video src="videos/teste.mp4" controls="true"></video>
+			<div class="area-video detalhe-inferior">
+				<button class="deslizar" title="Expandir vídeo"></button>
+
+				<div class="wrap-video">
+					<div class="video">
+						<video src="videos/teste.mp4" poster="assets/img/poster.png"></video>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -151,9 +215,57 @@
 
 
 
-	
+	<section class="separador" title="Grafismo: Cataventos animados.">
+		<div class="container">
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+			<div>
+				<div class="linha"></div>
+				<div class="simbolo"></div>
+			</div>
+		</div>
+	</section>
+
 
 </main>
+
+
+<footer class="rodape">
+	<div class="container">
+		<div class="logos">
+			<img src="assets/img/logo-brasil.svg" alt="Logo Brasil, Ordem e Progresso">
+			<img src="assets/img/logo-ciarufg.svg" alt="Logo Ciar, Universidade Federal de Goiás">
+			<img src="assets/img/logo-ifg.svg" alt="Logo Instituto Federal de Goiás">
+			<img src="assets/img/logo-ueg.svg" alt="Logo Universidade Estadual de Goiás">
+			<img src="assets/img/logo-ifgo.svg" alt="Logo Instituto Federal Goiano">
+			<img src="assets/img/logo-sinage.svg" alt="Logo Sistema Integrado De Núcleos De Acessibilidade">
+		</div>
+		<div class="ficha">
+			<a href="ficha-tecnica.html">Ficha <span>técnica</span></a>
+		</div>
+	</div>
+</footer>
+	
+
+
 
 
 
