@@ -39,6 +39,7 @@ header {
 
 	// cabecalho textos internos
 	&.cabecalho-interno {
+		margin-bottom: 50px;
 
 		.container {
 			padding: 30px 10px;
@@ -150,8 +151,8 @@ header {
 
 
 // videos
-video { width: 100%;  @include filter(grayscale(100%));
-}
+video { width: 100%; }
+
 
 // sessoes
 .sessao {
@@ -198,6 +199,47 @@ video { width: 100%;  @include filter(grayscale(100%));
 
 	&.branco {background: $cor1;}
 	&.vermelho {background: $cor2;}
+
+
+	&.texto-interno {
+	    article {
+			@include display(flex);
+		    @include flex-direction(row);
+		    @include flex-wrap(wrap);
+		    @include justify-content(flex-end);
+		    width: 100%;
+		    max-width: $largura-max;
+		    margin: 0 auto;
+
+		    .conteudo {
+		    	width: 100%;
+		    	max-width: $largura-max * 0.6;
+		    	padding: 0 15px;
+		    }
+
+		    figure {
+		    	margin: 20px 0;
+				width: 100%;
+
+				img {width: 100%; height: auto;}
+
+				figcaption {
+					width: 100%;
+					padding: 0 15px;
+					max-width: $largura-max * 0.6;
+					font-size: 0.9em;
+					font-style: italic;
+				}
+		    }
+	    }
+	}
+}
+
+@-moz-document url-prefix() {
+	.sessao.texto-video .grid > div.area-video {
+		&:before {left: calc(-200vw + 1px)}
+		&:after {left: -1px;}
+	}
 }
 
 
@@ -238,60 +280,10 @@ div.area-video .wrap-video {
 	.sessao.texto-video:nth-of-type(1) .grid > & {
 		&:before, &:after {display: block}
 	}	
-}
 
-
-.video {
-	position: relative;
-	display: block;
-
-	button {
-		width: 80px;
-	    height: 80px;
-	    font-size: 45px;
-		text-align: center;
+	.video {
+		position: relative;
 		display: block;
-		position: absolute;
-		z-index: 2;
-		top: 50%;
-		left: 50%;
-		background: transparentize($cor3,0.5);
-		border: 2px solid $cor1;
-		border-radius: 50%;
-		outline: 0;
-		cursor: pointer;
-		@include transform(translate(-50%,-50%));
-
-		&:before {
-			content: "\e805";
-			font-family: 'fontello';
-			color: $cor1;
-			margin-left: 12px;
-		}
-	} 
-
-	&:before, &:after {
-		width: 20%;
-		height: 0;
-		padding-bottom: 20%;
-		position: absolute;
-		background: url('../img/borda-video.svg') no-repeat center center / 105%;
-		content: "";
-		z-index: 2;
-	}
-
-	&:before {
-		top: 0; left: 0;
-		@include transform(scale(-1,-1));
-	}
-
-	&:after {
-		bottom: 0; right: 0;
-	}
-
-
-	.fullgrid & {
-		&:before, &:after {display: none;}
 	}
 }
 
@@ -460,15 +452,61 @@ button.deslizar {
 }
 
 
+// titulo de saiba mais
+.saiba-mais {
+	width: 100%;
+	background: $cor3;
+	display: block;
+	text-align: center;
+	line-height: 1;
+	color: $cor1;
+	margin: 50px 0;
+	position: relative;
+
+	&:before, &:after {
+		content: ""; width: 200vw;
+		@include transform(translateX(-50%));
+	}
+
+	&:before {
+		position: absolute;
+		top: 0; left: 50%;
+		height: 100%;
+		background: $cor3;
+	}
+
+	&:after {
+      display: block;
+      height: 90px;
+      background: $cor1 url('../img/pattern2.png') repeat-x center bottom / 145px;
+    }
+
+	span {
+		position: relative;
+		display: block;
+		z-index: 1;
+		padding: 50px 0 30px;
+		
+		&:before, &:after {
+			content: '\e804';
+			font-family: 'fontello';
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 1em;
+			margin: 0 20px;
+		}
+
+	}
+}
+
 
 // rodape home
-footer.rodape {
+footer {
 	width: 100%;
 	background: $cor2;
 	color: $cor1;
 	display: block;
 	position: relative;
-	padding-bottom: 50px;
 
 	.container {
 	    @include display(flex);
@@ -476,76 +514,152 @@ footer.rodape {
 	    @include flex-wrap(wrap);
 	    @include justify-content(space-between);
 	    padding: 0 20px;
+	}
 
-	    .logos {
+	// rodape pagina inicial
+	&.rodape {
+		padding-bottom: 50px;
+
+		.container {
+		    .logos {
+			    @include display(flex);
+			    @include flex-direction(row);
+			    @include flex-wrap(wrap);
+			    @include justify-content(flex-start);
+			    @include align-items(flex-start);
+			    padding: 0 10px;
+			    width: calc(100% - 130px);
+
+			    img {
+			    	margin: 0 10px;
+
+			    	&:first-child, &:last-child {@include align-self(center);}
+			    }
+		    }	
+
+		    .ficha {
+		    	// outline: 1px solid; 
+		    	position: relative;
+		    	border: 2px dashed $cor2;
+		    	cursor: pointer;
+		    	width: 130px;
+		    	height: 110px;
+
+				a {
+					font-size: 30px;
+					padding: 20px;
+					text-transform: uppercase;
+					color: $cor1;
+					display: block;
+					line-height: 1;
+					position: relative;
+					z-index: 2;
+					width: 126px; height: 106px;
+
+					&:hover {text-decoration: none;}
+
+					span {font-size: 26px; text-transform: lowercase; display: block; margin-top: 10px}
+				}
+
+				&:before, &:after {
+					content: "";
+					width: 55px;
+					height: 55px;
+					position: absolute;
+					display: block;
+					border: 2px dashed $cor1;
+					@include transition(width 0.3s ease-in-out, height 0.3s ease-in-out);
+					z-index: 1;
+				}
+
+				&:before {
+					border-bottom: none;
+					border-right: none;
+					top: 0; left: 0;
+					width: 0; height: 0;
+					border-color: $cor2;
+				}
+
+				&:after {
+					border-top: none;
+					border-left: none;
+					bottom: 0; right: 0;
+				}
+
+				&:hover {
+					&:before, &:after {border-color: $cor1; width: 126px; height: 106px;}
+				}
+		    }
+		}
+	}
+
+	&.rodape-interno {
+		// padding-top: 50px;
+		padding-bottom: 50px;
+
+		.navegacao {
+			width: 100%; position: relative;
 		    @include display(flex);
 		    @include flex-direction(row);
 		    @include flex-wrap(wrap);
-		    @include justify-content(flex-start);
-		    @include align-items(flex-start);
-		    padding: 0 10px;
-		    width: calc(100% - 130px);
+		    @include justify-content(space-between);
+		    @include align-items(center);
 
-		    img {
-		    	margin: 0 10px;
-
-		    	&:first-child, &:last-child {@include align-self(center);}
+		    &:before {
+		    	content: "";
+		    	position: absolute;
+		    	top: 50%;
+		    	left: 0;
+		    	width: 100%;
+		    	height: 0px;
+		    	border-top: 2px dashed $cor1; 
 		    }
-	    }	
-
-	    .ficha {
-	    	// outline: 1px solid; 
-	    	position: relative;
-	    	border: 2px dashed $cor2;
-	    	cursor: pointer;
-	    	width: 130px;
-	    	height: 110px;
 
 			a {
-				font-size: 30px;
-				padding: 20px;
-				text-transform: uppercase;
-				color: $cor1;
+				width: 40px;
+				height: 40px;
+				background: $cor2;
 				display: block;
-				line-height: 1;
 				position: relative;
-				z-index: 2;
-				width: 126px; height: 106px;
+				border-radius: 50%; 
 
-				&:hover {text-decoration: none;}
+				span {@include apenasleitura; position: absolute;}
 
-				span {font-size: 26px; text-transform: lowercase; display: block; margin-top: 10px}
+				&:before {
+					font-family: 'fontello';
+					line-height: 40px;
+					text-align: center;
+					font-size: 40px;
+					color: $cor1;
+					display: block;
+					@include transition(color 0.3s ease-in-out);
+				}
+
+				&.anterior:before {content: '\e801'}
+				&.proximo:before {content: '\e800'}
+
+				&.inicio {
+					width: 70px; height: 70px;
+					border: 2px dashed $cor1;
+					position: relative;
+
+					&:before {display: none;}
+
+					svg {
+						width: 45px; height: 45px;
+						position: absolute; top: 50%; left: 50%;
+						@include transform(translate(-50%,-50%));
+
+						path {fill: $cor1;}
+					}
+				}
+
+				&:hover {
+					text-decoration: none;
+					&:before {color: $cor3}
+				}
 			}
-
-			&:before, &:after {
-				content: "";
-				width: 55px;
-				height: 55px;
-				position: absolute;
-				display: block;
-				border: 2px dashed $cor1;
-				@include transition(width 0.3s ease-in-out, height 0.3s ease-in-out);
-				z-index: 1;
-			}
-
-			&:before {
-				border-bottom: none;
-				border-right: none;
-				top: 0; left: 0;
-				width: 0; height: 0;
-				border-color: $cor2;
-			}
-
-			&:after {
-				border-top: none;
-				border-left: none;
-				bottom: 0; right: 0;
-			}
-
-			&:hover {
-				&:before, &:after {border-color: $cor1; width: 126px; height: 106px;}
-			}
-	    }
+		}
 	}
 }
 
