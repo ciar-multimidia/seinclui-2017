@@ -441,6 +441,29 @@ a, a:link, a:visited, a:active {
   a:hover, a:link:hover, a:visited:hover, a:active:hover {
     text-decoration: underline; }
 
+table {
+  width: 100%;
+  min-width: 768px;
+  border: 1px solid #000;
+  border-bottom: 0;
+  overflow-x: auto; }
+  table caption {
+    text-align: left;
+    font-size: 0.9em;
+    font-style: italic;
+    padding: 15px; }
+  table th, table td {
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 15px; }
+  table tr td:last-of-type,
+  table thead th:last-of-type {
+    border-right: 0; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
 @font-face {
   font-family: 'fontello';
   src: url("../fonts/fontello.eot?82823482");
@@ -638,11 +661,23 @@ header {
           header.cabecalho-interno .container nav a.inicio {
             width: 70px;
             height: 70px;
-            border: 2px dashed #fff; }
+            border: 2px dashed #fff;
+            position: relative; }
             header.cabecalho-interno .container nav a.inicio:before {
-              line-height: 70px;
-              font-size: 37px;
-              content: '\f0c9'; }
+              display: none; }
+            header.cabecalho-interno .container nav a.inicio svg {
+              width: 45px;
+              height: 45px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              -webkit-transform: translate(-50%, -50%);
+              -moz-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+              header.cabecalho-interno .container nav a.inicio svg path {
+                fill: #fff; }
           header.cabecalho-interno .container nav a:hover {
             text-decoration: none; }
             header.cabecalho-interno .container nav a:hover:before {
@@ -758,6 +793,8 @@ video {
       transform: scaleX(-1); }
     .sessao.texto-video .grid > div.area-video.detalhe-inferior:after {
       display: block; }
+    .sessao.texto-video .grid > div.area-video.detalhe-superior:before {
+      display: none; }
 .sessao.branco {
   background: #fff; }
 .sessao.vermelho {
@@ -803,18 +840,8 @@ video {
     width: 100%;
     max-width: 720px;
     padding: 0 15px; }
-  .sessao.texto-interno article figure {
-    margin: 20px 0;
-    width: 100%; }
-    .sessao.texto-interno article figure img {
-      width: 100%;
-      height: auto; }
-    .sessao.texto-interno article figure figcaption {
-      width: 100%;
-      padding: 0 15px;
-      max-width: 720px;
-      font-size: 0.9em;
-      font-style: italic; }
+    .sessao.texto-interno article .conteudo a {
+      word-wrap: break-word; }
 
 @-moz-document url-prefix() {
   .sessao.texto-video .grid > div.area-video:before {
@@ -856,6 +883,22 @@ div.area-video .wrap-video {
   div.area-video .wrap-video .video {
     position: relative;
     display: block; }
+    div.area-video .wrap-video .video:before {
+      content: "";
+      width: 20%;
+      height: 0;
+      padding-bottom: 20%;
+      background: url("../img/borda-video.svg") no-repeat center center/110%;
+      -webkit-transform: scale(-1, -1);
+      -moz-transform: scale(-1, -1);
+      -ms-transform: scale(-1, -1);
+      -o-transform: scale(-1, -1);
+      transform: scale(-1, -1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: block; }
 
 .maisconteudo {
   margin-top: 70px;
@@ -1124,6 +1167,18 @@ button.deslizar {
       vertical-align: middle;
       font-size: 1em;
       margin: 0 20px; }
+
+.tabela {
+  margin: 25px 0;
+  width: 100%;
+  overflow-x: auto; }
+
+.slider-img {
+  margin: 20px 0;
+  width: 100%; }
+  .slider-img img {
+    width: 100%;
+    height: auto; }
 
 footer {
   width: 100%;
@@ -1410,13 +1465,16 @@ footer {
     height: 45px;
     background-size: 76px; }
 
-  .grid > div {
+  .grid > div,
+  .video-destacado .grid > div {
     padding-top: 50px;
     padding-bottom: 50px; }
-    .grid > div.area-texto {
+    .grid > div.area-texto,
+    .video-destacado .grid > div.area-texto {
       padding-right: 15px;
       width: 100%; }
-    .grid > div.area-video {
+    .grid > div.area-video,
+    .video-destacado .grid > div.area-video {
       padding-left: 15px;
       width: 100%; }
 

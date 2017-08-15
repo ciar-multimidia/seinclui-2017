@@ -64,3 +64,33 @@ a, a:link, a:visited, a:active {
 
 	&:hover {text-decoration: underline;}
 }
+
+
+// tabelas
+table {
+	width: 100%;
+	min-width: 768px;
+	border: 1px solid $cor3;
+	border-bottom: 0;
+	overflow-x: auto;
+
+	caption {
+		text-align: left; 
+		font-size: 0.9em;
+		font-style: italic;
+		padding: 15px; 
+	}
+
+	th, td {
+		border-bottom: 1px solid $cor3;
+		border-right: 1px solid $cor3;
+		padding: 15px;
+	}
+
+	tr td:last-of-type,
+	thead th:last-of-type {border-right: 0}
+}
+
+
+// imagens
+img {max-width: 100%; height: auto;}

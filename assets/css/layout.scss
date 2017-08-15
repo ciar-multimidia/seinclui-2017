@@ -88,7 +88,17 @@ header {
 					&.inicio {
 						width: 70px; height: 70px;
 						border: 2px dashed $cor1;
-						&:before {line-height: 70px; font-size: 37px; content: '\f0c9'}
+						position: relative;
+
+						&:before {display: none;}
+
+						svg {
+							width: 45px; height: 45px;
+							position: absolute; top: 50%; left: 50%;
+							@include transform(translate(-50%,-50%));
+
+							path {fill: $cor1;}
+						}
 					}
 
 					&:hover {
@@ -191,6 +201,7 @@ video { width: 100%; }
 					}
 
 					&.detalhe-inferior:after {display: block;}
+					&.detalhe-superior:before {display: none;}
 				}
 			}
 		}
@@ -215,21 +226,8 @@ video { width: 100%; }
 		    	width: 100%;
 		    	max-width: $largura-max * 0.6;
 		    	padding: 0 15px;
-		    }
 
-		    figure {
-		    	margin: 20px 0;
-				width: 100%;
-
-				img {width: 100%; height: auto;}
-
-				figcaption {
-					width: 100%;
-					padding: 0 15px;
-					max-width: $largura-max * 0.6;
-					font-size: 0.9em;
-					font-style: italic;
-				}
+		    	a {word-wrap: break-word;}
 		    }
 	    }
 	}
@@ -284,6 +282,20 @@ div.area-video .wrap-video {
 	.video {
 		position: relative;
 		display: block;
+
+		&:before {
+			content: "";
+			width: 20%;
+			height: 0;
+			padding-bottom: 20%;
+			background: url('../img/borda-video.svg') no-repeat center center / 110%;
+			@include transform(scale(-1,-1));
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			display: block;
+		}
 	}
 }
 
@@ -497,6 +509,32 @@ button.deslizar {
 		}
 
 	}
+}
+
+
+// tabelas
+.tabela {
+	margin: 25px 0;
+	width: 100%;
+	overflow-x: auto;
+}
+
+
+
+// sliders
+.slider-img {
+	margin: 20px 0;
+	width: 100%;
+
+	img {width: 100%; height: auto;}
+
+	// figcaption {
+	// 	width: 100%;
+	// 	padding: 0 15px;
+	// 	max-width: $largura-max * 0.6;
+	// 	font-size: 0.9em;
+	// 	font-style: italic;
+	// }
 }
 
 
