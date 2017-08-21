@@ -105,6 +105,10 @@ header {
 						text-decoration: none;
 						&:before {color: $cor3}
 					}
+
+					&.esconde {visibility: hidden;
+						&:before {display: none;}
+					}
 				}
 			}
 
@@ -160,9 +164,6 @@ header {
 }
 
 
-// videos
-video { width: 100%; }
-
 
 // sessoes
 .sessao {
@@ -210,27 +211,6 @@ video { width: 100%; }
 
 	&.branco {background: $cor1;}
 	&.vermelho {background: $cor2;}
-
-
-	&.texto-interno {
-	    article {
-			@include display(flex);
-		    @include flex-direction(row);
-		    @include flex-wrap(wrap);
-		    @include justify-content(flex-end);
-		    width: 100%;
-		    max-width: $largura-max;
-		    margin: 0 auto;
-
-		    .conteudo {
-		    	width: 100%;
-		    	max-width: $largura-max * 0.6;
-		    	padding: 0 15px;
-
-		    	a {word-wrap: break-word;}
-		    }
-	    }
-	}
 }
 
 @-moz-document url-prefix() {
@@ -238,6 +218,43 @@ video { width: 100%; }
 		&:before {left: calc(-200vw + 1px)}
 		&:after {left: -1px;}
 	}
+}
+
+
+
+// texto interno
+.sessao.texto-interno {
+    article {
+		@include display(flex);
+	    @include flex-direction(row);
+	    @include flex-wrap(wrap);
+	    @include justify-content(flex-end);
+	    width: 100%;
+	    max-width: $largura-max;
+	    margin: 0 auto;
+
+	    .conteudo {
+	    	width: 100%;
+	    	max-width: $largura-max * 0.6;
+	    	padding: 0 15px;
+
+	    	a {word-wrap: break-word;}
+	    }
+
+	    & > h2 {width: 100%; text-align: left;}
+
+	    .slider-txt, .slider-img {width: 100%}
+
+	    &.ficha {
+	    	@include justify-content(space-between);
+
+	    	.folha-rosto { width: 100% }
+
+	    	& > div {
+	    		width: 48%;
+	    	}
+	    }
+    }
 }
 
 
@@ -469,7 +486,7 @@ button.deslizar {
 	width: 100%;
 	background: $cor3;
 	display: block;
-	text-align: center;
+	text-align: center !important;
 	line-height: 1;
 	color: $cor1;
 	margin: 50px 0;
@@ -527,14 +544,6 @@ button.deslizar {
 	width: 100%;
 
 	img {width: 100%; height: auto;}
-
-	// figcaption {
-	// 	width: 100%;
-	// 	padding: 0 15px;
-	// 	max-width: $largura-max * 0.6;
-	// 	font-size: 0.9em;
-	// 	font-style: italic;
-	// }
 }
 
 
@@ -571,7 +580,8 @@ footer {
 			    img {
 			    	margin: 0 10px;
 
-			    	&:first-child, &:last-child {@include align-self(center);}
+			    	&:nth-of-type(4), &:nth-of-type(5), &:nth-of-type(6)
+			    	{@include align-self(center);}
 			    }
 		    }	
 
@@ -584,9 +594,9 @@ footer {
 		    	height: 110px;
 
 				a {
-					font-size: 30px;
+					font-size: 25px; 
 					padding: 20px;
-					text-transform: uppercase;
+					text-transform: lowercase;
 					color: $cor1;
 					display: block;
 					line-height: 1;
@@ -596,7 +606,7 @@ footer {
 
 					&:hover {text-decoration: none;}
 
-					span {font-size: 26px; text-transform: lowercase; display: block; margin-top: 10px}
+					span {font-size: 26px; text-transform: uppercase; display: block; margin-top: 10px}
 				}
 
 				&:before, &:after {
@@ -695,6 +705,10 @@ footer {
 				&:hover {
 					text-decoration: none;
 					&:before {color: $cor3}
+				}
+
+				&.esconde {visibility: hidden;
+					&:before {display: none;}
 				}
 			}
 		}

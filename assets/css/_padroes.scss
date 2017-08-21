@@ -52,6 +52,10 @@ h2, h3, h4, h5 {
 	margin-top: 0;
 	font-family: 'Tiresias Infofont';
 	text-transform: uppercase;
+
+	article & {margin-top: 70px;}
+	article > & {padding: 0 15px;}
+	.area-texto article > & {padding: 0}
 }
 
 h2 {color: $cor2; font-size: 1.8em;}
@@ -64,6 +68,10 @@ a, a:link, a:visited, a:active {
 
 	&:hover {text-decoration: underline;}
 }
+
+
+// videos
+video { width: 100%; }
 
 
 // tabelas
@@ -92,5 +100,22 @@ table {
 }
 
 
+// linha
+hr {
+	outline: 0;
+	border-top: 2px dashed $cor2;
+	margin: 70px auto;
+	display: block;
+	width: 100%;
+}
+
+
 // imagens
 img {max-width: 100%; height: auto;}
+
+
+// quotes
+blockquote {
+	margin: 0 0 0 70px;
+	font-size: 0.9em;
+}
