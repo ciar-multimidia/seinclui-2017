@@ -1618,12 +1618,13 @@ footer {
     footer.rodape .container .ficha a {
       padding: 10px 0 0 0;
       font-size: 1.5em;
-      text-transform: capitalize;
+      text-transform: none;
       text-align: center;
       width: 100%;
       height: auto; }
       footer.rodape .container .ficha a span {
         display: inline-block;
+        text-transform: lowercase;
         font-size: 1em; }
     footer.rodape .container .ficha:hover:after {
       display: none; }

@@ -173,12 +173,12 @@
         a {
           padding: 10px 0 0 0;
           font-size: 1.5em;
-          text-transform: capitalize;
+          text-transform: none;
           text-align: center;
           width: 100%;
           height: auto;
 
-          span {display: inline-block; font-size: 1em;}
+          span {display: inline-block; text-transform: lowercase; font-size: 1em;}
         }
 
         &:hover {
