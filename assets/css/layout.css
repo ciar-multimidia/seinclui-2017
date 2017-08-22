@@ -453,7 +453,7 @@ video {
 table {
   width: 100%;
   min-width: 768px;
-  border: 1px solid #000;
+  border: 1px solid #333;
   border-bottom: 0;
   overflow-x: auto; }
   table caption {
@@ -462,8 +462,8 @@ table {
     font-style: italic;
     padding: 15px; }
   table th, table td {
-    border-bottom: 1px solid #000;
-    border-right: 1px solid #000;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
     padding: 15px; }
   table tr td:last-of-type,
   table thead th:last-of-type {
@@ -561,7 +561,7 @@ body {
   font-size: 20px;
   line-height: 1.5;
   font-family: 'Roboto',sans-serif;
-  color: #000; }
+  color: #333; }
 
 html, body {
   overflow-x: hidden; }
@@ -701,7 +701,7 @@ header {
           header.cabecalho-interno .container nav a:hover {
             text-decoration: none; }
             header.cabecalho-interno .container nav a:hover:before {
-              color: #000; }
+              color: #333; }
           header.cabecalho-interno .container nav a.esconde {
             visibility: hidden; }
             header.cabecalho-interno .container nav a.esconde:before {
@@ -988,7 +988,7 @@ div.area-video .wrap-video {
       font-style: normal;
       margin-right: 8px; }
   .maisconteudo a.saibamais {
-    color: #000;
+    color: #333;
     font-size: 0.95em; }
     .maisconteudo a.saibamais:after {
       font-family: 'fontello';
@@ -1035,7 +1035,7 @@ button.deslizar {
   -moz-transition: color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out; }
   button.deslizar:hover {
-    color: #000; }
+    color: #333; }
   button.deslizar:before {
     content: '\e801';
     font-family: 'fontello'; }
@@ -1171,7 +1171,7 @@ button.deslizar {
 
 .saiba-mais {
   width: 100%;
-  background: #000;
+  background: #333;
   display: block;
   text-align: center !important;
   line-height: 1;
@@ -1191,7 +1191,7 @@ button.deslizar {
     top: 0;
     left: 50%;
     height: 100%;
-    background: #000; }
+    background: #333; }
   .saiba-mais:after {
     display: block;
     height: 90px;
@@ -1479,7 +1479,7 @@ footer {
         footer.rodape-interno .navegacao a:hover {
           text-decoration: none; }
           footer.rodape-interno .navegacao a:hover:before {
-            color: #000; }
+            color: #333; }
         footer.rodape-interno .navegacao a.esconde {
           visibility: hidden; }
           footer.rodape-interno .navegacao a.esconde:before {
