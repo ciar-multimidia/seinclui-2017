@@ -1311,11 +1311,13 @@ footer {
       width: calc(100% - 130px); }
       footer.rodape .container .logos img {
         margin: 0 10px; }
-        footer.rodape .container .logos img:nth-of-type(4), footer.rodape .container .logos img:nth-of-type(5), footer.rodape .container .logos img:nth-of-type(6) {
+        footer.rodape .container .logos img:nth-of-type(4), footer.rodape .container .logos img:nth-of-type(5) {
           -webkit-align-self: center;
           -moz-align-self: center;
           align-self: center;
           -ms-flex-item-align: center; }
+        footer.rodape .container .logos img:nth-of-type(4) {
+          margin-bottom: 12px; }
     footer.rodape .container .ficha {
       position: relative;
       border: 2px dashed #f8465c;

@@ -580,8 +580,8 @@ footer {
 			    img {
 			    	margin: 0 10px;
 
-			    	&:nth-of-type(4), &:nth-of-type(5), &:nth-of-type(6)
-			    	{@include align-self(center);}
+			    	&:nth-of-type(4), &:nth-of-type(5) {@include align-self(center);}
+			    	&:nth-of-type(4) {margin-bottom: 12px;}
 			    }
 		    }	
 
