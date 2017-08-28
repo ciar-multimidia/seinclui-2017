@@ -9,6 +9,8 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
 	<link rel="stylesheet" href="../assets/css/layout.css">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -16,7 +18,7 @@
 	<div class="container">
 		<nav>
 			<a class="anterior" href="movimentos-e-direitos-da-pessoa-com-deficiencia.html"><span>Texto anterior</span></a>
-			<a class="inicio" href="../index.html"><img src="../assets/img/simbolo.svg" class="injetar" alt="Simbolo da marca - Ao clicar irá para a página inicial"></a>
+			<a class="inicio" href="../index.html"><img src="../assets/img/simbolo.svg" class="injetar"></a>
 			<a class="proximo" href="diversidade-auditiva.html"><span>Próximo texto</span></a>
 		</nav>
 		<h1>Diversidade visual</h1>
@@ -71,67 +73,146 @@
 			<h2>Boas práticas sociais na diversidade visual</h2>
 
 			<div class="slider-txt">
-				<ol>
-				  <li>Quando relacionar-se com pessoas cegas ou com deficiência visual, identifique-se, faça-a perceber que você está falando com ela, tocando-a ou falando próxima. </li>
-				  <li>As pessoas com baixa visão poderão passar por você e não te cumprimentar. Isso acontece não porque são mal-educadas, mas porque não a viu mesmo. Quando isso acontecer chame-a e avise-a da sua presença. </li>
-				  <li>Sempre que quiser auxiliar uma pessoa com deficiência visual pergunte anteriormente se ela quer ajuda. É comum o relato de pessoas cegas que são pegas pelo braço e atravessadas pela rua à força por pessoas que acreditavam que ela queria fazer isso. Algumas vezes a pessoa com deficiência prefere realizar a atividade de locomoção sozinha, assim é importante perguntar se ela precisa de ajuda sempre.</li>
-				  <li>Quando a pessoa quiser ajuda pergunte como você deve fazer para ajudá-la. No auxílio na locomoção o mais recomendado é que se ofereça o cotovelo para que a pessoa com deficiência visual o segure e assim te acompanhe.</li>
-				  <li>Avise antecipadamente a existência de degraus, escadas rolantes, pisos escorregadios, buracos e obstáculos durante o trajeto. </li>
-				  <li>Para ajudar uma pessoa cega a sentar-se, você deve guiá-la até a cadeira e colocar a mão dela sobre o encosto, informando se esta tem braço ou não. Deixe que a pessoa se sente sozinha.</li>
-				  <li>Quanto ao cão-guia, ele nunca deve ser distraído do seu dever de guia com afagos, alimentos etc. Lembre-se de que esse cão está trabalhando e tem a responsabilidade de guiar um dono que não enxerga.</li>
-				  <li>Fique à vontade para usar palavras como &quot;veja&quot; e &quot;olhe&quot;. As pessoas cegas as utilizam com naturalidade.</li>
-				  <li>Sempre que se afastar, avise a pessoa cega, pois ela pode não perceber a sua saída.</li>
-				  <li>No primeiro contato do acadêmico cego com o Câmpus, deve ser indicado um servidor para proceder a visita com ele as principais dependências do prédio: sala de aula, biblioteca, banheiros, secretaria e outras, para reconhecimento e construção espacial do Câmpus.</li>
-				  <li>Na primeira aula é interessante apresentar o aluno aos colegas e que esses se apresentem. Os alunos sem deficiência visual sabem exatamente quantos colegas tem na sala e quem são. Para os alunos com deficiência visual isso fica mais difícil e no caso de cegueira, impossível.</li>
-				  <li>Algumas instituições de ensino possuem programas de monitoria para apoio de alunos com deficiência. Procure saber como funciona na sua instituição. </li>
-				  <li>Caso faça um evento na sua unidade procure fazer e avise os colegas professores que façam a ampliação de cartazes e meios de informações instalados nas áreas comuns da universidade; e a ampliação dos materiais disponibilizados em simpósio, feiras e encontro que acontecem na universidade.</li>
-				  <li>Durante a inscrição em eventos promovidos dentro da instituição, utilize ficha de inscrição com um campo em que participantes com deficiência/necessidades especiais pudessem requisitar ferramentas de acessibilidade, material adaptado, etc.</li>
-				  <li>As barreiras arquitetônicas também afetam o aluno com deficiência visual. Caso você verifique que faltam placas de sinalização, piso tátil, e que a qualidade das calçadas esteja inadequada faça uma reclamação formal para o setor responsável pelo espaço da instituição com cópia para o Núcleo de Acessibilidade para que esse possa acompanhar e cobrar as modificações assim que haja verba disponível.</li>
-				  <li>Muitas vezes os alunos com deficiência visual utilizam o final das calçadas como piso tátil. Arvores que crescem no caminho, lixeiras inadequadas e bancos colocados em locais inadequados podem dificultar o deslocamento ou até mesmo causar acidentes. Caso o aluno reclame com você informe os órgãos responsáveis como acima.</li>
-				  <li>Seria fundamental que as placas de identificação como, por exemplo: números ou nome das salas, indicações dos banheiros femininos e masculinos fossem adaptadas para o Braille, principalmente se tiver aluno cego na unidade.</li>
-				  <li>A lei prevê faixas sinalizadoras próximas às escadas ou locais de alerta para que os alunos cegos e de baixa visão não corram risco de acidente nesse local. </li>
-				</ol>
+				<div class="controls">
+					<p class="contagem" aria-controls='#boxslide1' aria-live='polite' aria-relevant='text' aria-atomic='true'><span>1</span> de 18</p>
+					<button class="anterior" aria-controls='#boxslide1' disabled='disabled' aria-label='Dica Anterior'></button>
+					<button class="proximo" aria-controls='#boxslide1' aria-label='Próxima dica'></button>
+					<input type="range" 
+					value='1' 
+					min='1' 
+					max='18' 
+					step='1'
+					aria-valuemin='1'
+					aria-valuemax='18'
+					aria-valuenow='1'
+					aria-valuetext='Item 1'>
+					
+				</div>
+
+				
+
+				<p class="cont-texto" aria-live='polite' aria-relevant='text' aria-atomic='false' id='boxslide1'>Quando relacionar-se com pessoas cegas ou com deficiência visual, identifique-se, faça-a perceber que você está falando com ela, tocando-a ou falando próxima. </p>
+
+				<div class='slider-items' aria-hidden='true'>
+				  <p>Quando relacionar-se com pessoas cegas ou com deficiência visual, identifique-se, faça-a perceber que você está falando com ela, tocando-a ou falando próxima. </p>
+
+				  <p>As pessoas com baixa visão poderão passar por você e não te cumprimentar. Isso acontece não porque são mal-educadas, mas porque não a viu mesmo. Quando isso acontecer chame-a e avise-a da sua presença. </p>
+
+				  <p>Sempre que quiser auxiliar uma pessoa com deficiência visual pergunte anteriormente se ela quer ajuda. É comum o relato de pessoas cegas que são pegas pelo braço e atravessadas pela rua à força por pessoas que acreditavam que ela queria fazer isso. Algumas vezes a pessoa com deficiência prefere realizar a atividade de locomoção sozinha, assim é importante perguntar se ela precisa de ajuda sempre.</p>
+
+				  <p>Quando a pessoa quiser ajuda pergunte como você deve fazer para ajudá-la. No auxílio na locomoção o mais recomendado é que se ofereça o cotovelo para que a pessoa com deficiência visual o segure e assim te acompanhe.</p>
+
+				  <p>Avise antecipadamente a existência de degraus, escadas rolantes, pisos escorregadios, buracos e obstáculos durante o trajeto. </p>
+
+				  <p>Para ajudar uma pessoa cega a sentar-se, você deve guiá-la até a cadeira e colocar a mão dela sobre o encosto, informando se esta tem braço ou não. Deixe que a pessoa se sente sozinha.</p>
+
+				  <p>Quanto ao cão-guia, ele nunca deve ser distraído do seu dever de guia com afagos, alimentos etc. Lembre-se de que esse cão está trabalhando e tem a responsabilidade de guiar um dono que não enxerga.</p>
+
+				  <p>Fique à vontade para usar palavras como &quot;veja&quot; e &quot;olhe&quot;. As pessoas cegas as utilizam com naturalidade.</p>
+
+				  <p>Sempre que se afastar, avise a pessoa cega, pois ela pode não perceber a sua saída.</p>
+
+				  <p>No primeiro contato do acadêmico cego com o Câmpus, deve ser indicado um servidor para proceder a visita com ele as principais dependências do prédio: sala de aula, biblioteca, banheiros, secretaria e outras, para reconhecimento e construção espacial do Câmpus.</p>
+
+				  <p>Na primeira aula é interessante apresentar o aluno aos colegas e que esses se apresentem. Os alunos sem deficiência visual sabem exatamente quantos colegas tem na sala e quem são. Para os alunos com deficiência visual isso fica mais difícil e no caso de cegueira, impossível.</p>
+
+				  <p>Algumas instituições de ensino possuem programas de monitoria para apoio de alunos com deficiência. Procure saber como funciona na sua instituição. </p>
+
+				  <p>Caso faça um evento na sua unidade procure fazer e avise os colegas professores que façam a ampliação de cartazes e meios de informações instalados nas áreas comuns da universidade; e a ampliação dos materiais disponibilizados em simpósio, feiras e encontro que acontecem na universidade.</p>
+
+				  <p>Durante a inscrição em eventos promovidos dentro da instituição, utilize ficha de inscrição com um campo em que participantes com deficiência/necessidades especiais pudessem requisitar ferramentas de acessibilidade, material adaptado, etc.</p>
+
+				  <p>As barreiras arquitetônicas também afetam o aluno com deficiência visual. Caso você verifique que faltam placas de sinalização, piso tátil, e que a qualidade das calçadas esteja inadequada faça uma reclamação formal para o setor responsável pelo espaço da instituição com cópia para o Núcleo de Acessibilidade para que esse possa acompanhar e cobrar as modificações assim que haja verba disponível.</p>
+
+				  <p>Muitas vezes os alunos com deficiência visual utilizam o final das calçadas como piso tátil. Arvores que crescem no caminho, lixeiras inadequadas e bancos colocados em locais inadequados podem dificultar o deslocamento ou até mesmo causar acidentes. Caso o aluno reclame com você informe os órgãos responsáveis como acima.</p>
+
+				  <p>Seria fundamental que as placas de identificação como, por exemplo: números ou nome das salas, indicações dos banheiros femininos e masculinos fossem adaptadas para o Braille, principalmente se tiver aluno cego na unidade.</p>
+
+				  <p>A lei prevê faixas sinalizadoras próximas às escadas ou locais de alerta para que os alunos cegos e de baixa visão não corram risco de acidente nesse local. </p>
+
+				</div>
+
+				
 			</div>
 
 
 			<h2>Boas práticas acadêmicas</h2>
 
 			<div class="slider-txt">
-				<ol>
-				  <li>Muitas vezes o aluno com baixa visão, visão monocular e daltonismo passam despercebidos e com medo de sofrerem represálias não se identificam. Por isso, todo começo de semestre pergunte se algum aluno possui alguma deficiência ou necessidade específica.</li>
-				  <li>A Lei 13146/15 preza o Estudo de Caso, qualquer atendimento educacional especializado deve ser iniciado com uma conversa com o próprio aluno sobre como ele aprende.</li>
-				  <li>A melhor pessoa para lhe informar como deve ser a preparação dos textos utilizados na disciplina, de como devem ser os slides utilizados em aula e de como se deve descrever os elementos não visuais, é o próprio aluno com deficiência.</li>
-				  <li>Independente de saber da existência de alunos com deficiência na sua turma, caso queira já deixar preparado os textos utilizados na disciplina, o professor além do texto utilizado convencionalmente poderia já deixar disponibilizado um com letra ampliada (sugerimos tamanho fonte 20) e um texto salvo como TXT. Isso facilitaria muito a leitura dos alunos com baixa visão e para utilização de leitores de tela (normalmente aceitam txt) por alunos cegos. </li>
-				  <li>Antes de imprimir, procure sempre a ementa se tem algum aluno que necessita de alguma forma especial de impressão, Braille, fonte ampliada ou acesso ao TXT. Este educando também quer saber e tem o direito ao acesso à ementa e ao conteúdo programático.</li>
-				  <li>Pergunte aos seus alunos que tamanho de fonte deve usar nos slides, prefira contrastes preto e branco e caso tenha figuras cuide de descrevê-las.</li>
-				  <li>Quando for descrever os elementos não visuais de informações que sejam relevantes para o conteúdo abordado, descreva as figuras e fotos, mas tenha bom senso quanto a quantidade de informações.</li>
-				  <li>Sempre que estiver escrevendo no quadro o jeito mais adequado é narrar a sua escrita no exato momento em que está escrevendo. </li>
-				  <li>Para que a pessoa com baixa visão tenha acesso a conteúdos expositivos (panfletos, recados e conteúdo no quadro ou slides) é necessário que o professor oralize todas as informações visuais que o aluno não tem acesso por motivo de deficiência.</li>
-				  <li>Procure escrever letras grandes e claras no quadro.</li>
-				  <li>Na maioria das instituições existe um órgão responsável por adaptar todo o material para o aluno com deficiência visual. </li>
-				  <li>O professor deve encaminhar com antecedência (no início do semestre) para o órgão responsável pela preparação de materiais acadêmicos as cópias digitalizadas de todos os textos utilizados na disciplina, os livros ou referência de livros que não tiverem digitalizados e o cronograma com data de utilização de todo o material na aula para que seja adaptado às especificidades do aluno. A preparação de material pode não ser rápida, pois envolve as ações: digitação, digitalização, correção, revisão, ampliação, conversão de texto para áudio, adequação de imagens e gráficos, obter textos na internet, entre outras. </li>
-				  <li>Encaminhe com antecedência o material de recursos audiovisuais (Power Point, filme) e materiais com planilhas, tabelas ao aluno ou ao seu monitor para que ele possa encaminhar para as modificações adequadas, possibilitando ao aluno acompanhar as aulas.</li>
-				  <li>Ao usar mapas, gráficos e figuras, ter o cuidado de descrevê-los. </li>
-				  <li>Se possível prepare antecipadamente gráficos e desenhos contornando-os com cola 3D, desenhando sobre tela quadriculada (como a que retém insetos em janelas) ou feita em material maleável como sobre uma folha EVA, as limitações/formas podem ser marcadas com uso do barbante, os contornos ficam com relevo e facilitam a interpretação e entendimento de pessoas com deficiência visual. Ou solicite ao Núcleo de Acessibilidade que providencie com antecedência.</li>
-				  <li>Permitir ao aluno gravar as aulas como recurso de suas “anotações”. </li>
-				  <li>Ter ciência que o aluno faz uso de tecnologia assistiva durante as aulas (tablet, celulares, computadores, lupas, máquina braile, etc).</li>
-				  <li>Ao utilizar filme como recurso didático, discuta com o aluno previamente a melhor solução. Não fazer uso de filme mudo na turma deste aluno.</li>
-				  <li>Discuta previamente com o aluno a forma viável de avaliação. A avaliação adaptada é um direito do aluno prevista na Lei 13146/15. Converse com seu aluno se a avaliação escrita pode ser modificada para avaliação oralizada, prova impressa em Braille, prova impressa em letra ampliada, prova realizada em computador com leitor de tela ou outro tipo de avaliação que dê conta da especificidade do aluno e da disciplina.</li>
-				  <li>Muitas vezes o aluno com deficiência visual demora mais tempo para ler e responder as avaliações acadêmicas. Ainda na Lei 13146/15 no Art. 30 se prevê a “dilação de tempo, conforme demanda apresentada pelo candidato com deficiência tanto na realização de exame para seleção quanto nas atividades acadêmicas, mediante prévia solicitação e comprovação da necessidade”.</li>
-				  <li>O acadêmico cego pode solicitar o apoio de um profissional escrevente/ledor e/ou um notebook com software de tecnologia assistiva para uso durante o curso, ou ainda no caso de baixa visão a ampliação dos materiais impressos ou até mesmo solicitar auxílio ótico como: lupas eletrônicas. A efetivação desses apoios deve ser discutida pela coordenação do curso e pelo órgão responsável pela acessibilidade na instituição.</li>
-				  <li>Alguns alunos com sensibilidade a luz (fotofobia) podem enxergar melhor em ambientes menos iluminados, já outros preferem ambientes mais claros. O professor deve controlar a iluminação da sala, tendo em vista o conforto visual de todos os alunos.</li>
-				  <li>Deve-se orientar o acadêmico para que trabalhe com áudio-books e gravadores de áudio, porém o acadêmico pode escolher por fazer uso de material em Braille. Material específico pode ser solicitado na instituição no Núcleo de Acessibilidade ou órgão correspondente, ou ainda na biblioteca braile de Goiânia:  braille-jaa@uol.com.br ou pelo site da Fundação Dorina Nowill.</li>
-				  <li>Muitos documentos não podem ser agregados ao acervo de textos digitais por estarem mal identificados, danificados (sublinhados à caneta, marcados com marcadores de texto, ou com observações e anotações nas margens) e isto prejudica a interpretação por parte dos softwares utilizados. Diante de tais fatos, torna-se essencial a colaboração dos professores para encaminharem com antecedência o cronograma da disciplina com a bibliografia recomendada.</li>
-				  <li>-	O uso de software com síntese de voz torna-se uma alternativa valiosa para a obtenção da leitura imediata, tais como: Sistema Dosvox, Deltatalk, NVDA, Virtual Vision, Jaws, Orca e Daisy, aplicativo para Android. Para utilização dos textos da disciplina nesses programas deve-se disponibilizar o texto para o aluno em formato TXT.</li>
-				  <li>Algumas instituições utilizam sistemas computacionais acadêmicos (ex. SIGAA) que possibilitam que o professor disponibilize todo material para os alunos pelo sistema. Esse fato facilita para os órgãos responsáveis na instituição pela adequação do material para que efetive essa preparação. </li>
-				  <li>Todos os alunos com deficiência têm direito a ampliação do tempo de integralização de curso (Lei 13146/15). Se for o caso sugira ao seu aluno que ele faça menos disciplinas por semestre e faça o curso com mais calma e tempo.</li>
-				  <li>Caso tenha computadores ou laboratório de informática na unidade solicite que os programas leitores sejam instalados em todos os computadores. </li>
-				  <li>O quadro branco escrito com caneta preta costuma ser mais visível para as pessoas com deficiência visual do que as lousas de giz. Caso tenha aluno nessa situação solicite que a troca de sala para onde tenha esse quadro seja realizada.</li>
-				  <li>Ofereça as primeiras cadeiras para o aluno com deficiência visual e reforce com a turma essa necessidade.</li>
-				  <li>Alguns alunos utilizam o apoio de tablets ou outros equipamentos eletrônicos, nesses casos, os textos e livros devem ser disponibilizados em .mobi ou .epub.</li>
-				  <li>Dependendo os equipamentos e lupas que os alunos com deficiência visual utilizam é importante disponibilizar uma mesa maior que proporcione mais espaço.</li>
-				  <li>Professor precisa rever dinâmicas para formação de grupos de trabalho. Os estudos apontam a dificuldade/rejeição dos alunos com deficiência em grupos de trabalho. É preciso ter cuidado para o estudante não ser discriminado tendo como base a deficiência.</li>
-				</ol>	
+				<div class="controls">
+					<button class="anterior" disabled='disabled' aria-label='Dica Anterior'></button>
+					<p class="contagem"><span>1</span> de 33</p>
+					<button class="proximo" aria-label='Próxima dica'></button>
+				</div>
+				<div class='slider-items'>
+				  <div class="ativo"><p>Muitas vezes o aluno com baixa visão, visão monocular e daltonismo passam despercebidos e com medo de sofrerem represálias não se identificam. Por isso, todo começo de semestre pergunte se algum aluno possui alguma deficiência ou necessidade específica.</p></div>
+
+				  <div><p>A Lei 13146/15 preza o Estudo de Caso, qualquer atendimento educacional especializado deve ser iniciado com uma conversa com o próprio aluno sobre como ele aprende.</p></div>
+
+				  <div><p>A melhor pessoa para lhe informar como deve ser a preparação dos textos utilizados na disciplina, de como devem ser os slides utilizados em aula e de como se deve descrever os elementos não visuais, é o próprio aluno com deficiência.</p></div>
+
+				  <div><p>Independente de saber da existência de alunos com deficiência na sua turma, caso queira já deixar preparado os textos utilizados na disciplina, o professor além do texto utilizado convencionalmente poderia já deixar disponibilizado um com letra ampliada (sugerimos tamanho fonte 20) e um texto salvo como TXT. Isso facilitaria muito a leitura dos alunos com baixa visão e para utilização de leitores de tela (normalmente aceitam txt) por alunos cegos. </p></div>
+
+				  <div><p>Antes de imprimir, procure sempre a ementa se tem algum aluno que necessita de alguma forma especial de impressão, Braille, fonte ampliada ou acesso ao TXT. Este educando também quer saber e tem o direito ao acesso à ementa e ao conteúdo programático.</p></div>
+
+				  <div><p>Pergunte aos seus alunos que tamanho de fonte deve usar nos slides, prefira contrastes preto e branco e caso tenha figuras cuide de descrevê-las.</p></div>
+
+				  <div><p>Quando for descrever os elementos não visuais de informações que sejam relevantes para o conteúdo abordado, descreva as figuras e fotos, mas tenha bom senso quanto a quantidade de informações.</p></div>
+
+				  <div><p>Sempre que estiver escrevendo no quadro o jeito mais adequado é narrar a sua escrita no exato momento em que está escrevendo. </p></div>
+
+				  <div><p>Para que a pessoa com baixa visão tenha acesso a conteúdos expositivos (panfletos, recados e conteúdo no quadro ou slides) é necessário que o professor oralize todas as informações visuais que o aluno não tem acesso por motivo de deficiência.</p></div>
+
+				  <div><p>Procure escrever letras grandes e claras no quadro.</p></div>
+
+				  <div><p>Na maioria das instituições existe um órgão responsável por adaptar todo o material para o aluno com deficiência visual. </p></div>
+
+				  <div><p>O professor deve encaminhar com antecedência (no início do semestre) para o órgão responsável pela preparação de materiais acadêmicos as cópias digitalizadas de todos os textos utilizados na disciplina, os livros ou referência de livros que não tiverem digitalizados e o cronograma com data de utilização de todo o material na aula para que seja adaptado às especificidades do aluno. A preparação de material pode não ser rápida, pois envolve as ações: digitação, digitalização, correção, revisão, ampliação, conversão de texto para áudio, adequação de imagens e gráficos, obter textos na internet, entre outras. </p></div>
+
+				  <div><p>Encaminhe com antecedência o material de recursos audiovisuais (Power Point, filme) e materiais com planilhas, tabelas ao aluno ou ao seu monitor para que ele possa encaminhar para as modificações adequadas, possibilitando ao aluno acompanhar as aulas.</p></div>
+
+				  <div><p>Ao usar mapas, gráficos e figuras, ter o cuidado de descrevê-los. </p></div>
+
+				  <div><p>Se possível prepare antecipadamente gráficos e desenhos contornando-os com cola 3D, desenhando sobre tela quadriculada (como a que retém insetos em janelas) ou feita em material maleável como sobre uma folha EVA, as limitações/formas podem ser marcadas com uso do barbante, os contornos ficam com relevo e facilitam a interpretação e entendimento de pessoas com deficiência visual. Ou solicite ao Núcleo de Acessibilidade que providencie com antecedência.</p></div>
+
+				  <div><p>Permitir ao aluno gravar as aulas como recurso de suas “anotações”. </p></div>
+
+				  <div><p>Ter ciência que o aluno faz uso de tecnologia assistiva durante as aulas (tablet, celulares, computadores, lupas, máquina braile, etc).</p></div>
+
+				  <div><p>Ao utilizar filme como recurso didático, discuta com o aluno previamente a melhor solução. Não fazer uso de filme mudo na turma deste aluno.</p></div>
+
+				  <div><p>Discuta previamente com o aluno a forma viável de avaliação. A avaliação adaptada é um direito do aluno prevista na Lei 13146/15. Converse com seu aluno se a avaliação escrita pode ser modificada para avaliação oralizada, prova impressa em Braille, prova impressa em letra ampliada, prova realizada em computador com leitor de tela ou outro tipo de avaliação que dê conta da especificidade do aluno e da disciplina.</p></div>
+
+				  <div><p>Muitas vezes o aluno com deficiência visual demora mais tempo para ler e responder as avaliações acadêmicas. Ainda na Lei 13146/15 no Art. 30 se prevê a “dilação de tempo, conforme demanda apresentada pelo candidato com deficiência tanto na realização de exame para seleção quanto nas atividades acadêmicas, mediante prévia solicitação e comprovação da necessidade”.</p></div>
+
+				  <div><p>O acadêmico cego pode solicitar o apoio de um profissional escrevente/ledor e/ou um notebook com software de tecnologia assistiva para uso durante o curso, ou ainda no caso de baixa visão a ampliação dos materiais impressos ou até mesmo solicitar auxílio ótico como: lupas eletrônicas. A efetivação desses apoios deve ser discutida pela coordenação do curso e pelo órgão responsável pela acessibilidade na instituição.</p></div>
+
+				  <div><p>Alguns alunos com sensibilidade a luz (fotofobia) podem enxergar melhor em ambientes menos iluminados, já outros preferem ambientes mais claros. O professor deve controlar a iluminação da sala, tendo em vista o conforto visual de todos os alunos.</p></div>
+
+				  <div><p>Deve-se orientar o acadêmico para que trabalhe com áudio-books e gravadores de áudio, porém o acadêmico pode escolher por fazer uso de material em Braille. Material específico pode ser solicitado na instituição no Núcleo de Acessibilidade ou órgão correspondente, ou ainda na biblioteca braile de Goiânia:  braille-jaa@uol.com.br ou pelo site da Fundação Dorina Nowill.</p></div>
+
+				  <div><p>Muitos documentos não podem ser agregados ao acervo de textos digitais por estarem mal identificados, danificados (sublinhados à caneta, marcados com marcadores de texto, ou com observações e anotações nas margens) e isto prejudica a interpretação por parte dos softwares utilizados. Diante de tais fatos, torna-se essencial a colaboração dos professores para encaminharem com antecedência o cronograma da disciplina com a bibliografia recomendada.</p></div>
+
+				  <div><p>-	O uso de software com síntese de voz torna-se uma alternativa valiosa para a obtenção da leitura imediata, tais como: Sistema Dosvox, Deltatalk, NVDA, Virtual Vision, Jaws, Orca e Daisy, aplicativo para Android. Para utilização dos textos da disciplina nesses programas deve-se disponibilizar o texto para o aluno em formato TXT.</p></div>
+
+				  <div><p>Algumas instituições utilizam sistemas computacionais acadêmicos (ex. SIGAA) que possibilitam que o professor disponibilize todo material para os alunos pelo sistema. Esse fato facilita para os órgãos responsáveis na instituição pela adequação do material para que efetive essa preparação. </p></div>
+
+				  <div><p>Todos os alunos com deficiência têm direito a ampliação do tempo de integralização de curso (Lei 13146/15). Se for o caso sugira ao seu aluno que ele faça menos disciplinas por semestre e faça o curso com mais calma e tempo.</p></div>
+
+				  <div><p>Caso tenha computadores ou laboratório de informática na unidade solicite que os programas leitores sejam instalados em todos os computadores. </p></div>
+
+				  <div><p>O quadro branco escrito com caneta preta costuma ser mais visível para as pessoas com deficiência visual do que as lousas de giz. Caso tenha aluno nessa situação solicite que a troca de sala para onde tenha esse quadro seja realizada.</p></div>
+
+				  <div><p>Ofereça as primeiras cadeiras para o aluno com deficiência visual e reforce com a turma essa necessidade.</p></div>
+
+				  <div><p>Alguns alunos utilizam o apoio de tablets ou outros equipamentos eletrônicos, nesses casos, os textos e livros devem ser disponibilizados em .mobi ou .epub.</p></div>
+
+				  <div><p>Dependendo os equipamentos e lupas que os alunos com deficiência visual utilizam é importante disponibilizar uma mesa maior que proporcione mais espaço.</p></div>
+
+				  <div><p>Professor precisa rever dinâmicas para formação de grupos de trabalho. Os estudos apontam a dificuldade/rejeição dos alunos com deficiência em grupos de trabalho. É preciso ter cuidado para o estudante não ser discriminado tendo como base a deficiência.</p></div>
+
+				</div>	
+
 			</div>
 
 
@@ -207,7 +288,7 @@
 	<div class="container">
 		<div class="navegacao">
 			<a class="anterior" href="movimentos-e-direitos-da-pessoa-com-deficiencia.html"><span>Texto anterior</span></a>
-			<a class="inicio" href="../index.html"><img src="../assets/img/simbolo.svg" class="injetar" alt="Simbolo da marca - Ao clicar irá para a página inicial"></a>
+			<a class="inicio" href="../index.html"><img src="../assets/img/simbolo.svg" class="injetar"></a>
 			<a class="proximo" href="diversidade-auditiva.html"><span>Próximo texto</span></a>
 		</div>
 	</div>

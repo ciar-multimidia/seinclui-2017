@@ -2,12 +2,14 @@
 @import 'bourbon/bourbon';
 @import 'padroes';
 @import 'icons';
+@import 'input_range';
 
 body {
 	font-size: 20px;
 	line-height: 1.5;
 	font-family: 'Roboto',sans-serif;
 	color: $cor3;
+	text-rendering: optimizeLegibility;
 }
 
 html, body {overflow-x: hidden}
@@ -245,6 +247,109 @@ header {
 
 	    .slider-txt, .slider-img {width: 100%}
 
+	    
+
+	    .slider-txt{
+	    	@include display(flex);
+	    	@include flex-wrap(wrap);
+	    	@include flex-direction(column);
+	    	@include align-items(center);
+	    	@include justify-content(center);
+	    	position: relative;
+	    	padding: 0 15px;
+	    	margin-bottom: 20px;
+	    	
+	    	
+
+	    	.controls{
+	    		@include display(flex);
+	    		*:not(:last-child){
+	    			margin-right: 10px;
+	    		}
+
+	    		input[type='range']{
+	    			width: 720px;
+	    		}
+
+	    		p.contagem{
+	    			// font-size: 24px;
+	    			// font-weight: bold;
+
+	    			color: white;
+	    			background-color: $cor2;
+	    			height: 40px;
+	    			border-radius: 24px;
+	    			padding: 0 24px;
+	    			margin-top: 0;
+	    			margin-bottom: 0;
+	    			line-height: 40px;
+	    			vertical-align: middle;
+	    		}
+
+	    		button{
+	    			position: relative;
+	    			width: 36px;
+	    			height: 36px;
+	    			padding: 0; margin: 0;
+	    			line-height: 32px;
+	    			background: $cor1;
+	    			color: $cor2;
+	    			// overflow: hidden;
+	    			outline: 0;
+	    			border: 0;
+	    			font-size: 36px;
+	    			border-radius: 50%;
+	    			cursor: pointer;
+	    			vertical-align: middle;
+	    			@include transition(color 0.3s ease-in-out);
+
+	    			&:before {
+	    				font-family: 'fontello';
+	    			}
+
+	    			&:after {
+	    				content: ""; position: absolute; border-radius: 50%;
+	    				width: 38px; height: 38px; top: 50%; left: 50%; 
+	    				@include transform(translate(-50%,-50%));
+	    				border: 3px solid $cor2;
+	    			}
+
+	    			
+	    			&.anterior{
+	    				&:before{
+	    					content: '\e801';
+	    				}
+	    			}
+	    			&.proximo{
+	    				&:before{
+	    					content: '\e800';
+	    				}
+	    			}
+
+	    			&:not([disabled]){
+	    				&:hover, &:active, &:focus {color: $cor3}
+	    			}
+
+	    			&[disabled]{
+	    				color: $cor1;
+	    				background: $cor2;
+	    			}
+	    		}
+	    	}
+	    	
+
+	    	p.cont-texto{
+	    		width: 720px;
+	    		font-size: 22px;
+	    	}
+
+	    	div.slider-items{
+	    		display: none;
+	    	}
+
+    		
+	    }
+
 	    &.ficha {
 	    	@include justify-content(space-between);
 
@@ -391,7 +496,7 @@ button.deslizar {
 	@include transform(translateX(-50%));
 	@include transition(color 0.3s ease-in-out);
 
-	&:hover {color: $cor3}
+	&:hover, &:active, &:focus {color: $cor3}
 
 	&:before {
 		content: '\e801';
