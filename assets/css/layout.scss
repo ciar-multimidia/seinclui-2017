@@ -253,7 +253,7 @@ header {
 	    	@include display(flex);
 	    	@include flex-wrap(wrap);
 	    	@include flex-direction(column);
-	    	@include align-items(center);
+	    	// @include align-items(center);
 	    	@include justify-content(center);
 	    	position: relative;
 	    	padding: 0 15px;
@@ -262,19 +262,20 @@ header {
 	    	
 
 	    	.controls{
+	    			width: 720px;
+
 	    		@include display(flex);
 	    		*:not(:last-child){
 	    			margin-right: 10px;
 	    		}
 
 	    		input[type='range']{
-	    			width: 720px;
 	    		}
 
 	    		p.contagem{
 	    			// font-size: 24px;
 	    			// font-weight: bold;
-
+	    			@include flex-shrink(0);
 	    			color: white;
 	    			background-color: $cor2;
 	    			height: 40px;
@@ -341,6 +342,7 @@ header {
 	    	p.cont-texto{
 	    		width: 720px;
 	    		font-size: 22px;
+	    		text-align: justify;
 	    	}
 
 	    	div.slider-items{
