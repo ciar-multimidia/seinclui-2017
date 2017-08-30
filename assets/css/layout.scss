@@ -78,7 +78,7 @@ header {
 						font-family: 'fontello';
 						line-height: 40px;
 						text-align: center;
-						font-size: 40px;
+						font-size: 39px;
 						color: $cor1;
 						display: block;
 						@include transition(color 0.3s ease-in-out);
@@ -94,12 +94,10 @@ header {
 
 						&:before {display: none;}
 
-						svg {
+						img {
 							width: 45px; height: 45px;
 							position: absolute; top: 50%; left: 50%;
 							@include transform(translate(-50%,-50%));
-
-							path {fill: $cor1;}
 						}
 					}
 
@@ -247,12 +245,15 @@ header {
 
 	    .slider-txt, .slider-img {
 	    	width: 100%;
+	    	max-width: $largura-max * 0.6;
+	    	margin: 0 auto;
+	    	padding: 30px;
+	    	border-radius: 20px;
+	    	background: $cor1;
 
 	    	.controls{
-	    			width: 720px;
-
 	    		@include display(flex);
-	    		@include align-items(center);
+	    		@include justify-content(center);
 	    		*:not(:last-child){
 	    			margin-right: 10px;
 	    		}		
@@ -333,11 +334,11 @@ header {
 	    	// @include align-items(center);
 	    	@include justify-content(center);
 	    	position: relative;
-	    	padding: 0 15px;
+	    	// padding: 0 15px;
 	    	margin-bottom: 20px;
 
 	    	p.cont-texto{
-	    		width: 720px;
+	    		width: 100%;
 	    		font-size: 22px;
 	    		text-align: justify;
 	    	}
@@ -375,6 +376,25 @@ header {
 	    	& > div {
 	    		width: 48%;
 	    	}
+	    }
+
+
+	    .destaque {
+	    	width: 100%;
+	    	padding: 0 10px 70px;
+	    	position: relative;
+
+	    	h2 {text-align: center; color: $cor1}
+
+			&:before {
+				content: ""; width: 200vw;
+				@include transform(translateX(-50%));
+				position: absolute;
+				top: 0; left: 50%;
+				height: 100%;
+				background: $cor3;
+				z-index: -1;
+			}
 	    }
     }
 }
@@ -638,14 +658,14 @@ button.deslizar {
 		z-index: 1;
 		padding: 50px 0 30px;
 		
-		&:before, &:after {
-			content: '\e804';
-			font-family: 'fontello';
-			display: inline-block;
-			vertical-align: middle;
-			font-size: 1em;
-			margin: 0 20px;
-		}
+		// &:before, &:after {
+		// 	content: '\e804';
+		// 	font-family: 'fontello';
+		// 	display: inline-block;
+		// 	vertical-align: middle;
+		// 	font-size: 1em;
+		// 	margin: 0 20px;
+		// }
 
 	}
 }
@@ -799,7 +819,7 @@ footer {
 					font-family: 'fontello';
 					line-height: 40px;
 					text-align: center;
-					font-size: 40px;
+					font-size: 39px;
 					color: $cor1;
 					display: block;
 					@include transition(color 0.3s ease-in-out);
@@ -815,12 +835,10 @@ footer {
 
 					&:before {display: none;}
 
-					svg {
+					img {
 						width: 45px; height: 45px;
 						position: absolute; top: 50%; left: 50%;
 						@include transform(translate(-50%,-50%));
-
-						path {fill: $cor1;}
 					}
 				}
 

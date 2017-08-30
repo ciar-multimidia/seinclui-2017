@@ -453,7 +453,7 @@ video {
 table {
   width: 100%;
   min-width: 768px;
-  border: 1px solid #333;
+  border: 1px solid #222;
   border-bottom: 0;
   overflow-x: auto; }
   table caption {
@@ -462,8 +462,8 @@ table {
     font-style: italic;
     padding: 15px; }
   table th, table td {
-    border-bottom: 1px solid #333;
-    border-right: 1px solid #333;
+    border-bottom: 1px solid #222;
+    border-right: 1px solid #222;
     padding: 15px; }
   table tr td:last-of-type,
   table thead th:last-of-type {
@@ -643,7 +643,7 @@ body {
   font-size: 20px;
   line-height: 1.5;
   font-family: 'Roboto',sans-serif;
-  color: #333;
+  color: #222;
   text-rendering: optimizeLegibility; }
 
 html, body {
@@ -751,7 +751,7 @@ header {
             font-family: 'fontello';
             line-height: 40px;
             text-align: center;
-            font-size: 40px;
+            font-size: 39px;
             color: #fff;
             display: block;
             -webkit-transition: color 0.3s ease-in-out;
@@ -768,7 +768,7 @@ header {
             position: relative; }
             header.cabecalho-interno .container nav a.inicio:before {
               display: none; }
-            header.cabecalho-interno .container nav a.inicio svg {
+            header.cabecalho-interno .container nav a.inicio img {
               width: 45px;
               height: 45px;
               position: absolute;
@@ -779,12 +779,10 @@ header {
               -ms-transform: translate(-50%, -50%);
               -o-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%); }
-              header.cabecalho-interno .container nav a.inicio svg path {
-                fill: #fff; }
           header.cabecalho-interno .container nav a:hover {
             text-decoration: none; }
             header.cabecalho-interno .container nav a:hover:before {
-              color: #333; }
+              color: #222; }
           header.cabecalho-interno .container nav a.esconde {
             visibility: hidden; }
             header.cabecalho-interno .container nav a.esconde:before {
@@ -956,9 +954,13 @@ header {
     width: 100%;
     text-align: left; }
   .sessao.texto-interno article .slider-txt, .sessao.texto-interno article .slider-img {
-    width: 100%; }
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 20px;
+    background: #fff; }
     .sessao.texto-interno article .slider-txt .controls, .sessao.texto-interno article .slider-img .controls {
-      width: 720px;
       display: -webkit-box;
       display: -moz-box;
       display: box;
@@ -966,15 +968,15 @@ header {
       display: -moz-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -moz-box-align: center;
-      box-align: center;
-      -webkit-align-items: center;
-      -moz-align-items: center;
-      -ms-align-items: center;
-      -o-align-items: center;
-      align-items: center;
-      -ms-flex-align: center; }
+      -webkit-box-pack: center;
+      -moz-box-pack: center;
+      box-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      -ms-justify-content: center;
+      -o-justify-content: center;
+      justify-content: center;
+      -ms-flex-pack: center; }
       .sessao.texto-interno article .slider-txt .controls *:not(:last-child), .sessao.texto-interno article .slider-img .controls *:not(:last-child) {
         margin-right: 10px; }
     .sessao.texto-interno article .slider-txt p.contagem, .sessao.texto-interno article .slider-img p.contagem {
@@ -1030,7 +1032,7 @@ header {
       .sessao.texto-interno article .slider-txt button.proximo:before, .sessao.texto-interno article .slider-img button.proximo:before {
         content: '\e800'; }
       .sessao.texto-interno article .slider-txt button:not([disabled]):hover, .sessao.texto-interno article .slider-txt button:not([disabled]):active, .sessao.texto-interno article .slider-txt button:not([disabled]):focus, .sessao.texto-interno article .slider-img button:not([disabled]):hover, .sessao.texto-interno article .slider-img button:not([disabled]):active, .sessao.texto-interno article .slider-img button:not([disabled]):focus {
-        color: #333; }
+        color: #222; }
       .sessao.texto-interno article .slider-txt button[disabled], .sessao.texto-interno article .slider-img button[disabled] {
         color: #fff;
         background: #f8465c; }
@@ -1069,10 +1071,9 @@ header {
     justify-content: center;
     -ms-flex-pack: center;
     position: relative;
-    padding: 0 15px;
     margin-bottom: 20px; }
     .sessao.texto-interno article .slider-txt p.cont-texto {
-      width: 720px;
+      width: 100%;
       font-size: 22px;
       text-align: justify; }
     .sessao.texto-interno article .slider-txt div.slider-items {
@@ -1140,6 +1141,27 @@ header {
       width: 100%; }
     .sessao.texto-interno article.ficha > div {
       width: 48%; }
+  .sessao.texto-interno article .destaque {
+    width: 100%;
+    padding: 0 10px 70px;
+    position: relative; }
+    .sessao.texto-interno article .destaque h2 {
+      text-align: center;
+      color: #fff; }
+    .sessao.texto-interno article .destaque:before {
+      content: "";
+      width: 200vw;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      background: #222;
+      z-index: -1; }
 
 div.area-video .wrap-video {
   margin-top: 50px;
@@ -1240,7 +1262,7 @@ div.area-video .wrap-video {
       font-style: normal;
       margin-right: 8px; }
   .maisconteudo a.saibamais {
-    color: #333;
+    color: #222;
     font-size: 0.95em; }
     .maisconteudo a.saibamais:after {
       font-family: 'fontello';
@@ -1287,7 +1309,7 @@ button.deslizar {
   -moz-transition: color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out; }
   button.deslizar:hover, button.deslizar:active, button.deslizar:focus {
-    color: #333; }
+    color: #222; }
   button.deslizar:before {
     content: '\e801';
     font-family: 'fontello'; }
@@ -1423,7 +1445,7 @@ button.deslizar {
 
 .saiba-mais {
   width: 100%;
-  background: #333;
+  background: #222;
   display: block;
   text-align: center !important;
   line-height: 1;
@@ -1443,7 +1465,7 @@ button.deslizar {
     top: 0;
     left: 50%;
     height: 100%;
-    background: #333; }
+    background: #222; }
   .saiba-mais:after {
     display: block;
     height: 90px;
@@ -1453,13 +1475,6 @@ button.deslizar {
     display: block;
     z-index: 1;
     padding: 50px 0 30px; }
-    .saiba-mais span:before, .saiba-mais span:after {
-      content: '\e804';
-      font-family: 'fontello';
-      display: inline-block;
-      vertical-align: middle;
-      font-size: 1em;
-      margin: 0 20px; }
 
 .tabela {
   margin: 25px 0;
@@ -1698,7 +1713,7 @@ footer {
           font-family: 'fontello';
           line-height: 40px;
           text-align: center;
-          font-size: 40px;
+          font-size: 39px;
           color: #fff;
           display: block;
           -webkit-transition: color 0.3s ease-in-out;
@@ -1715,7 +1730,7 @@ footer {
           position: relative; }
           footer.rodape-interno .navegacao a.inicio:before {
             display: none; }
-          footer.rodape-interno .navegacao a.inicio svg {
+          footer.rodape-interno .navegacao a.inicio img {
             width: 45px;
             height: 45px;
             position: absolute;
@@ -1726,12 +1741,10 @@ footer {
             -ms-transform: translate(-50%, -50%);
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
-            footer.rodape-interno .navegacao a.inicio svg path {
-              fill: #fff; }
         footer.rodape-interno .navegacao a:hover {
           text-decoration: none; }
           footer.rodape-interno .navegacao a:hover:before {
-            color: #333; }
+            color: #222; }
         footer.rodape-interno .navegacao a.esconde {
           visibility: hidden; }
           footer.rodape-interno .navegacao a.esconde:before {
