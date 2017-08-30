@@ -9,17 +9,18 @@ jQuery(document).ready(function($) {
 		$(this).closest('.texto-video').toggleClass('video-destacado');
 	});
 
-	var slidersTxt = $('.slider-txt');
-	slidersTxt.each(function(index, el) {
+	var slidersAll = $('.slider-txt, .slider-img');
+	slidersAll.each(function(index, el) {
 		var esseSlider = $(el);
-		var slideAtual = 1;
 		var botoes = esseSlider.find('button');
 		var inputRange = esseSlider.find('input[type="range"]');
 		var contagemSlide = esseSlider.find('p.contagem > span');
 		var textosSlides = esseSlider.find('.slider-items > p');
 		var contTexto = esseSlider.find('p.cont-texto');
+		var imgSlides = esseSlider.find('.imagens > figure');
+		var slideAtual = 1;
+		// var slideAtual = parseInt(contagemSlide.text());
 
-		console.log(textosSlides.length);
 
 		function alterarSlide(indexNewSlide){
 			
@@ -33,18 +34,30 @@ jQuery(document).ready(function($) {
 
 			contagemSlide.text(indexNewSlide);
 
-			contTexto
-			.html(
-				textosSlides.eq(indexNewSlide-1).html()
-			)
-			.css('opacity', '0')
-			.stop().animate({'opacity': '1'}, 200);
-
 			inputRange.attr({
 				'value': indexNewSlide,
 				'aria-valuenow': indexNewSlide,
 				'aria-valuetext': 'Item '+indexNewSlide
 			}).val(indexNewSlide);
+
+			if (contTexto.length > 0 && textosSlides.length > 0) {
+				contTexto
+				.html(
+					textosSlides.eq(indexNewSlide-1).html()
+				)
+				.css('opacity', '0')
+				.stop().animate({'opacity': '1'}, 200);
+			}
+
+			if (imgSlides.length > 0) {
+				imgSlides
+				.removeClass('ativo')
+				.eq(indexNewSlide-1)
+				.addClass('ativo')
+				.css('opacity', '0')
+				.stop().animate({'opacity': '1'}, 200);
+
+			}
 
 			slideAtual = indexNewSlide;
 		}
@@ -53,9 +66,9 @@ jQuery(document).ready(function($) {
 		botoes.on('click', function(event) {
 
 			var antOuProx;
-			if ($(this).hasClass('proximo') && slideAtual < textosSlides.length) {
+			if ($(this).hasClass('proximo')) {
 				antOuProx = parseInt(slideAtual+1);
-			} else if($(this).hasClass('anterior') && slideAtual > 1){
+			} else if($(this).hasClass('anterior')){
 				antOuProx = parseInt(slideAtual-1);
 			}
 
