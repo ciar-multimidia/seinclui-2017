@@ -9,6 +9,14 @@ jQuery(document).ready(function($) {
 		$(this).closest('.texto-video').toggleClass('video-destacado');
 	});
 
+	var crossBrowserTransform = function(valor){
+		return {
+			'-webkit-transform': valor,
+			    '-ms-transform': valor,
+			        'transform': valor
+		};
+	}
+
 	var slidersAll = $('.slider-txt, .slider-img');
 	slidersAll.each(function(index, el) {
 		var esseSlider = $(el);
@@ -58,7 +66,7 @@ jQuery(document).ready(function($) {
 				.removeAttr('aria-hidden')
 				.end()
 				.parent()
-				.css('transform', 'translateX(-'+100*(indexNewSlide-1)+'%)');
+				.css(crossBrowserTransform('translateX(-'+100*(indexNewSlide-1)+'%)'));
 				
 			}
 
