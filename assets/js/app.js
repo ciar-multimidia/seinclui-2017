@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
 				.removeAttr('aria-hidden')
 				.end()
 				.parent()
-				.css('transform', 'translateX(-'+660*(indexNewSlide-1)+'px)');
+				.css('transform', 'translateX(-'+100*(indexNewSlide-1)+'%)');
 				
 			}
 
