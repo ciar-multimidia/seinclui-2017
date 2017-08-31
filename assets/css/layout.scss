@@ -339,12 +339,29 @@ header {
 
 	    	p.cont-texto{
 	    		width: 100%;
-	    		font-size: 22px;
+	    		// font-size: 22px;
 	    		text-align: justify;
 	    	}
 
 	    	div.slider-items{
-	    		display: none;
+	    		width: 100%;
+	    		overflow: hidden;
+	    		& > div.scroller{
+    				@include transition(transform 0.1s ease-out);
+    				width: auto;
+    				display: block;
+    				padding: 20px 0;
+	    			white-space: nowrap;
+	    			& > p{
+	    				margin: 0;
+	    				padding: 0 20px;
+	    				vertical-align: middle;
+	    				display: inline-block;
+	    				width: 100%;
+	    				white-space: normal;
+	    			}
+	    		}
+	    		
 	    	}
 
     		

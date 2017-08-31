@@ -1074,10 +1074,25 @@ header {
     margin-bottom: 20px; }
     .sessao.texto-interno article .slider-txt p.cont-texto {
       width: 100%;
-      font-size: 22px;
       text-align: justify; }
     .sessao.texto-interno article .slider-txt div.slider-items {
-      display: none; }
+      width: 100%;
+      overflow: hidden; }
+      .sessao.texto-interno article .slider-txt div.slider-items > div.scroller {
+        -webkit-transition: -webkit-transform 0.1s ease-out;
+        -moz-transition: -moz-transform 0.1s ease-out;
+        transition: transform 0.1s ease-out;
+        width: auto;
+        display: block;
+        padding: 20px 0;
+        white-space: nowrap; }
+        .sessao.texto-interno article .slider-txt div.slider-items > div.scroller > p {
+          margin: 0;
+          padding: 0 20px;
+          vertical-align: middle;
+          display: inline-block;
+          width: 100%;
+          white-space: normal; }
   .sessao.texto-interno article .slider-img {
     display: -webkit-box;
     display: -moz-box;
