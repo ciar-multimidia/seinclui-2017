@@ -1071,7 +1071,9 @@ header {
     justify-content: center;
     -ms-flex-pack: center;
     position: relative;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    border: 2px solid #f8465c;
+    border-bottom-width: 12px; }
     .sessao.texto-interno article .slider-txt p.cont-texto {
       width: 100%;
       text-align: justify; }
@@ -1161,22 +1163,7 @@ header {
     padding: 0 10px 70px;
     position: relative; }
     .sessao.texto-interno article .destaque h2 {
-      text-align: center;
-      color: #fff; }
-    .sessao.texto-interno article .destaque:before {
-      content: "";
-      width: 200vw;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%);
-      position: absolute;
-      top: 0;
-      left: 50%;
-      height: 100%;
-      background: #222;
-      z-index: -1; }
+      text-align: center; }
 
 div.area-video .wrap-video {
   margin-top: 50px;

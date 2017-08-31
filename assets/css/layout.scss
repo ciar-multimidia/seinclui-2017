@@ -336,6 +336,8 @@ header {
 	    	position: relative;
 	    	// padding: 0 15px;
 	    	margin-bottom: 20px;
+	    	border: 2px solid $cor2;
+	    	border-bottom-width: 12px;
 
 	    	p.cont-texto{
 	    		width: 100%;
@@ -401,17 +403,7 @@ header {
 	    	padding: 0 10px 70px;
 	    	position: relative;
 
-	    	h2 {text-align: center; color: $cor1}
-
-			&:before {
-				content: ""; width: 200vw;
-				@include transform(translateX(-50%));
-				position: absolute;
-				top: 0; left: 50%;
-				height: 100%;
-				background: $cor3;
-				z-index: -1;
-			}
+	    	h2 {text-align: center;}
 	    }
     }
 }
