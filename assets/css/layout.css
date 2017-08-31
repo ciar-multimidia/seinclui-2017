@@ -955,7 +955,6 @@ header {
     text-align: left; }
   .sessao.texto-interno article .slider-txt, .sessao.texto-interno article .slider-img {
     width: 100%;
-    max-width: 720px;
     margin: 0 auto;
     padding: 30px;
     border-radius: 20px;
@@ -1090,7 +1089,6 @@ header {
         white-space: nowrap; }
         .sessao.texto-interno article .slider-txt div.slider-items > div.scroller > p {
           margin: 0;
-          padding: 0 20px;
           vertical-align: middle;
           display: inline-block;
           width: 100%;
@@ -1158,12 +1156,6 @@ header {
       width: 100%; }
     .sessao.texto-interno article.ficha > div {
       width: 48%; }
-  .sessao.texto-interno article .destaque {
-    width: 100%;
-    padding: 0 10px 70px;
-    position: relative; }
-    .sessao.texto-interno article .destaque h2 {
-      text-align: center; }
 
 div.area-video .wrap-video {
   margin-top: 50px;

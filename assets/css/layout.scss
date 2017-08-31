@@ -245,7 +245,7 @@ header {
 
 	    .slider-txt, .slider-img {
 	    	width: 100%;
-	    	max-width: $largura-max * 0.6;
+	    	// max-width: $largura-max * 0.6;
 	    	margin: 0 auto;
 	    	padding: 30px;
 	    	border-radius: 20px;
@@ -356,7 +356,6 @@ header {
 	    			white-space: nowrap;
 	    			& > p{
 	    				margin: 0;
-	    				padding: 0 20px;
 	    				vertical-align: middle;
 	    				display: inline-block;
 	    				width: 100%;
@@ -395,15 +394,6 @@ header {
 	    	& > div {
 	    		width: 48%;
 	    	}
-	    }
-
-
-	    .destaque {
-	    	width: 100%;
-	    	padding: 0 10px 70px;
-	    	position: relative;
-
-	    	h2 {text-align: center;}
 	    }
     }
 }
