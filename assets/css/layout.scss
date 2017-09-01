@@ -369,20 +369,31 @@ header {
 	    }
 
 	    .slider-img{
+	    	padding: 0;
 	    	@include display(flex);
 	    	@include flex-wrap(wrap);
 	    	@include flex-direction(column);
 	    	@include align-items(center);
 	    	@include justify-content(center);
-	    	div.imagens{
-	    		figure{
-	    			margin: 0;
-	    			width: 720px;
-	    			display: none;
-	    			&.ativo{
-	    				display: block;
+
+	    	div.slider-items{
+	    		width: 100%;
+	    		overflow: hidden;
+	    		& > div.scroller{
+    				@include transition(transform 0.3s ease-out);
+    				width: auto;
+    				display: block;
+    				padding: 20px 0;
+	    			white-space: nowrap;
+	    			& > figure{
+	    				margin: 0;
+	    				vertical-align: top;
+	    				display: inline-block;
+	    				width: 100%;
+	    				white-space: normal;
 	    			}
 	    		}
+	    		
 	    	}
 	    }
 

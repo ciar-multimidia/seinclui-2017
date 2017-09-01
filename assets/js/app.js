@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
 		var contagemSlide = esseSlider.find('p.contagem > span');
 		var textosSlides = esseSlider.find('.slider-items > div.scroller > p');
 		// var contTexto = esseSlider.find('p.cont-texto');
-		var imgSlides = esseSlider.find('.imagens > figure');
+		var imgSlides = esseSlider.find('.slider-items > div.scroller > figure');
 		var slideAtual = 1;
 		var qtdeItens = textosSlides.length > 0 ? textosSlides.length : imgSlides.length > 0 ? imgSlides.length : undefined;
 		
@@ -72,11 +72,12 @@ jQuery(document).ready(function($) {
 
 			if (imgSlides.length > 0) {
 				imgSlides
-				.removeClass('ativo')
+				.attr('aria-hidden', 'true')
 				.eq(indexNewSlide-1)
-				.addClass('ativo')
-				.css('opacity', '0')
-				.stop().animate({'opacity': '1'}, 200);
+				.removeAttr('aria-hidden')
+				.end()
+				.parent()
+				.css(crossBrowserTransform('translateX(-'+100*(indexNewSlide-1)+'%)'));
 
 			}
 
