@@ -644,7 +644,8 @@ body {
   line-height: 1.5;
   font-family: 'Roboto',sans-serif;
   color: #222;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility;
+  hyphens: auto; }
 
 html, body {
   overflow-x: hidden; }
@@ -1915,8 +1916,15 @@ footer {
   body {
     font-size: 16px; }
 
+  header.cabecalho-interno .container h1 {
+    font-size: 1.8em; }
+
   .grid > div, .fullgrid {
     padding: 35px 15px; }
+
+  table caption, table th, table td {
+    padding: 8px;
+    font-size: 0.9em; }
 
   .separador .container > div {
     width: 20%; }

@@ -10,6 +10,7 @@ body {
 	font-family: 'Roboto',sans-serif;
 	color: $cor3;
 	text-rendering: optimizeLegibility;
+	hyphens: auto;
 }
 
 html, body {overflow-x: hidden}

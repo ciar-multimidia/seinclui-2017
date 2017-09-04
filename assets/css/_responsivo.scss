@@ -201,8 +201,18 @@
 @media (max-width: 480px) {
   body {font-size: 16px}
 
+  header {
+    &.cabecalho-interno .container {
+      h1 {font-size: 1.8em}
+    }
+  }
+
   .grid > div, .fullgrid {
     padding: 35px 15px;
+  }
+
+  table {
+    caption, th, td {padding: 8px; font-size: 0.9em;}
   }
 
   .separador .container {
