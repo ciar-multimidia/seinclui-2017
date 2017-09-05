@@ -51,21 +51,17 @@ header {
 				width: 100%; position: relative;
 			    @include display(flex);
 			    @include flex-direction(row);
-			    @include flex-wrap(wrap);
 			    @include justify-content(space-between);
 			    @include align-items(center);
 
-			    &:before {
-			    	content: "";
-			    	position: absolute;
-			    	top: 50%;
-			    	left: 0;
-			    	width: 100%;
+			    div.linha{
+			    	width: 50%;
 			    	height: 0px;
 			    	border-top: 2px dashed $cor1; 
 			    }
 
 				a {
+					@include flex-shrink(0);
 					width: 40px;
 					height: 40px;
 					background: $cor2;
@@ -170,6 +166,7 @@ header {
 .sessao {
 	&.texto-video {
 		@include linear-gradient(90deg, $cor1 0%, $cor1 50%, $cor2 50%, $cor2 100%);
+		overflow: hidden;
 
 		.grid {
 			& > div {
@@ -181,25 +178,25 @@ header {
 						position: absolute;
 						content: " ";
 						background-color: $cor1;
-						background-image: url('../img/pattern.png');
+						background-image: url('../img/pattern3.png');
 						background-repeat: repeat-x;
 						background-size: 145px;
 						z-index: 0;
 					}
 					&:before {
-						top: 0;
+						top: -5px;
 						left: -200vw;
-						background-position: left top;
-						@include transform(scaleX(-1));
+						background-position: right top;
+						// @include transform(rotateY(180deg));
 						
 					}
 
 					&:after {
 						display: none;
-						bottom: 0;
+						bottom: -5px;
 						left: 0;
-						background-position: right top;
-						@include transform(scaleX(-1));
+						background-position: left top;
+						// @include transform(rotateY(180deg));
 					}
 
 					&.detalhe-inferior:after {display: block;}
@@ -461,8 +458,8 @@ div.area-video .wrap-video {
 			background: url('../img/borda-video.svg') no-repeat center center / 110%;
 			@include transform(scale(-1,-1));
 			position: absolute;
-			top: 0;
-			left: 0;
+			top: -2px;
+			left: -2px;
 			z-index: 1;
 			display: block;
 		}
@@ -802,21 +799,17 @@ footer {
 			width: 100%; position: relative;
 		    @include display(flex);
 		    @include flex-direction(row);
-		    @include flex-wrap(wrap);
 		    @include justify-content(space-between);
 		    @include align-items(center);
 
-		    &:before {
-		    	content: "";
-		    	position: absolute;
-		    	top: 50%;
-		    	left: 0;
-		    	width: 100%;
+		    div.linha{
+		    	width: 50%;
 		    	height: 0px;
 		    	border-top: 2px dashed $cor1; 
 		    }
 
 			a {
+				@include flex-shrink(0);
 				width: 40px;
 				height: 40px;
 				background: $cor2;

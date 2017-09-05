@@ -698,13 +698,6 @@ header {
         -moz-flex-direction: row;
         flex-direction: row;
         -ms-flex-direction: row;
-        -webkit-box-lines: multiple;
-        -moz-box-lines: multiple;
-        box-lines: multiple;
-        -webkit-flex-wrap: wrap;
-        -moz-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
         -webkit-box-pack: justify;
         -moz-box-pack: justify;
         box-pack: justify;
@@ -723,15 +716,15 @@ header {
         -o-align-items: center;
         align-items: center;
         -ms-flex-align: center; }
-        header.cabecalho-interno .container nav:before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 0;
-          width: 100%;
+        header.cabecalho-interno .container nav div.linha {
+          width: 50%;
           height: 0px;
           border-top: 2px dashed #fff; }
         header.cabecalho-interno .container nav a {
+          -webkit-flex-shrink: 0;
+          -moz-flex-shrink: 0;
+          flex-shrink: 0;
+          -ms-flex-negative: 0;
           width: 40px;
           height: 40px;
           background: #f8465c;
@@ -860,7 +853,8 @@ header {
 .sessao.texto-video {
   background-color: #fff;
   background-image: -webkit-linear-gradient(-360deg, #fff 0%, #fff 50%, #f8465c 50%, #f8465c 100%);
-  background-image: linear-gradient(90deg,#fff 0%, #fff 50%, #f8465c 50%, #f8465c 100%); }
+  background-image: linear-gradient(90deg,#fff 0%, #fff 50%, #f8465c 50%, #f8465c 100%);
+  overflow: hidden; }
   .sessao.texto-video .grid > div.area-texto {
     background: #fff; }
   .sessao.texto-video .grid > div.area-video {
@@ -871,29 +865,19 @@ header {
       position: absolute;
       content: " ";
       background-color: #fff;
-      background-image: url("../img/pattern.png");
+      background-image: url("../img/pattern3.png");
       background-repeat: repeat-x;
       background-size: 145px;
       z-index: 0; }
     .sessao.texto-video .grid > div.area-video:before {
-      top: 0;
+      top: -5px;
       left: -200vw;
-      background-position: left top;
-      -webkit-transform: scaleX(-1);
-      -moz-transform: scaleX(-1);
-      -ms-transform: scaleX(-1);
-      -o-transform: scaleX(-1);
-      transform: scaleX(-1); }
+      background-position: right top; }
     .sessao.texto-video .grid > div.area-video:after {
       display: none;
-      bottom: 0;
+      bottom: -5px;
       left: 0;
-      background-position: right top;
-      -webkit-transform: scaleX(-1);
-      -moz-transform: scaleX(-1);
-      -ms-transform: scaleX(-1);
-      -o-transform: scaleX(-1);
-      transform: scaleX(-1); }
+      background-position: left top; }
     .sessao.texto-video .grid > div.area-video.detalhe-inferior:after {
       display: block; }
     .sessao.texto-video .grid > div.area-video.detalhe-superior:before {
@@ -1217,8 +1201,8 @@ div.area-video .wrap-video {
       -o-transform: scale(-1, -1);
       transform: scale(-1, -1);
       position: absolute;
-      top: 0;
-      left: 0;
+      top: -2px;
+      left: -2px;
       z-index: 1;
       display: block; }
 
@@ -1666,13 +1650,6 @@ footer {
       -moz-flex-direction: row;
       flex-direction: row;
       -ms-flex-direction: row;
-      -webkit-box-lines: multiple;
-      -moz-box-lines: multiple;
-      box-lines: multiple;
-      -webkit-flex-wrap: wrap;
-      -moz-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
       -webkit-box-pack: justify;
       -moz-box-pack: justify;
       box-pack: justify;
@@ -1691,15 +1668,15 @@ footer {
       -o-align-items: center;
       align-items: center;
       -ms-flex-align: center; }
-      footer.rodape-interno .navegacao:before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
+      footer.rodape-interno .navegacao div.linha {
+        width: 50%;
         height: 0px;
         border-top: 2px dashed #fff; }
       footer.rodape-interno .navegacao a {
+        -webkit-flex-shrink: 0;
+        -moz-flex-shrink: 0;
+        flex-shrink: 0;
+        -ms-flex-negative: 0;
         width: 40px;
         height: 40px;
         background: #f8465c;
