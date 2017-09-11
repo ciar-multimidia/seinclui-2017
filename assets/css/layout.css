@@ -1734,6 +1734,16 @@ footer {
           footer.rodape-interno .navegacao a.esconde:before {
             display: none; }
 
+.pagina {
+  color: #888888;
+  margin: 25px auto;
+  font-size: 0.8em;
+  display: block;
+  width: 120px;
+  height: 24px;
+  text-align: center;
+  position: relative; }
+
 @media (max-width: 1024px) {
   body {
     font-size: 18px; }

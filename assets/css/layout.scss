@@ -237,6 +237,7 @@ header {
 	    	padding: 0 15px;
 
 	    	a {word-wrap: break-word;}
+
 	    }
 
 	    & > h2 {width: 100%; text-align: left;}
@@ -859,6 +860,18 @@ footer {
 	}
 }
 
+
+// paginacao
+.pagina {
+	color: lighten($cor3,40%);
+	margin: 25px auto;
+	font-size: 0.8em;
+	display: block;
+	width: 120px;
+	height: 24px;
+	text-align: center;
+	position: relative;
+}
 
 
 // RESPONSIVO
