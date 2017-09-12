@@ -481,7 +481,7 @@ img {
   height: auto; }
 
 blockquote {
-  margin: 0 0 0 70px;
+  margin-left: 70px;
   font-size: 0.9em; }
 
 @font-face {
@@ -1735,14 +1735,17 @@ footer {
             display: none; }
 
 .pagina {
-  color: #888888;
-  margin: 25px auto;
-  font-size: 0.8em;
+  color: #585858;
+  font-size: 0.7em;
   display: block;
-  width: 120px;
-  height: 24px;
-  text-align: center;
-  position: relative; }
+  width: 100%;
+  text-align: right;
+  position: relative;
+  border-top: 1px solid #585858; }
+  .pagina:first-of-type {
+    border: 0; }
+  .pagina + * {
+    margin-top: 7px; }
 
 @media (max-width: 1024px) {
   body {
