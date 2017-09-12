@@ -7,6 +7,11 @@ jQuery(document).ready(function($) {
 
 	secoesBt.on('click', function(event) {
 		$(this).closest('.texto-video').toggleClass('video-destacado');
+		if ($(this).attr('aria-label') === $(this).attr('data-txt-expand')) {
+			$(this).attr('aria-label', $(this).attr('data-txt-collapse'));
+		}else if ($(this).attr('aria-label') === $(this).attr('data-txt-collapse')) {
+			$(this).attr('aria-label', $(this).attr('data-txt-expand'));
+		}
 	});
 
 	var crossBrowserTransform = function(valor){
