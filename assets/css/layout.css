@@ -480,6 +480,9 @@ img {
   max-width: 100%;
   height: auto; }
 
+p {
+  margin: 2em 0 0 0; }
+
 blockquote {
   margin-left: 70px;
   font-size: 0.9em; }
@@ -1736,12 +1739,13 @@ footer {
 
 .pagina {
   color: #585858;
+  margin: 5px 0 0 0;
   font-size: 0.7em;
   display: block;
   width: 100%;
   text-align: right;
   position: relative;
-  border-top: 1px solid #585858; }
+  border-top: 1px dashed #585858; }
   .pagina:first-of-type {
     border: 0; }
   .pagina + * {

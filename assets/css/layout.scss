@@ -864,13 +864,13 @@ footer {
 // paginacao
 .pagina {
 	color: #585858;;
-	// margin: 25px auto;
+	margin: 5px 0 0 0;
 	font-size: 0.7em;
 	display: block;
 	width: 100%;
 	text-align: right;
 	position: relative;
-	border-top: 1px solid #585858;
+	border-top: 1px dashed #585858;
 
 	&:first-of-type {border: 0;}
 	& + * {margin-top: 7px;}
