@@ -1187,6 +1187,11 @@ header {
       width: 100%; }
     .sessao.texto-interno article.ficha > div {
       width: 48%; }
+      .sessao.texto-interno article.ficha > div dl dt {
+        margin-top: 2em;
+        font-weight: bold; }
+      .sessao.texto-interno article.ficha > div dl dd {
+        margin: 0; }
 
 div.area-video .wrap-video {
   margin-top: 50px;

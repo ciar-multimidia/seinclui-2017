@@ -407,6 +407,15 @@ header {
 
 	    	& > div {
 	    		width: 48%;
+	    		dl{
+	    			dt{
+	    				margin-top: 2em;
+	    				font-weight: bold;
+	    			}
+	    			dd{
+	    				margin: 0;
+	    			}
+	    		}
 	    	}
 	    }
     }
