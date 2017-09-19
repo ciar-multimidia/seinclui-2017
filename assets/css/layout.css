@@ -669,14 +669,16 @@ header {
         height: inherit; }
       header.cabecalho .container h1 {
         position: absolute;
-        display: inline-block;
-        font-size: 0em;
-        opacity: 0;
-        line-height: 0;
-        color: transparent;
-        height: 0;
-        width: 0;
-        overflow: hidden; }
+        position: absolute !important;
+        /* Outside the DOM flow */
+        height: 1px;
+        width: 1px;
+        /* Nearly collapsed */
+        overflow: hidden;
+        clip: rect(1px 1px 1px 1px);
+        /* IE 7+ only support clip without commas */
+        clip: rect(1px, 1px, 1px, 1px);
+        /* All other browsers */ }
   header.cabecalho-interno {
     margin-bottom: 50px; }
     header.cabecalho-interno .container {
@@ -759,14 +761,16 @@ header {
           position: relative;
           border-radius: 50%; }
           header.cabecalho-interno .container nav a span {
-            display: inline-block;
-            font-size: 0em;
-            opacity: 0;
-            line-height: 0;
-            color: transparent;
-            height: 0;
-            width: 0;
+            position: absolute !important;
+            /* Outside the DOM flow */
+            height: 1px;
+            width: 1px;
+            /* Nearly collapsed */
             overflow: hidden;
+            clip: rect(1px 1px 1px 1px);
+            /* IE 7+ only support clip without commas */
+            clip: rect(1px, 1px, 1px, 1px);
+            /* All other browsers */
             position: absolute; }
           header.cabecalho-interno .container nav a:before {
             font-family: 'fontello';
@@ -1011,6 +1015,17 @@ header {
       margin-bottom: 0;
       line-height: 40px;
       vertical-align: middle; }
+      .sessao.texto-interno article .slider-txt p.contagem span.sr, .sessao.texto-interno article .slider-img p.contagem span.sr {
+        position: absolute !important;
+        /* Outside the DOM flow */
+        height: 1px;
+        width: 1px;
+        /* Nearly collapsed */
+        overflow: hidden;
+        clip: rect(1px 1px 1px 1px);
+        /* IE 7+ only support clip without commas */
+        clip: rect(1px, 1px, 1px, 1px);
+        /* All other browsers */ }
     .sessao.texto-interno article .slider-txt button, .sessao.texto-interno article .slider-img button {
       position: relative;
       width: 36px;
@@ -1114,6 +1129,7 @@ header {
           white-space: normal; }
   .sessao.texto-interno article .slider-img {
     padding: 0;
+    margin: 2em 0;
     display: -webkit-box;
     display: -moz-box;
     display: box;
@@ -1156,6 +1172,11 @@ header {
     -o-justify-content: center;
     justify-content: center;
     -ms-flex-pack: center; }
+    .sessao.texto-interno article .slider-img div.ajuste-altura {
+      display: none;
+      width: 100%;
+      margin: 0;
+      padding: 0; }
     .sessao.texto-interno article .slider-img div.slider-items {
       width: 100%;
       overflow: hidden; }
@@ -1173,6 +1194,35 @@ header {
           display: inline-block;
           width: 100%;
           white-space: normal; }
+    .sessao.texto-interno article .slider-img div.controls {
+      padding: 0 15px; }
+      .sessao.texto-interno article .slider-img div.controls.bt-imgs {
+        width: 720px;
+        max-width: 100%; }
+    @media screen and (min-width: 768px) {
+      .sessao.texto-interno article .slider-img div.ajuste-altura.ativo {
+        display: block; }
+      .sessao.texto-interno article .slider-img p.contagem.fixo {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        z-index: 2; }
+      .sessao.texto-interno article .slider-img div.controls.bt-imgs.fixo {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        background-color: white;
+        padding: 10px; } }
   .sessao.texto-interno article.ficha {
     -webkit-box-pack: justify;
     -moz-box-pack: justify;
@@ -1183,14 +1233,16 @@ header {
     -o-justify-content: space-between;
     justify-content: space-between;
     -ms-flex-pack: justify; }
+    .sessao.texto-interno article.ficha .folha-rosto, .sessao.texto-interno article.ficha .coluna {
+      padding: 0 15px; }
     .sessao.texto-interno article.ficha .folha-rosto {
       width: 100%; }
-    .sessao.texto-interno article.ficha > div {
+    .sessao.texto-interno article.ficha > div.coluna {
       width: 48%; }
-      .sessao.texto-interno article.ficha > div dl dt {
+      .sessao.texto-interno article.ficha > div.coluna dl dt {
         margin-top: 2em;
         font-weight: bold; }
-      .sessao.texto-interno article.ficha > div dl dd {
+      .sessao.texto-interno article.ficha > div.coluna dl dd {
         margin: 0; }
 
 div.area-video .wrap-video {
@@ -1607,6 +1659,7 @@ footer {
       padding: 0 10px;
       width: calc(100% - 130px); }
       footer.rodape .container .logos img {
+        display: block;
         margin: 0 10px; }
         footer.rodape .container .logos img:nth-of-type(4), footer.rodape .container .logos img:nth-of-type(5) {
           -webkit-align-self: center;
@@ -1723,14 +1776,16 @@ footer {
         position: relative;
         border-radius: 50%; }
         footer.rodape-interno .navegacao a span {
-          display: inline-block;
-          font-size: 0em;
-          opacity: 0;
-          line-height: 0;
-          color: transparent;
-          height: 0;
-          width: 0;
+          position: absolute !important;
+          /* Outside the DOM flow */
+          height: 1px;
+          width: 1px;
+          /* Nearly collapsed */
           overflow: hidden;
+          clip: rect(1px 1px 1px 1px);
+          /* IE 7+ only support clip without commas */
+          clip: rect(1px, 1px, 1px, 1px);
+          /* All other browsers */
           position: absolute; }
         footer.rodape-interno .navegacao a:before {
           font-family: 'fontello';
@@ -1787,6 +1842,9 @@ footer {
   .pagina + * {
     margin-top: 7px; }
 
+@media (max-width: 1200px) {
+  .slider-img figure figcaption {
+    padding: 0 15px; } }
 @media (max-width: 1024px) {
   body {
     font-size: 18px; }
@@ -1839,6 +1897,8 @@ footer {
     max-width: 100%; }
     .sessao.texto-interno article .conteudo blockquote {
       margin-left: 35px; }
+  .sessao.texto-interno article.ficha > div.coluna {
+    width: 100%; }
 
   button.deslizar {
     display: none; }

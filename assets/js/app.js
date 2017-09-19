@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 		var esseSlider = $(el);
 		var botoes = esseSlider.find('button');
 		var inputRange = esseSlider.find('input[type="range"]');
-		var contagemSlide = esseSlider.find('p.contagem > span');
+		var contagemSlide = esseSlider.find('p.contagem > span.span-contagem');
 		var textosSlides = esseSlider.find('.slider-items > div.scroller > p');
 		// var contTexto = esseSlider.find('p.cont-texto');
 		var imgSlides = esseSlider.find('.slider-items > div.scroller > figure');
@@ -110,5 +110,48 @@ jQuery(document).ready(function($) {
 		});
 
 	});
+
+	var janela = $(window);
+
+	var sliderimg = $('.slider-img');
+
+	if (sliderimg.length > 0) {
+		var contagem_sl_img = sliderimg.find('p.contagem');
+		var ajuste_altura = sliderimg.find('.ajuste-altura');
+
+		var slider_top = sliderimg.offset().top - 10;
+		var limite_rolagem = slider_top + sliderimg.height() - janela.height()*0.4;
+
+		var ajustarAlturas = function(){
+			slider_top = sliderimg.offset().top - 10;
+			ajuste_altura.css('height', contagem_sl_img.height()+'px');
+			limite_rolagem = slider_top + sliderimg.height() - janela.height()*0.4;
+			
+		}
+
+		ajustarAlturas();
+
+		janela.on('resize', function(event) {
+			ajustarAlturas();
+		});
+
+		var scrollAtual = janela.scrollTop();
+
+		janela.on('scroll', function(event) {
+			var thisScrollTop = $(this).scrollTop();
+			if (thisScrollTop >= slider_top && thisScrollTop <= limite_rolagem) {
+				ajuste_altura.addClass('ativo');
+				contagem_sl_img.addClass('fixo');
+
+			} else{
+				ajuste_altura.removeClass('ativo');
+				contagem_sl_img.removeClass('fixo');
+			}
+			scrollAtual = thisScrollTop;
+		});
+	}
+	
+
+
 
 });

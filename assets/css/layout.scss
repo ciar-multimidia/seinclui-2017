@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import 'normalize';
 @import 'bourbon/bourbon';
 @import 'padroes';
@@ -275,6 +277,10 @@ header {
 	    		margin-bottom: 0;
 	    		line-height: 40px;
 	    		vertical-align: middle;
+	    		span.sr{
+	    			@include apenasleitura();
+
+	    		}
 	    	}
 
 	    	button{
@@ -346,6 +352,7 @@ header {
 	    		width: 100%;
 	    		// font-size: 22px;
 	    		text-align: justify;
+
 	    	}
 
 	    	div.slider-items{
@@ -373,11 +380,21 @@ header {
 
 	    .slider-img{
 	    	padding: 0;
+	    	margin: 2em 0;
 	    	@include display(flex);
 	    	@include flex-wrap(wrap);
 	    	@include flex-direction(column);
 	    	@include align-items(center);
 	    	@include justify-content(center);
+
+	    	// essa div abaixo serve para compensar a perda de altura que o slider sofre depois que alguns dos elementos ficam fixos.
+
+	    	div.ajuste-altura{
+	    		display: none;
+	    		width: 100%;
+	    		margin: 0;
+	    		padding: 0;
+	    	}
 
 	    	div.slider-items{
 	    		width: 100%;
@@ -394,18 +411,59 @@ header {
 	    				display: inline-block;
 	    				width: 100%;
 	    				white-space: normal;
+	    				figcaption{
+				    		// padding: 0 15px;
+	    					
+	    				}
 	    			}
 	    		}
 	    		
+	    	}
+
+	    	div.controls{
+	    		padding: 0 15px;
+	    		&.bt-imgs{
+	    			width: 720px;
+	    			max-width: 100%;
+	    		}
+	    	}
+
+	    	@media screen and (min-width: 768px){
+
+	    		div.ajuste-altura.ativo{
+	    			display: block;
+	    		}
+
+	    		p.contagem.fixo{
+	    			position: fixed;
+	    			top: 10px;
+	    			left: 50%;
+	    			@include transform(translateX(-50%));
+	    			z-index: 2;
+
+	    		}
+
+	    		div.controls.bt-imgs.fixo{
+	    			position: fixed;
+	    			bottom: 0;
+	    			left: 50%;
+	    			@include transform(translateX(-50%));
+	    			background-color: white;
+	    			padding: 10px;
+	    		}
 	    	}
 	    }
 
 	    &.ficha {
 	    	@include justify-content(space-between);
 
+	    	.folha-rosto, .coluna{
+	            padding: 0 15px;
+	    	}
+
 	    	.folha-rosto { width: 100% }
 
-	    	& > div {
+	    	& > div.coluna {
 	    		width: 48%;
 	    		dl{
 	    			dt{
@@ -742,6 +800,7 @@ footer {
 			    width: calc(100% - 130px);
 
 			    img {
+			    	display: block;
 			    	margin: 0 10px;
 
 			    	&:nth-of-type(4), &:nth-of-type(5) {@include align-self(center);}

@@ -1,3 +1,9 @@
+@media (max-width: 1200px){
+  .slider-img figure figcaption{
+    padding: 0 15px;
+  }
+}
+
 @media (max-width: 1024px) {
   body {font-size: 18px}
 
@@ -84,6 +90,15 @@
           max-width: 100%;
 
           blockquote {margin-left: 35px}
+        }
+
+        &.ficha{
+          .folha-rosto, .coluna{
+          }
+
+          & > div.coluna{
+            width: 100%;
+          }
         }
       }
     }

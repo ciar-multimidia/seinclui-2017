@@ -6,14 +6,11 @@ $largura-max: 1200px;
 
 // mixins
 @mixin apenasleitura() {
-	display: inline-block;
-	font-size: 0em;
-	opacity: 0;
-	line-height: 0;
-	color: transparent;
-	height: 0;
-	width: 0;
-	overflow: hidden;
+	position: absolute !important; /* Outside the DOM flow */
+    height: 1px; width: 1px; /* Nearly collapsed */
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE 7+ only support clip without commas */
+    clip: rect(1px, 1px, 1px, 1px); /* All other browsers */
 }
 
 // container
