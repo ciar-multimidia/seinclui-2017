@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="assets/css/layout.css">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Se INCLUI</title>
+
+	<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body id='device-simulation'>
+	<div id="device" class="laptop">
+
+		<div id="screen">
+			<div id="camera"></div>
+			<iframe src="index.html"></iframe>
+			<div id="button"></div>
+		</div>
+
+		<div id="teclado"></div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script>
+		jQuery(document).ready(function($) {
+			var nomesDispositivos = ['laptop', 'tablet', 'smartphone'];
+			var dispositivoAtual = 0;
+			var body = $('body');
+			var device = $('#device');
+
+			body.on('click', function(event) {
+				if (dispositivoAtual === 2) {
+					dispositivoAtual = 0;
+				} else{
+					dispositivoAtual += 1;
+				}
+				device.removeClass('laptop tablet smartphone').addClass(nomesDispositivos[dispositivoAtual]);
+
+				
+			});
+		});
+	</script>
+
+</body>
+</html>

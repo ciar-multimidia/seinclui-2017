@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+
+body#device-simulation{
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	$preto: black;
+
+	// Cada variável abaixo possui 3 valores, que são os tamanhos para cada dispositivo. 
+	// Na ordem: laptop, tablet, smartphone.
+	$width: 1366px, 768px, 360px; // Largura do iframe
+	$height: 768px, 1024px, 640px; // Altura do iframe
+	$top: 63px, 72px, 63px; // 'Padding' top (Não é um padding de fato, só parece)
+	$bottom: 63px, 90px, 72px; // 'Padding' bottom
+	$sides: 63px, 30px, 21px; // 'Paddings' laterais
+	$radius: 63px, 60px, 54px; // Arrendondamentos dos cantos
+	$botao: 0px, 54px, 51px; // Tamanho do botao
+
+	#device{
+
+		// Estilo base dos dispositivos. As dimensões são definivas no mixin definido lá embaixo.
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		#screen{
+			@include transition(all 1s $ease-out-quint);
+			@include transition-property(width, height, border-radius);
+			position: relative;
+			background-color: $preto;
+
+			iframe{
+				@include transition(inherit);
+				@include transition-property(width, height, top, left);
+				border: 0px solid transparent;
+				position: absolute;
+				background-color: white;
+			}
+
+			#camera{
+				@include transition(inherit);
+				@include transition-property(width, height, left, top);
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				border-radius: 5px;
+				background-color: grey;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			#button{
+				@include transition(inherit);
+				@include transition-property(width, height, left, top, border-width);
+				border: 2px solid hsl(0,0%, 60%);
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%, 50%);
+				border-radius: 50%;
+				background-color: $preto;
+			}
+		}
+
+		// Mixin para mudar as dimensões de tudo. 
+		@mixin formatarDevice($i){
+				#screen{
+					width: nth($width, $i) + nth($sides, $i) * 2;
+					height: nth($height, $i) + nth($top, $i) + nth($bottom, $i);
+					border-radius: nth($radius, $i);
+					iframe{
+						width: nth($width, $i);
+						height: nth($height, $i);
+						top: nth($top, $i);
+						left: nth($sides, $i);
+					}
+
+					#camera{
+						top: nth($top, $i)/2;
+					}
+
+					#button{
+						bottom: nth($bottom, $i)/2;
+						width: nth($botao, $i);
+						height: nth($botao, $i);
+					}
+				}
+			}
+
+			// Cada dispositivo tem uma classe com seu devido nome. Eles recebem o mixin com o devido valor.
+			// 1: Laptop
+			// 2: Tablet
+			// 3: Smartphone
+			&.laptop{
+				@include formatarDevice(1);
+
+				// Como o laptop tem o teclado, os cantos inferiores não são arrendodandos e não tem o botão de dispositivos móveis, aqui existem algumas exceções para o laptop.
+				#screen{
+					border-bottom-left-radius: 0px;
+					border-bottom-right-radius: 0px;
+					#button{
+						border-width: 0;
+					}
+				}
+				#teclado{
+					width: nth($width, 1) + 300px;					
+					height: 48px;
+					border-bottom-left-radius: 48px;
+					border-bottom-right-radius: 48px;
+				}
+			}
+
+			&.tablet{
+				@include formatarDevice(2);
+			}
+
+			&.smartphone{
+				@include formatarDevice(3);
+			}
+
+		// Estilo do teclado. Só existe no laptop.
+		#teclado{
+			@include transition(all 1s $ease-out-quint);
+			@include transition-property(width, height, border-radius);
+			background: linear-gradient(to bottom, rgba(229,229,229,1) 60%,rgba(153,153,153,1) 100%); 
+			width: 0px;
+			height: 0px;
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+	}
+
+	
+}

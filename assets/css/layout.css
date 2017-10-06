@@ -642,6 +642,130 @@ blockquote {
     [type='range']::-ms-thumb:before {
       content: attr(value); }
 
+body#device-simulation {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  body#device-simulation #device {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    body#device-simulation #device #screen {
+      -webkit-transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      -moz-transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-transition-property: width, height, border-radius;
+      -moz-transition-property: width, height, border-radius;
+      transition-property: width, height, border-radius;
+      position: relative;
+      background-color: black; }
+      body#device-simulation #device #screen iframe {
+        -webkit-transition: inherit;
+        -moz-transition: inherit;
+        transition: inherit;
+        -webkit-transition-property: width, height, top, left;
+        -moz-transition-property: width, height, top, left;
+        transition-property: width, height, top, left;
+        border: 0px solid transparent;
+        position: absolute;
+        background-color: white; }
+      body#device-simulation #device #screen #camera {
+        -webkit-transition: inherit;
+        -moz-transition: inherit;
+        transition: inherit;
+        -webkit-transition-property: width, height, left, top;
+        -moz-transition-property: width, height, left, top;
+        transition-property: width, height, left, top;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: grey;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+      body#device-simulation #device #screen #button {
+        -webkit-transition: inherit;
+        -moz-transition: inherit;
+        transition: inherit;
+        -webkit-transition-property: width, height, left, top, border-width;
+        -moz-transition-property: width, height, left, top, border-width;
+        transition-property: width, height, left, top, border-width;
+        border: 2px solid #999999;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        border-radius: 50%;
+        background-color: black; }
+    body#device-simulation #device.laptop #screen {
+      width: 1492px;
+      height: 894px;
+      border-radius: 63px; }
+      body#device-simulation #device.laptop #screen iframe {
+        width: 1366px;
+        height: 768px;
+        top: 63px;
+        left: 63px; }
+      body#device-simulation #device.laptop #screen #camera {
+        top: 31.5px; }
+      body#device-simulation #device.laptop #screen #button {
+        bottom: 31.5px;
+        width: 0px;
+        height: 0px; }
+    body#device-simulation #device.laptop #screen {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px; }
+      body#device-simulation #device.laptop #screen #button {
+        border-width: 0; }
+    body#device-simulation #device.laptop #teclado {
+      width: 1666px;
+      height: 48px;
+      border-bottom-left-radius: 48px;
+      border-bottom-right-radius: 48px; }
+    body#device-simulation #device.tablet #screen {
+      width: 828px;
+      height: 1186px;
+      border-radius: 60px; }
+      body#device-simulation #device.tablet #screen iframe {
+        width: 768px;
+        height: 1024px;
+        top: 72px;
+        left: 30px; }
+      body#device-simulation #device.tablet #screen #camera {
+        top: 36px; }
+      body#device-simulation #device.tablet #screen #button {
+        bottom: 45px;
+        width: 54px;
+        height: 54px; }
+    body#device-simulation #device.smartphone #screen {
+      width: 402px;
+      height: 775px;
+      border-radius: 54px; }
+      body#device-simulation #device.smartphone #screen iframe {
+        width: 360px;
+        height: 640px;
+        top: 63px;
+        left: 21px; }
+      body#device-simulation #device.smartphone #screen #camera {
+        top: 31.5px; }
+      body#device-simulation #device.smartphone #screen #button {
+        bottom: 36px;
+        width: 51px;
+        height: 51px; }
+    body#device-simulation #device #teclado {
+      -webkit-transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      -moz-transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-transition-property: width, height, border-radius;
+      -moz-transition-property: width, height, border-radius;
+      transition-property: width, height, border-radius;
+      background: linear-gradient(to bottom, #e5e5e5 60%, #999999 100%);
+      width: 0px;
+      height: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px; }
+
 body {
   font-size: 20px;
   line-height: 1.5;
