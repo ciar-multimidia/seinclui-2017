@@ -238,7 +238,9 @@
     }
   }
 
-  .ficha {width: 100%}
+  .ficha {width: 100%; padding: 0 15px; margin-bottom: 40px;
+    div:nth-of-type(2), div:nth-of-type(3) {width: 100%; margin-bottom: 15px;}
+  }
 
 }
 

@@ -956,12 +956,15 @@ footer {
 .ficha {
     @include display(flex);
     @include flex-direction(row);
+    @include flex-wrap(wrap);
     @include justify-content(space-between);	
     width: 65%;
-    margin: 0 auto;
+    margin: 0 auto 150px;
 
 	div p {margin: 0}
-	div:nth-of-type(2) {@include flex-grow(1); margin-left: 25px;}
+	div:nth-of-type(1) {width: 100%; margin-bottom: 15px;}
+	div:nth-of-type(2) {width: 70px;}
+	div:nth-of-type(3) {width: calc(100% - 70px)}
 }
 
 
