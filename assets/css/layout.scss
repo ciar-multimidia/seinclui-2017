@@ -409,7 +409,7 @@ header {
 	    			white-space: nowrap;
 	    			& > figure{
 	    				margin: 0;
-	    				vertical-align: top;
+	    				vertical-align: bottom;
 	    				display: inline-block;
 	    				width: 100%;
 	    				white-space: normal;
@@ -953,7 +953,7 @@ footer {
 
 
 // ficha catalografica
-.ficha {
+.ficha-catalografica {
     @include display(flex);
     @include flex-direction(row);
     @include flex-wrap(wrap);
