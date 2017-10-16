@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Se INCLUI</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/layout.css">
+	<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+	<style>
+		.area-texto > article span.destaque{background-color: navy; color: white;}
+		#pulsante{
+			position: fixed;
+			right: 0; bottom: 0;
+			transform: translate(50%, 50%);
+			/*background-color: rgba(247, 195, 201, 0.5);*/
+			background-color: rgba(255,255,255,0.6);
+			border: 2px solid white;
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			z-index: 2;
+		}
+
+		#soundicon{
+		position: fixed;
+		bottom: 0; right: 0;
+		width: 70px;
+		margin: 20px;	
+		height: auto;
+		z-index: 3;
+		}
+	</style>
+</head>
+<body>
+
+<header class="cabecalho">
+	<div class="container">
+		<h1>Se Inclui, Curso de Formação de Professores para Inclusão e Diversidade no Ambiente Educacional</h1>
+		<img src="assets/img/logo.png" alt="Logotipo do curso">
+	</div>
+</header>
+
+<main>
+
+	<!-- 1. Seção de boas vindas -->
+	<section class="sessao texto-video">
+		<div class="container grid">
+			<div class="area-texto">
+				<article>
+					<h2>Boas-vindas e apresentação</h2>
+					<p>Todas as pessoas são muito bem-vindas!  Esse curso tem como objetivo principal a formação docente para inclusão e acessibilidade no meio educacional. Trata-se de uma parceria de quatro instituições públicas de ensino de Goiás, sendo elas: Universidade Federal de Goiás (UFG), Universidade Estadual de Goiás (UEG), Instituto Federal de Goiás (IFG) e Instituto Federal Goiano (IFGoiano). Tomaremos como princípio norteador a discussão de diversidade e apresentaremos a diversidade visual, auditiva, motora e a neurodiversidade, considerando que para além da deficiência é preciso considerar que somos todos diferentes. Pretendemos dar ênfase nas necessidades educacionais dos alunos, em suas eficiências e especificidades na forma de aprender.</p>
+
+					<p>Conheça um pouco do cotidiano e da eficiência de alguns alunos e professores com deficiência da UFG, UEG, IFG e IFGoiano.</p>
+
+					<div class="maisconteudo">
+						<a href="textos/1-boas-vindas-e-apresentacao.html" class="continuar">Continue Lendo</a>
+						<a href="textos/1-boas-vindas-e-apresentacao.html#saibamais" class="saibamais">Saiba mais</a>
+					</div>
+				</article>
+			</div>
+			<div class="area-video">
+				<button class="deslizar" aria-label="Expandir vídeo de libras desse texto." data-txt-expand='Expandir vídeo de libras desse texto.' data-txt-collapse='Retrair vídeo de libras desse texto.'></button>
+
+				<div class="wrap-video">
+					<section class="video" aria-label='Vídeo de libras dessa sessão.'>
+						<video  src="videos/boas-vindas.mp4" preload="none" controls="true" muted="true" poster="videos/interprete-1.jpg"></video>
+					</section>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- 2. Vídeo cotidiano -->
+	<section class="sessao vermelho" aria-label='Vídeo sobre o cotidiano de alunos e professores com necessidades especiais das universidades públicas do estado de Goiás.'>
+		<div class="container fullgrid">
+
+			<div class="video">
+				<video src="videos/teste.mp4" preload="none" poster="assets/img/poster.png" controls="true"></video>
+			</div>
+
+		</div>
+	</section>	
+</main>
+
+<svg id='soundicon' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="380.964px" height="347.156px" viewBox="107.151 172.985 380.964 347.156"
+	 enable-background="new 107.151 172.985 380.964 347.156" xml:space="preserve">
+<path fill="#f8465c" d="M107.151,394.157v-95.245c0-19.726,15.991-35.717,35.717-35.717h47.622l81.256-78.398
+	c5.442-6.115,14.812-6.661,20.927-1.218c3.183,2.833,4.993,6.898,4.968,11.159v303.593c0.048,8.187-6.549,14.861-14.735,14.909
+	c-4.261,0.025-8.326-1.784-11.159-4.968l-81.256-78.398h-47.622C123.142,429.874,107.151,413.883,107.151,394.157L107.151,394.157z
+	 M365.562,413.206c36.302-37.035,36.302-96.307,0-133.342c-4.659-4.641-12.197-4.626-16.838,0.032
+	c-2.11,2.119-3.347,4.956-3.462,7.944v117.389c0.253,6.57,5.785,11.692,12.355,11.438
+	C360.606,416.554,363.443,415.317,365.562,413.206z M378.657,518.75c95.095-44.614,136.019-157.87,91.405-252.965
+	c-18.862-40.205-51.2-72.542-91.405-91.405c-12.384-4.425-26.01,2.027-30.435,14.411c-3.884,10.871,0.589,22.961,10.611,28.688
+	c71.293,33.81,101.679,119.012,67.868,190.305c-14.119,29.772-38.096,53.749-67.868,67.868
+	c-11.418,6.523-15.387,21.067-8.864,32.486C355.697,518.161,367.787,522.634,378.657,518.75z"/>
+</svg>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src='assets/js/svg-injector.js'></script>
+<script src='assets/js/app.js'></script>
+<script>
+	jQuery(document).ready(function($) {
+		var texto = $('.area-texto > article > *:not(div)');
+		texto.each(function(index, el) {
+			var elemento = $(el);
+			var palavras = elemento.text().split(' ');
+			elemento.text('');
+			$.each(palavras, function(index2, val) {
+				 elemento.append('<span>'+val+'</span> ');
+			});
+		});
+
+		var tempoBase = 300;
+		var tempoPorChar = 50;
+		var loopTempo;
+		var indexAtual = 0;
+		var spans = $('.area-texto > article span');
+		var totalSpans = spans.length;
+
+		var destacarSpans = function(){
+			var spanAtual = spans.eq(indexAtual);
+			spans.removeClass('destaque').eq(indexAtual).addClass('destaque');
+
+			var textLength = spanAtual.text().length;
+			if (indexAtual+1 < totalSpans) {
+				indexAtual += 1;
+			} else{
+				indexAtual = 0;
+			}
+			var tempo = tempoBase + tempoPorChar*textLength;
+			loopTempo = setTimeout(destacarSpans, tempo);
+		}
+
+		var bolaPulsante = function(){
+			$('body').append('<div id="pulsante"></div>');
+			$('body').append();
+			var minWidth = 150;
+			var maxWidth = 900;
+			var tempoVolta = 1000;
+			var pulsante = $('#pulsante');
+			var pulsarLoop = function(){
+				// var amount = minWidth + Math.round( Math.random()*(maxWidth-minWidth) );
+				// var proporcao = ( Math.round( 100*( (amount-minWidth)/(maxWidth - minWidth) ) ) )/100;
+				// var tempoVoltaFinal = tempoVolta*proporcao;
+				pulsante.stop().animate({
+					'width': maxWidth,
+					'height': maxWidth},
+					100, function() {
+						var novoPulsoTempo = Math.round(Math.random()*600);
+						pulsante.animate({'width': minWidth, 'height': minWidth}, tempoVolta);
+						setTimeout(pulsarLoop, novoPulsoTempo);
+				});
+			}
+
+			pulsarLoop();
+			
+		}
+
+		destacarSpans();
+		bolaPulsante();
+	});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
