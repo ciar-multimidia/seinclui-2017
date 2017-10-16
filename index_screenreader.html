@@ -118,8 +118,8 @@
 			});
 		});
 
-		var tempoBase = 300;
-		var tempoPorChar = 50;
+		var tempoBase = 200;
+		var tempoPorChar = 40;
 		var loopTempo;
 		var indexAtual = 0;
 		var spans = $('.area-texto > article span');
@@ -164,8 +164,18 @@
 			
 		}
 
-		destacarSpans();
-		bolaPulsante();
+		$(window).on('keyup', function(event){
+			var teclaValida = false;
+			var keycode = event.which;
+		
+			if (keycode === 13) {
+				destacarSpans();
+				bolaPulsante();
+				$(window).off('keyup');
+			} 
+		})
+
+		
 	});
 </script>
 </body>
