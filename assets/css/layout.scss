@@ -132,6 +132,27 @@ header {
 	      background: $cor1 url('../img/pattern.png') repeat-x center bottom / 145px;
 	    }
 	}
+
+	.container {
+		position: relative;
+
+		nav {
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			ul {
+				list-style-type: none; margin: 0; padding: 10px;
+
+				li {
+					display: inline-block;
+					margin-left: 15px;
+
+					a {color: inherit;}
+				}
+			}
+		}
+	}
 }
 
 
