@@ -114,27 +114,37 @@
 
 @media (max-width: 768px) {
   header {
-    &.cabecalho:after {
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      content: "";
-      width: 100%;
-      display: block;
-      height: 90px;
-      background: $cor1 url('../img/pattern.png') repeat-x center top / 76px;
+    &.cabecalho{
+      .container {
+        nav {
+          position: relative;
+          width: 100%;
+          top: 0; right: 0;
+          @include transform(translateX(0));
+
+          ul {
+            list-style-type: none; margin: 0; padding: 50px 10px 0; text-align: center;
+
+            li {margin: 0;}
+          }
+        }
+      }
+
+      &:after {
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        content: "";
+        width: 100%;
+        display: block;
+        height: 90px;
+        background: $cor1 url('../img/pattern.png') repeat-x center top / 76px;
+      }
     }
 
     &.cabecalho-interno:after {
       height: 45px;
       background-size: 76px;
-    }
-
-    .container {
-      nav {
-        position: relative;
-        ul {list-style-type: none; margin: 0; padding: 50px 10px 0;}
-      }
     }
   }
 

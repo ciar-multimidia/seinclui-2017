@@ -32,12 +32,34 @@ header {
 
 		.container {
 			text-align: center;
+			position: relative;
 
 			img, svg {
 				max-width: 82%;
 				margin: 0 auto;
 				display: block;
 				height: inherit;
+			}
+
+			nav {
+				position: absolute;
+				width: 82%;
+				top: 0; right: 50%;
+				@include transform(translateX(50%));
+
+
+				ul {
+					list-style-type: none; margin: 0; padding: 10px 0;
+					text-align: right;
+
+					li {
+						display: block;
+						margin-left: 15px;
+						font-size: 0.9em;
+
+						a {color: inherit;}
+					}
+				}
 			}
 
 			h1 {position: absolute; @include apenasleitura;}
@@ -131,27 +153,6 @@ header {
 	      height: 90px;
 	      background: $cor1 url('../img/pattern.png') repeat-x center bottom / 145px;
 	    }
-	}
-
-	.container {
-		position: relative;
-
-		nav {
-			position: absolute;
-			top: 0;
-			right: 0;
-
-			ul {
-				list-style-type: none; margin: 0; padding: 10px;
-
-				li {
-					display: inline-block;
-					margin-left: 15px;
-
-					a {color: inherit;}
-				}
-			}
-		}
 	}
 }
 
@@ -430,7 +431,7 @@ header {
 	    			white-space: nowrap;
 	    			& > figure{
 	    				margin: 0;
-	    				vertical-align: bottom;
+	    				vertical-align: middle;
 	    				display: inline-block;
 	    				width: 100%;
 	    				white-space: normal;
