@@ -98,7 +98,11 @@ jQuery(document).ready(function($) {
 				.end()
 				.parent()
 				.css(crossBrowserTransform('translateX(-'+100*(indexNewSlide-1)+'%)'));
-
+				imgSlides.each(function(index, el) {
+					if ($(el).find('video').length > 0) {
+						$(el).find('video')[0].pause();					
+					}
+				});
 			}
 
 			sessionStorage.setItem(nomeStorage, indexNewSlide);
