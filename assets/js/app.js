@@ -1,7 +1,5 @@
 jQuery(document).ready(function($) {
 
-	var SvgsParaInjetar = $('img.injetar');
-	SVGInjector(SvgsParaInjetar);
 	
 	var secoesBt = $('.sessao.texto-video .deslizar');
 
@@ -174,6 +172,37 @@ jQuery(document).ready(function($) {
 			scrollAtual = thisScrollTop;
 		});
 	}
+
+
+
+	// codigo para funcionamento dos videos
+	var $videos = $('.video');
+
+	$videos.each(function(index, el) {
+		var $thisVideo = $(el);
+		var $videoTag = $thisVideo.find('video');
+		var $btPlayPause = $thisVideo.find('.bt-play-pause');
+		var $svgPlayPause = $btPlayPause.find('svg');
+		var $progressSpace = $thisVideo.find('.progress-space');
+		var $visualProgress = $thisVideo.find('.progress-view');
+		var $progressInput = $thisVideo.find('.progress-slider');
+		var videoDuration = 0;
+
+		var videoLoadChecker = setInterval(function(){
+			if ($videoTag[0].readyState > 0) {
+				funcionamentoVideos();
+			}
+		}, 500);
+
+		$videoTag.on('loadeddata', funcionamentoVideos);
+
+		var funcionamentoVideos = function(){
+			clearInterval(videoLoadChecker);
+			$thisVideo.addClass('loaded');
+			videoDuration = $videoTag[0].duration;
+			console.log(videoDuration);
+		}
+	});
 	
 
 

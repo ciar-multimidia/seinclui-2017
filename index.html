@@ -65,6 +65,13 @@
 
 <main>
 
+	<svg id='playpausedefs' class='svg-definitions'>
+		<defs>
+			<path data-state="playing"	 id='pause-icon'	d='M0,0 h20 v50 h-20z M30,0 h20 v50 h-20z'/>
+			<path data-state="paused"	 id='play-icon'		d='M0,0 L25,12.5 v25 L0,50 M25,12.5 L50,25 L25,37.5z'/>
+		</defs>
+	</svg>
+
 	<!-- 1. Seção de boas vindas -->
 	<section class="sessao texto-video">
 		<div class="container grid">
@@ -86,7 +93,22 @@
 
 				<div class="wrap-video">
 					<section class="video" aria-label='Vídeo de libras dessa sessão.'>
-						<video  src="videos/boas-vindas.mp4" preload="none" controls="true" muted="true" poster="videos/interprete-1.jpg"></video>
+						<video  src="videos/boas-vindas.mp4" muted="true" poster="videos/interprete-1.jpg"></video>
+						<div class="controls">
+							<button class="bt-play-pause">
+								<svg viewbox='0 0 50 50'>
+									<use xlink:href="#play-icon" />
+								</svg>
+							</button>
+							<div class="progress-space">
+								<div class="progress-view" role='progressbar'></div>
+								<input class='progress-slider' type="range" min='0' max='300'>
+							</div>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+						</div>
 					</section>
 				</div>
 			</div>
@@ -99,7 +121,7 @@
 		<div class="container fullgrid">
 
 			<div class="video">
-				<video src="videos/video_cotidiano.mp4" preload="none" poster="videos/thumb_cotidiano.jpg" controls="true"></video>
+				<video src="videos/video_cotidiano.mp4" poster="videos/thumb_cotidiano.jpg"></video>
 			</div>
 
 		</div>
@@ -125,7 +147,7 @@
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
-						<video src="videos/movimentos-pessoa-com-deficiencia.mp4" preload="none" poster="videos/interprete-1.jpg" controls="true" muted="true"></video>
+						<video src="videos/movimentos-pessoa-com-deficiencia.mp4" poster="videos/interprete-1.jpg" muted="true"></video>
 					</section >
 				</div>
 			</div>
@@ -138,7 +160,7 @@
 		<div class="container fullgrid">
 
 			<div class="video">
-				<video src="videos/relato-renata.mp4" preload="none" poster="videos/relato-renata.jpg" controls="true"></video>
+				<video src="videos/relato-renata.mp4" poster="videos/relato-renata.jpg"></video>
 			</div>
 
 		</div>
@@ -164,7 +186,7 @@
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
-						<video src="videos/acessibilidade-e-tecnologias.mp4" preload="none" poster="videos/interprete-4.jpg" controls="true" muted="true"></video>
+						<video src="videos/acessibilidade-e-tecnologias.mp4" poster="videos/interprete-4.jpg" muted="true"></video>
 					</section >
 				</div>
 			</div>
@@ -192,7 +214,7 @@
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
-						<video src="videos/diversidade-e-professor.mp4" preload="none" poster="videos/interprete-3.jpg" controls="true" muted="true"></video>
+						<video src="videos/diversidade-e-professor.mp4" poster="videos/interprete-3.jpg" muted="true"></video>
 					</section >
 				</div>
 			</div>
@@ -204,7 +226,7 @@
 		<div class="container fullgrid">
 
 			<div class="video">
-				<video src="videos/relato_vanderlei.mp4" preload="none" poster="videos/thumb_vanderlei.jpg" controls="true"></video>
+				<video src="videos/relato_vanderlei.mp4" poster="videos/thumb_vanderlei.jpg"></video>
 			</div>
 
 		</div>
@@ -265,7 +287,7 @@
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
-						<video src="videos/diversidade-visual.mp4" preload="none" poster="videos/interprete-2.jpg" controls="true" muted="true"></video>
+						<video src="videos/diversidade-visual.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
 					</section >
 				</div>
 			</div>
@@ -296,7 +318,7 @@
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
-						<video src="videos/diversidade-auditiva.mp4" preload="none" poster="videos/interprete-2.jpg" controls="true" muted="true"></video>
+						<video src="videos/diversidade-auditiva.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
 					</section >
 				</div>
 			</div>
@@ -327,7 +349,7 @@
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
-						<video src="videos/diversidade-motora.mp4" preload="none" poster="videos/interprete-2.jpg" controls="true" muted="true"></video>
+						<video src="videos/diversidade-motora.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
 					</section >
 				</div>
 			</div>
@@ -358,7 +380,7 @@
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
-						<video src="videos/neurodiversidade.mp4" preload="none" poster="videos/interprete-2.jpg" controls="true" muted="true"></video>
+						<video src="videos/neurodiversidade.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
 					</section >
 				</div>
 			</div>
@@ -424,7 +446,8 @@
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script src='assets/js/svg-injector.js'></script>
+<script src="assets/js/jquery.svg.min.js"></script>
+<script src="assets/js/jquery.svgdom.min.js"></script>
 <script src='assets/js/app.js'></script>
 </body>
 </html>

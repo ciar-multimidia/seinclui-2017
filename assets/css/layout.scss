@@ -5,7 +5,6 @@
 @import 'padroes';
 @import 'icons';
 @import 'input_range';
-
 @import 'device-simulation';
 
 body {
@@ -356,6 +355,8 @@ header {
 	    			background: $cor2;
 	    		}
 	    	}
+
+	    	@extend %custom-range-input;
 	    }
 
 	    
@@ -505,59 +506,211 @@ header {
 
 
 // config visual de video
-div.area-video .wrap-video {
-	margin-top: 50px;
-	width: 100%;
-	display: block;
-	position: relative;
-	z-index: 1;
-
-	&:before, &:after {
-		content: '';
-		@include transform(translateX(-50%));
-		left: 50%;
-		position: absolute;
-		display: none;
-	}
-
-	&:before {
-		width: 2px;
-		border-right: 2px dashed $cor1;
-		top: -110px;
-		height: 120px;
-	}
-
-	&:after {
-		background: $cor2 url('../img/icone-libras.png') no-repeat center center / 60%;
-		border: 2px solid $cor1;
-		position: absolute;
-		top: -120px;
-		width: 80px;
-		height: 80px;
-		color: $cor1;
-		border-radius: 50%;
-	}
-
-	.sessao.texto-video:nth-of-type(1) .grid > & {
-		&:before, &:after {display: block}
-	}	
-
-	.video {
-		position: relative;
+div.area-video{
+	.wrap-video {
+		margin-top: 50px;
+		width: 100%;
 		display: block;
+		position: relative;
+		z-index: 1;
+
+		&:before, &:after {
+			content: '';
+			@include transform(translateX(-50%));
+			left: 50%;
+			position: absolute;
+			display: none;
+		}
 
 		&:before {
-			content: "";
-			width: 20%;
-			height: 0;
-			padding-bottom: 20%;
-			background: url('../img/borda-video.svg') no-repeat center center / 110%;
-			@include transform(scale(-1,-1));
+			width: 2px;
+			border-right: 2px dashed $cor1;
+			top: -110px;
+			height: 120px;
+		}
+
+		&:after {
+			background: $cor2 url('../img/icone-libras.png') no-repeat center center / 60%;
+			border: 2px solid $cor1;
 			position: absolute;
-			top: -2px;
-			left: -2px;
-			z-index: 1;
+			top: -120px;
+			width: 80px;
+			height: 80px;
+			color: $cor1;
+			border-radius: 50%;
+		}
+
+		.sessao.texto-video:nth-of-type(1) .grid > & {
+			&:before, &:after {display: block}
+		}	
+
+		.video {
+			position: relative;
 			display: block;
+			background-color: rgba(0,0,0,0.4);
+
+			@include keyframes(pulsaFundo){
+				50%{
+					background-color: rgba(0,0,0,0.7);
+				}
+			}
+
+			@include animation(pulsaFundo 3s linear 0s infinite normal both);
+
+			&:before {
+				content: "";
+				width: 20%;
+				height: 0;
+				padding-bottom: 20%;
+				background: url('../img/borda-video.svg') no-repeat center center / 110%;
+				@include transform(scale(-1,-1));
+				position: absolute;
+				top: -2px;
+				left: -2px;
+				z-index: 1;
+				display: block;
+			}
+
+			video{
+				display: block;
+				opacity: 0;
+				@include transition(opacity 0.3s ease-in-out);
+			}
+
+			.controls{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0);
+				@include transition(background-color 0.3s ease-in-out);	
+				display: none;
+
+
+				button.bt-play-pause{
+					@include appearance(none);
+					border: 0;
+					margin: 0;
+					padding: 0;
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0,0,0,0.6);
+					@include transition(background-color 0.3s ease-in-out);	
+
+					svg{
+						width: 50px;
+						@include transition(all 0.3s ease-in-out);
+						@include transition-property(opacity, width);
+						height: auto;
+						*{
+							fill: white;
+						}
+					}
+
+					&:hover{
+						cursor: pointer;
+						background-color: rgba(0,0,0,0.8);
+						svg{
+							width: 60px;
+							opacity: 1;
+						}
+					}
+				}
+
+				.progress-space, .progress-view, .progress-slider{
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					height: 10px;
+				}
+
+				.progress-space{
+					width: 100%;
+				}
+
+				.progress-slider{
+					width: 100%;
+					opacity: 0.1;
+				}
+
+				.progress-view{
+					width: 50%;
+					background-color: $cor4;
+				}
+
+				.loading-anim{
+					display: none;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+
+					@include justify-content(center);
+					@include align-items(center);
+
+					& > img{
+						width: 100px;
+						height: auto;
+
+						@include keyframes(rodando){
+							100%{
+								@include transform(rotate(360deg));
+							}
+						}
+
+						@include animation(rodando 0.5s linear 0s infinite normal both);
+
+					}
+				}
+			}
+
+
+			&.loaded{
+				@include animation(none);
+				video{
+					opacity: 1;
+				}
+				.controls{
+					display: block;
+				}
+			}
+
+			&.playing{
+				.controls{
+					button.bt-play-pause{
+						background-color: rgba(0,0,0,0);
+						svg{
+							opacity: 0;
+						}
+						&:hover{
+							background-color: rgba(0,0,0,0.8);
+							svg{
+								opacity: 1;
+							}
+						}	
+					}
+				}
+			}
+
+			&.buffering{
+				.controls{
+					background-color: rgba(0,0,0,0.8);
+					
+				}
+				.loading-anim{
+					@include display(flex);
+				}
+
+				.bt-play-pause{
+					display: none;
+				}
+			}
 		}
 	}
 }

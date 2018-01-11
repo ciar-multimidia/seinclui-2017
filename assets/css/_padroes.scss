@@ -2,6 +2,7 @@
 $cor1: #fff;
 $cor2: #f8465c;
 $cor3: #222;
+$cor4: #13e7ce;
 $largura-max: 1200px;
 
 // mixins
@@ -43,6 +44,9 @@ $largura-max: 1200px;
   font-style: italic;
 }
 
+.svg-definitions{
+	display: none;
+}
 
 // titulos
 h2, h3, h4, h5 {

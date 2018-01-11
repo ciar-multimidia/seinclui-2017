@@ -1,0 +1,6 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 50 50" aria-labelledby="Esse vídeo está carregando">
+
+	<circle r="20" cx="25" cy="25" fill='transparent' stroke="white" stroke-width="5" stroke-linecap="round" stroke-dasharray="100 25"/>
+		
+</svg>
