@@ -590,7 +590,8 @@ div.area-video{
 
 				button.bt-play-pause{
 					@include appearance(none);
-					border: 0;
+					border: none;
+					outline: none;
 					margin: 0;
 					padding: 0;
 					display: block;
@@ -605,10 +606,17 @@ div.area-video{
 					svg{
 						width: 50px;
 						@include transition(all 0.3s ease-in-out);
-						@include transition-property(opacity, width);
+						@include transition-property(opacity, transform);
 						height: auto;
-						*{
+						
+
+						path{
 							fill: white;
+							&.pause{
+								display: none;
+							}&.play{
+								display: block;
+							}
 						}
 					}
 
@@ -616,32 +624,41 @@ div.area-video{
 						cursor: pointer;
 						background-color: rgba(0,0,0,0.8);
 						svg{
-							width: 60px;
+							@include transform(scale(1.2));
 							opacity: 1;
 						}
 					}
 				}
 
-				.progress-space, .progress-view, .progress-slider{
+				.progress-space{
 					position: absolute;
 					bottom: 0;
 					left: 0;
-					height: 10px;
+					width: 100%;
+					height: 12px;
+					padding: 2px;
+					background-color: rgba(0,0,0,0.8);
+
 				}
 
-				.progress-space{
+				.view-container{
 					width: 100%;
-				}
-
-				.progress-slider{
-					width: 100%;
-					opacity: 0.1;
+					height: 100%;
 				}
 
 				.progress-view{
-					width: 50%;
-					background-color: $cor4;
+					width: 0%;
+					height: 100%;
+					background-color: white;
+
 				}
+
+				.progress-slider{
+					width: 1px;
+					height: 1px;
+					opacity: 0;
+				}
+
 
 				.loading-anim{
 					display: none;
@@ -687,6 +704,15 @@ div.area-video{
 						background-color: rgba(0,0,0,0);
 						svg{
 							opacity: 0;
+							path{
+
+								&.pause{
+									display: block;
+								}
+								&.play{
+									display: none;
+								}
+							}
 						}
 						&:hover{
 							background-color: rgba(0,0,0,0.8);
@@ -701,14 +727,17 @@ div.area-video{
 			&.buffering{
 				.controls{
 					background-color: rgba(0,0,0,0.8);
-					
-				}
-				.loading-anim{
-					@include display(flex);
-				}
+					.bt-play-pause{
+						display: none;
+					}
 
-				.bt-play-pause{
-					display: none;
+					.loading-anim{
+						@include display(flex);
+					}
+
+					.progress-space{
+						display: none;
+					}	
 				}
 			}
 		}

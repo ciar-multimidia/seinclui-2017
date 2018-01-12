@@ -176,17 +176,29 @@ jQuery(document).ready(function($) {
 
 
 	// codigo para funcionamento dos videos
-	var $videos = $('.video');
+	var $videos = $('.video').eq(0);
 
+	$videos.length > 0 ? 
 	$videos.each(function(index, el) {
 		var $thisVideo = $(el);
 		var $videoTag = $thisVideo.find('video');
 		var $btPlayPause = $thisVideo.find('.bt-play-pause');
 		var $svgPlayPause = $btPlayPause.find('svg');
-		var $progressSpace = $thisVideo.find('.progress-space');
+		var $progressSpace = $thisVideo.find('.view-container');
 		var $visualProgress = $thisVideo.find('.progress-view');
 		var $progressInput = $thisVideo.find('.progress-slider');
+		var attProgresso;
 		var videoDuration = 0;
+		var funcionamentoAtivado = false;
+		var progressIsClicked = false;
+		var spacePos = {
+			left: $progressSpace.offset().left,
+			right: $progressSpace.offset().left + $progressSpace.width()
+		}
+
+		var playPauseClones = $('#playpausedefs').find('path').clone();
+		$svgPlayPause.append(playPauseClones);
+
 
 		var videoLoadChecker = setInterval(function(){
 			if ($videoTag[0].readyState > 0) {
@@ -197,12 +209,132 @@ jQuery(document).ready(function($) {
 		$videoTag.on('loadeddata', funcionamentoVideos);
 
 		var funcionamentoVideos = function(){
-			clearInterval(videoLoadChecker);
-			$thisVideo.addClass('loaded');
-			videoDuration = $videoTag[0].duration;
-			console.log(videoDuration);
+			if (funcionamentoAtivado === false) {
+				funcionamentoAtivado = true;
+				clearInterval(videoLoadChecker);
+				$thisVideo.addClass('loaded');
+
+
+				videoDuration = $videoTag[0].duration;
+				var transitionTime = 200;
+				var dPlay = $svgPlayPause.find('path.play').attr('d');
+				var dPause = $svgPlayPause.find('path.pause').attr('d');
+
+				var atualizarProgresso = function(percentage){
+					var porcentagemProgresso;
+					if (percentage !== undefined) {
+						porcentagemProgresso = (Math.round(percentage*10000))/10000;
+					}
+					else{
+						porcentagemProgresso = (Math.round(($videoTag[0].currentTime/videoDuration)*10000))/10000;
+					}
+
+					console.log(atualizarProgresso.caller, porcentagemProgresso);						
+
+					var valueInput = porcentagemProgresso*0.01*parseFloat($progressInput.attr('max'));
+	  				$visualProgress.css('width', (porcentagemProgresso*100)+'%');
+	  				$progressInput.attr({
+	  					'value': 			valueInput,
+	  					'data-valuenow': 	valueInput
+	  				});
+	  				percentage ? null : attProgresso = requestAnimationFrame(atualizarProgresso);
+				}
+
+				$videoTag.on('waiting', function(event) {
+					$thisVideo.addClass('buffering');
+				});	
+
+				$videoTag.on('canplay', function(event) {
+					$thisVideo.removeClass('buffering');
+				});	
+
+				$videoTag.on('playing', function(event) {
+					$thisVideo.addClass('playing');
+					attProgresso = requestAnimationFrame(atualizarProgresso);
+					$svgPlayPause.find('path.pause').attr('d', dPlay);
+					d3
+					.select($svgPlayPause.find('path.pause')[0])
+					.interrupt()
+					.transition()
+					.duration(transitionTime)
+					.attr('d', dPause);
+				});	
+
+				$videoTag.on('pause', function(event) {
+					$thisVideo.removeClass('playing');
+					cancelAnimationFrame(attProgresso);
+					$svgPlayPause.find('path.play').attr('d', dPause);
+					d3
+					.select($svgPlayPause.find('path.play')[0])
+					.interrupt()
+					.transition()
+					.duration(transitionTime)
+					.attr('d', dPlay);
+				});
+
+				$progressSpace.on('mousedown', function(event) {
+					progressIsClicked = true;
+					atualizarProgresso((event.pageX - spacePos.left)/(spacePos.right - spacePos.left));
+
+					spacePos = {
+						left: $progressSpace.offset().left,
+						right: $progressSpace.offset().left + $progressSpace.width()
+					}
+					cancelAnimationFrame(attProgresso);
+					$('body').on('mousemove', function(event) {
+						var newProgressValue;
+						if (event.pageX <= spacePos.left) {
+							newProgressValue = 0;
+						} else if (event.pageX >= spacePos.right) {
+							newProgressValue = 1;
+						}
+						else{
+							newProgressValue = (event.pageX - spacePos.left)/(spacePos.right - spacePos.left);
+						}
+						console.log(newProgressValue);
+						atualizarProgresso(newProgressValue);
+						
+					});
+				});
+
+
+				$('body').on('mouseup', function(event) {
+					if (progressIsClicked) {
+						$(this).off('mousemove');
+						attProgresso = requestAnimationFrame(atualizarProgresso);
+						progressIsClicked = false;
+					}
+					
+					
+				});
+
+
+
+				// $progressInput.on('input', function(event) {
+				// 	atualizarProgresso(isSeeking = true);
+				// 	cancelAnimationFrame(attProgresso);
+				// });
+
+				// $progressInput.on('change', function(event) {
+				// 	var newCurrentTime = (parseFloat($(this).val())/parseFloat($(this).attr('max')))*videoDuration;
+				// 	$videoTag[0].currentTime = newCurrentTime;
+				// 	attProgresso = requestAnimationFrame(atualizarProgresso);
+					
+				// });
+
+				$btPlayPause.on('click', function(event) {
+					if ($thisVideo.hasClass('playing')) {
+						$videoTag[0].pause();
+						cancelAnimationFrame(attProgresso);
+					} else{
+						$videoTag[0].play();
+						attProgresso = requestAnimationFrame(atualizarProgresso);
+					}
+
+				});
+			}
 		}
-	});
+	}) : null;
 	
 
 
