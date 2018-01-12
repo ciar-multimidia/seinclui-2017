@@ -173,8 +173,6 @@ jQuery(document).ready(function($) {
 		});
 	}
 
-
-
 	// codigo para funcionamento dos videos
 	var $videos = $('.video').eq(0);
 
@@ -182,11 +180,13 @@ jQuery(document).ready(function($) {
 	$videos.each(function(index, el) {
 		var $thisVideo = $(el);
 		var $videoTag = $thisVideo.find('video');
+		var videoHTML = $videoTag[0];
 		var $btPlayPause = $thisVideo.find('.bt-play-pause');
 		var $svgPlayPause = $btPlayPause.find('svg');
 		var $progressSpace = $thisVideo.find('.view-container');
 		var $visualProgress = $thisVideo.find('.progress-view');
 		var $progressInput = $thisVideo.find('.progress-slider');
+		var inputMaxValue = parseFloat($progressInput.attr('max'));
 		var attProgresso;
 		var videoDuration = 0;
 		var funcionamentoAtivado = false;
@@ -201,12 +201,11 @@ jQuery(document).ready(function($) {
 
 
 		var videoLoadChecker = setInterval(function(){
-			if ($videoTag[0].readyState > 0) {
+			if (videoHTML.readyState > 0) {
 				funcionamentoVideos();
 			}
 		}, 500);
 
-		$videoTag.on('loadeddata', funcionamentoVideos);
 
 		var funcionamentoVideos = function(){
 			if (funcionamentoAtivado === false) {
@@ -214,30 +213,32 @@ jQuery(document).ready(function($) {
 				clearInterval(videoLoadChecker);
 				$thisVideo.addClass('loaded');
 
-
-				videoDuration = $videoTag[0].duration;
 				var transitionTime = 200;
 				var dPlay = $svgPlayPause.find('path.play').attr('d');
 				var dPause = $svgPlayPause.find('path.pause').attr('d');
+				videoDuration = videoHTML.duration;
+
+
 
 				var atualizarProgresso = function(percentage){
-					var porcentagemProgresso;
-					if (percentage !== undefined) {
-						porcentagemProgresso = (Math.round(percentage*10000))/10000;
-					}
-					else{
-						porcentagemProgresso = (Math.round(($videoTag[0].currentTime/videoDuration)*10000))/10000;
-					}
-
-					console.log(atualizarProgresso.caller, porcentagemProgresso);						
-
-					var valueInput = porcentagemProgresso*0.01*parseFloat($progressInput.attr('max'));
+					
+					var porcentagemProgresso = (Math.round(percentage*10000))/10000;
+					var valueInput = porcentagemProgresso*inputMaxValue;
 	  				$visualProgress.css('width', (porcentagemProgresso*100)+'%');
 	  				$progressInput.attr({
 	  					'value': 			valueInput,
 	  					'data-valuenow': 	valueInput
-	  				});
-	  				percentage ? null : attProgresso = requestAnimationFrame(atualizarProgresso);
+	  				})
+	  				.val(valueInput);
+
+	  				// console.log('novo valor do input: ',$progressInput.val());
+				};
+
+				var progressoAutomatico = function(){
+					
+					var calcAutoProgresso = videoHTML.currentTime/videoDuration;
+					atualizarProgresso(calcAutoProgresso);
+					attProgresso = requestAnimationFrame(progressoAutomatico);
 				}
 
 				$videoTag.on('waiting', function(event) {
@@ -250,7 +251,7 @@ jQuery(document).ready(function($) {
 
 				$videoTag.on('playing', function(event) {
 					$thisVideo.addClass('playing');
-					attProgresso = requestAnimationFrame(atualizarProgresso);
+					attProgresso = requestAnimationFrame(progressoAutomatico);
 					$svgPlayPause.find('path.pause').attr('d', dPlay);
 					d3
 					.select($svgPlayPause.find('path.pause')[0])
@@ -273,14 +274,18 @@ jQuery(document).ready(function($) {
 				});
 
 				$progressSpace.on('mousedown', function(event) {
+					event.preventDefault();
 					progressIsClicked = true;
-					atualizarProgresso((event.pageX - spacePos.left)/(spacePos.right - spacePos.left));
+
 
 					spacePos = {
 						left: $progressSpace.offset().left,
 						right: $progressSpace.offset().left + $progressSpace.width()
 					}
+					atualizarProgresso((event.pageX - spacePos.left)/(spacePos.right - spacePos.left));
+
 					cancelAnimationFrame(attProgresso);
+
 					$('body').on('mousemove', function(event) {
 						var newProgressValue;
 						if (event.pageX <= spacePos.left) {
@@ -291,7 +296,7 @@ jQuery(document).ready(function($) {
 						else{
 							newProgressValue = (event.pageX - spacePos.left)/(spacePos.right - spacePos.left);
 						}
-						console.log(newProgressValue);
+						
 						atualizarProgresso(newProgressValue);
 						
 					});
@@ -299,9 +304,13 @@ jQuery(document).ready(function($) {
 
 
 				$('body').on('mouseup', function(event) {
-					if (progressIsClicked) {
+					if (progressIsClicked === true) {
 						$(this).off('mousemove');
-						attProgresso = requestAnimationFrame(atualizarProgresso);
+						var newCurrentTimePerc = (Math.floor((($progressInput.val()/inputMaxValue))*1000))/1000;
+						console.log('novo tempo calculado: ',newCurrentTimePerc);
+						videoHTML.currentTime = newCurrentTimePerc*videoDuration;
+						console.log('novo tempo APLICADO: ',videoHTML.currentTime);
+						attProgresso = requestAnimationFrame(progressoAutomatico);
 						progressIsClicked = false;
 					}
 					
@@ -317,18 +326,16 @@ jQuery(document).ready(function($) {
 
 				// $progressInput.on('change', function(event) {
 				// 	var newCurrentTime = (parseFloat($(this).val())/parseFloat($(this).attr('max')))*videoDuration;
-				// 	$videoTag[0].currentTime = newCurrentTime;
+				// 	videoHTML.currentTime = newCurrentTime;
 				// 	attProgresso = requestAnimationFrame(atualizarProgresso);
 					
 				// });
 
 				$btPlayPause.on('click', function(event) {
 					if ($thisVideo.hasClass('playing')) {
-						$videoTag[0].pause();
-						cancelAnimationFrame(attProgresso);
+						videoHTML.pause();
 					} else{
-						$videoTag[0].play();
-						attProgresso = requestAnimationFrame(atualizarProgresso);
+						videoHTML.play();
 					}
 
 				});
