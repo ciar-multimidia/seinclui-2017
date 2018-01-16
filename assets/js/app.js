@@ -184,80 +184,106 @@ jQuery(document).ready(function($) {
 
 	$videos.length > 0 ? 
 	$videos.each(function(index, el) {
-		var $thisVideo = $(el);
-		var $videoTag = $thisVideo.find('video');
-		var videoHTML = $videoTag[0];
+		var $thisVideo = $(el); //Esse container
+		var $videoTag = $thisVideo.find('video'); // O video
+		var videoHTML = $videoTag[0]; // O html root do video, importante para manipular o video de forma geral
 		var $btPlayPause = $thisVideo.find('.bt-play-pause');
 		var $svgPlayPause = $btPlayPause.find('svg');
-		var $progressSpace = $thisVideo.find('.view-container');
-		var $visualProgress = $thisVideo.find('.progress-view');
-		var $progressInput = $thisVideo.find('.progress-slider');
-		var inputMaxValue = parseFloat($progressInput.attr('max'));
-		var attProgresso;
-		var tempoAtual = 0;
-		var videoDuration = 0;
-		var funcionamentoAtivado = false;
-		var progressIsClicked = false;
-		var checkWait;
+		var $progressInput = $thisVideo.find('.view-container'); // container da barra de progresso E input acessivel
+		var $visualProgress = $thisVideo.find('.progress-view'); // barra branca do progresso
+		var inputMaxValue = parseFloat($progressInput.attr('aria-valuemax')); // Valor maximo do input
+		var inputStep = parseInt($progressInput.attr('step')); // Qtde de 'pulo' do input
+		var attProgresso; // Loop RAF que atualiza a barra de progresso de acordo com o progresso do video
+		var loopPodeContinuar = true; // O loop RAF pode ser bloqueado para alterações manuais no visual; Só quando essa alteração acontecer que o loop pode continuar novamente.
+		var tempoAtual = 0; // Armazena o tempo atual do video, varia de 0 a 1 (porcentagem!)
+		var videoDuration = 0; // Armazena o tempo total do video em segundos
+		var funcionamentoAtivado = false; 
+		var progressIsClicked = false; // Verifica se a barra de progresso foi clicada para os eventos de mouseup no body
+		var checkWait; // Qnd o video emite o 'waiting', esse checkwait espera uma fração de segundo para colocar a animação de 'buffering', devido à grnade qtde de emissoes desse evento.
 		var spacePos = {
-			left: $progressSpace.offset().left,
-			right: $progressSpace.offset().left + $progressSpace.width()
-		}
+			left: $progressInput.offset().left,
+			right: $progressInput.offset().left + $progressInput.width()
+		} // armazenando o tamanho da barra de progresso para calculo de tamanho da barra e area de clique.
 
+
+		// Pegando os paths do svg def e clonando nos botoes de cada player.
 		var playPauseClones = $('#playpausedefs').find('path').clone();
 		$svgPlayPause.append(playPauseClones);
 
-
+		// Verificar se os videos carregaram a cada 0.5 seg. Pior metodo de todos, mas é o que tem pra hoje...
 		var videoLoadChecker = setInterval(function(){
 			if (videoHTML.readyState > 0) {
 				funcionamentoVideos();
 			}
 		}, 500);
 
-
+		// enfim fazer os videos funcionarem depois de carregados.
 		var funcionamentoVideos = function(){
 			if (funcionamentoAtivado === false) {
+
 				funcionamentoAtivado = true;
 				clearInterval(videoLoadChecker);
+
+
 				$thisVideo.addClass('loaded');
 				var transitionTime = 200;
 				videoDuration = videoHTML.duration;
 				var dPlay = $svgPlayPause.find('path.play').attr('d');
 				var dPause = $svgPlayPause.find('path.pause').attr('d');
 
-				var atualizarProgresso = function(percentage){				
+
+				// metodo que atualiza o tempo atual, o tamanho da barra de progresso, o valor do input e o progresso numerico
+				var atualizarProgresso = function(percentage, atualizacaoManual){				
 					var porcentagemProgresso = Math.decimals(percentage, 3);
 					var valueInput = Math.round(porcentagemProgresso*inputMaxValue);
 	  				$visualProgress.css('width', (porcentagemProgresso*100)+'%');
 	  				$progressInput.attr({
-	  					'value': 			valueInput,
-	  					'data-valuenow': 	valueInput
-	  				})
-	  				.val(valueInput);
-	  				tempoAtual = porcentagemProgresso;
-	  				// console.log('tempo atual do video: ', tempoAtual);
+	  					'aria-valuenow': valueInput
+	  				});
+	  				// tempoAtual = porcentagemProgresso;
+	  				// console.log('atualizando progresso visual, novo tempo atual:', tempoAtual);
+	  				if (atualizacaoManual ===  true) {
+	  					loopPodeContinuar = true;
+	  				}
 				};
 
-
-
+				// metodo que é chamado atraves de um RAF para atualizar o progresso automaticamente enquanto o video está tocando.
 				var progressoAutomatico = function(){
-					var calcAutoProgresso = videoHTML.currentTime/videoDuration;
-					atualizarProgresso(calcAutoProgresso);
+					if (loopPodeContinuar) {
+						var calcAutoProgresso = videoHTML.currentTime/videoDuration;
+						atualizarProgresso(calcAutoProgresso);
+		  				console.log('atualização automatica do progresso visual');
+
+					}				
 					attProgresso = requestAnimationFrame(progressoAutomatico);
 				}
 
+				// metodo que muda "manualmente" o tempo do video. É chamado quando o usuario interage com a barra de progresso.
+				var atualizarTempoVideo = function(percentage){
+					loopPodeContinuar = false;
+					tempoAtual = Math.decimals(percentage, 2);
+					console.log('Tempo do vídeo ajustado para', (tempoAtual*100),'%');
+					videoHTML.currentTime = Math.decimals(percentage*videoDuration, 2);
+					atualizarProgresso(percentage, true);
+				}
 
 
+				// Abaixo, escutando os eventos do video:
+
+				// 1. Se o video entrar em espera, espera um pequeno tempo; se passar esse tempo e ainda estiver em espera, ativa animação de buffering.
 				$videoTag.on('waiting', function(event) {
 					checkWait = setTimeout(function(){$thisVideo.addClass('buffering')},500);
 				});	
 
+				// 2. Se o video é tocavel novamente, remover animação de buffering.
 				$videoTag.on('canplay', function(event) {
 					$thisVideo.removeClass('buffering');
 					clearTimeout(checkWait);
 				});	
 
+				// 3. Quando o video vier a tocar, receber o devido status: Muda o botao de play para pause, muda title, ativa o RAF loop.
 				$videoTag.on('playing', function(event) {
+					console.log('Video está tocando');
 					$thisVideo.addClass('playing');
 					$btPlayPause.attr('title', $btPlayPause.attr('data-title-pause'));
 					attProgresso = requestAnimationFrame(progressoAutomatico);
@@ -270,7 +296,9 @@ jQuery(document).ready(function($) {
 					.attr('d', dPause);
 				});	
 
+				// 4. Quando o video for pausado, receber o devido status: Muda o botao de de pause p/ play, muda title, cancela o RAF loop.
 				$videoTag.on('pause', function(event) {
+					console.log('Video está pausado');
 					$thisVideo.removeClass('playing');
 					$btPlayPause.attr('title', $btPlayPause.attr('data-title-play'));
 					cancelAnimationFrame(attProgresso);
@@ -283,15 +311,33 @@ jQuery(document).ready(function($) {
 					.attr('d', dPlay);
 				});
 
-				$progressSpace.on('mousedown', function(event) {
+				// Botao de play/pause. Possui o efeito esperado. Eventos esperados desse clique estao nos listeners acima.
+				$btPlayPause.on('click', function(event) {
+					$(this).trigger('blur');
+					if ($thisVideo.hasClass('playing')) {
+						videoHTML.pause();
+					} else{
+						videoHTML.play();
+					}
+				});
+
+				// Ao clicar na barra de progresso, arrastar a barra de acordo com a posição do cursor. 
+				// O cursor pode sair da area da barra sem problemas, por isso que o body recebe o 'mousemove' ao inves do input.
+				// O tempo do video é ajustado apenas quando o botao do mouse é solto (mouseup). Nesse evento, existe apenas o ajuste do tamanho da barra e do tempo numerico.
+				$progressInput.on('mousedown', function(event) {
 					event.preventDefault();
 					progressIsClicked = true;
 					spacePos = {
-						left: $progressSpace.offset().left,
-						right: $progressSpace.offset().left + $progressSpace.width()
-					}
-					atualizarProgresso((event.pageX - spacePos.left)/(spacePos.right - spacePos.left));
+						left: $progressInput.offset().left,
+						right: $progressInput.offset().left + $progressInput.width()
+					};
+
 					cancelAnimationFrame(attProgresso);
+					atualizarProgresso((event.pageX - spacePos.left)/(spacePos.right - spacePos.left));
+
+					console.log('Começou-se um clique na barra de progresso.',
+						
+						'\nProgresso  atualizado para ',(event.pageX - spacePos.left)/(spacePos.right - spacePos.left),'%');
 
 					$('body').on('mousemove', function(event) {
 						var newProgressValue;
@@ -303,39 +349,43 @@ jQuery(document).ready(function($) {
 						else{
 							newProgressValue = (event.pageX - spacePos.left)/(spacePos.right - spacePos.left);
 						}
-						
+
+						console.log('Movendo mouse, novo tempo: ', newProgressValue);
+						tempoAtual = newProgressValue;
 						atualizarProgresso(newProgressValue);
-						
 					});
 				});
 
-
+				// O evento que muda o tempo do video para o tempo escolhido. Como é um evento tão global, existe uma variavel impedindo de ativa-lo SEMPRE que houve um mouseup no body.
 				$('body').on('mouseup', function(event) {
 					if (progressIsClicked === true) {
+						console.log('Terminado o ajuste com o mouse do progresso.')
+
 						$(this).off('mousemove');
-						var newCurrentTime = Math.decimals(tempoAtual*videoDuration, 2);
-						videoHTML.currentTime = newCurrentTime;
-						// console.log('novo tempo APLICADO: ',videoHTML.currentTime);
-						// attProgresso = requestAnimationFrame(progressoAutomatico);
+						atualizarTempoVideo(tempoAtual);
 						progressIsClicked = false;
 					}
-					
-					
 				});
 
-				$progressInput.on('change', function(event) {
-					tempoAtual = $(this).val()/inputMaxValue;
-					videoHTML.currentTime = Math.decimals(tempoAtual*videoDuration, 2);
-					attProgresso = requestAnimationFrame(atualizarProgresso);
-				});
-
-				$btPlayPause.on('click', function(event) {
-					if ($thisVideo.hasClass('playing')) {
-						videoHTML.pause();
-					} else{
-						videoHTML.play();
+				// Quando o input estiver focado, as teclas direita e esquerda avançam ou retrocedem no tempo do video baseado no step definido no input.
+				$progressInput.on('keydown', function(event) {
+					var incremento;
+					var teclasCorretas = false;
+					switch(event.which){
+						case 37: teclasCorretas = true; incremento = -inputStep; break;
+						case 39: teclasCorretas = true; incremento = inputStep; break;
 					}
 
+					if (teclasCorretas) {
+						var newPercentage = (parseInt($(this).attr('aria-valuenow'))+incremento)/inputMaxValue;
+
+						if (newPercentage < 0) {
+							newPercentage = 0;
+						} else if (newPercentage > 1){
+							newPercentage = 1;
+						}
+						atualizarTempoVideo(newPercentage);
+					}
 				});
 			}
 		}
