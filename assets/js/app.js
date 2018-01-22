@@ -174,13 +174,12 @@ jQuery(document).ready(function($) {
 	}
 
 	// definir casas decimais
-	
 	Math.decimals = function(number, nOfDecimals){
 		return (Math.round(number*(10**nOfDecimals)))/(10**nOfDecimals);
 	};
 
 	// codigo para funcionamento dos videos
-	var $videos = $('.video').eq(0);
+	var $videos = $('.video');
 
 	$videos.length > 0 ? 
 	$videos.each(function(index, el) {
@@ -191,25 +190,48 @@ jQuery(document).ready(function($) {
 		var $svgPlayPause = $btPlayPause.find('svg');
 		var $numberCurrentTime = $thisVideo.find('p.currentTime');
 		var $numberTotalTime = $thisVideo.find('p.totalTime');
+		var $btMuteVolume = $thisVideo.find('.volume-container > .mute-button'); // Botao de mute
+		var $volumeInput = $thisVideo.find('.volume-container > .volume-slider'); // Slider de volume
+		var $volumeHandle = $volumeInput.find('.progress-handle'); //bolinha que indica melhor o volume
+		var $volumeVisual = $volumeInput.find('.progress-view'); // barra branca do volume
 		var $progressInput = $thisVideo.find('.progress-slider'); // container da barra de progresso E input acessivel
-		var $visualProgress = $thisVideo.find('.progress-view'); // barra branca do progresso
-		var inputMaxValue = parseFloat($progressInput.attr('aria-valuemax')); // Valor maximo do input
-		var inputStep = parseInt($progressInput.attr('step')); // Qtde de 'pulo' do input
+		var $progressHandle = $progressInput.find('.progress-handle'); //bolinha que indica melhor o fim do input do progresso
+		var $visualProgress = $progressInput.find('.progress-view'); // barra branca do progresso
+		var elUsingMouseEvents = ''; //variavel que verifica se existe algum elemento interagindo com o disparo de mousedown e mousemove global
+ 		var progressInputMaxValue = parseFloat($progressInput.attr('aria-valuemax')); // Valor maximo do input
+		var ProgressInputStep = parseInt($progressInput.attr('step')); // Qtde de 'pulo' do input
+		var volumeInputStep = parseInt($volumeInput.attr('step'));
 		var attProgresso; // Loop RAF que atualiza a barra de progresso de acordo com o progresso do video
 		var loopPodeContinuar = true; // O loop RAF pode ser bloqueado para alterações manuais no visual; Só quando essa alteração acontecer que o loop pode continuar novamente.
 		var tempoAtual = 0; // Armazena o tempo atual do video, varia de 0 a 1 (porcentagem!)
+		var volumeAtual = videoHTML.volume; //Armazena o o volume atual do video.
 		var videoDuration = 0; // Armazena o tempo total do video em segundos
 		var funcionamentoAtivado = false; 
 		var checkWait; // Qnd o video emite o 'waiting', esse checkwait espera uma fração de segundo para colocar a animação de 'buffering', devido à grnade qtde de emissoes desse evento.
-		var spacePos = {
+		var positionProgress = {
 			left: $progressInput.offset().left,
 			right: $progressInput.offset().left + $progressInput.width()
+
 		} // armazenando o tamanho da barra de progresso para calculo de tamanho da barra e area de clique.
 
+		if ($btMuteVolume.length > 0) {
+			var positionVolume = {
+				left: $volumeInput.offset().left,
+				right: $volumeInput.offset().left + $volumeInput.width()
+			}; // armazenando o tamanho da barra de volume para calculo de tamanho da barra e area de clique.	
+		}
 
 		// Pegando os paths do svg def e clonando nos botoes de cada player.
-		var playPauseClones = $('#playpausedefs').find('path').clone();
+		var playPauseClones = $('#svg-definitions').find('#play-pause-icons').find('path').clone();
 		$svgPlayPause.append(playPauseClones);
+
+		// Pegando o svg do icone de volume no svg def e colocando no botao.
+
+		if ($btMuteVolume.length > 0) {
+			var muteClone = $('#svg-definitions').find('#volume-icon').children().clone();
+			$btMuteVolume.children('svg').append(muteClone);	
+		}
+		
 
 		// Verificar se os videos carregaram a cada 0.5 seg. Pior metodo de todos, mas é o que tem pra hoje...
 		var videoLoadChecker = setInterval(function(){
@@ -240,7 +262,7 @@ jQuery(document).ready(function($) {
 					var minutos = Math.floor(seconds/60);
 					var segundos = Math.floor(seconds)%60;
 					return minutos.toString() + ':' + (segundos < 10 ? '0' : '') + segundos.toString();
-				}
+				};
 
 				// função que retorna uma string em portugues com informações de minuto e segundo
 				var labelTimeMinutes = function(seconds){
@@ -263,7 +285,7 @@ jQuery(document).ready(function($) {
 					}
 
 					return txtMinutos + txtJuncao + txtSegundos;
-				}
+				};
 
 				$thisVideo.addClass('loaded');
 				var transitionTime = 200;
@@ -278,8 +300,9 @@ jQuery(document).ready(function($) {
 				// metodo que atualiza o tempo atual, o tamanho da barra de progresso, o valor do input e o progresso numerico
 				var atualizarProgresso = function(percentage, atualizacaoManual){				
 					var porcentagemProgresso = Math.decimals(percentage, 3);
-					var valueInput = Math.round(porcentagemProgresso*inputMaxValue);
+					var valueInput = Math.round(porcentagemProgresso*progressInputMaxValue);
 	  				$visualProgress.css('width', (porcentagemProgresso*100)+'%');
+	  				$progressHandle.css('left', (porcentagemProgresso*100)+'%');
 	  				$progressInput.attr({
 	  					'aria-valuenow': valueInput,
 	  					'aria-valuetext': ($progressInput.attr('data-texto-padrao')+' '+Math.round(porcentagemProgresso*100)+'%')
@@ -304,7 +327,7 @@ jQuery(document).ready(function($) {
 
 					}				
 					attProgresso = requestAnimationFrame(progressoAutomatico);
-				}
+				};
 
 				// metodo que muda "manualmente" o tempo do video. É chamado quando o usuario interage com a barra de progresso.
 				var atualizarTempoVideo = function(percentage){
@@ -313,7 +336,29 @@ jQuery(document).ready(function($) {
 					// console.log('Tempo do vídeo ajustado para', (tempoAtual*100),'%');
 					videoHTML.currentTime = Math.decimals(percentage*videoDuration, 2);
 					atualizarProgresso(percentage, true);
-				}
+				};
+
+
+				// metodo para ajustar o slider do volume
+				var ajustarVolume = function(percentagem){
+					var arredondado = Math.decimals(percentagem, 2);
+					$volumeVisual.css('width', (arredondado*100)+'%');
+					$volumeHandle.css('left', (arredondado*100)+'%');
+					if (arredondado === 0) {
+						$btMuteVolume.addClass('volume-mudo').removeClass('volume-baixo')
+					}
+
+					else if (arredondado > 0 && arredondado <= 0.5) {
+						$btMuteVolume.addClass('volume-baixo').removeClass('volume-mudo');
+					}
+
+					else if (arredondado > 0.5){
+						$btMuteVolume.removeClass('volume-mudo volume-baixo');
+					}
+					console.log(arredondado);
+
+					videoHTML.volume = arredondado;
+				};
 
 
 				// Abaixo, escutando os eventos do video:
@@ -391,54 +436,95 @@ jQuery(document).ready(function($) {
 				$progressInput.on('mousedown', function(event) {
 					$(this).trigger('focus');
 					event.preventDefault();
-					progressIsClicked = true;
-					spacePos = {
+					elUsingMouseEvents = 'progressBar';
+					positionProgress = {
 						left: $progressInput.offset().left,
 						right: $progressInput.offset().left + $progressInput.width()
 					};
 
 					var newProgressValue;
-					if (event.pageX <= spacePos.left) {
+					if (event.pageX <= positionProgress.left) {
 						newProgressValue = 0;
-					} else if (event.pageX >= spacePos.right) {
+					} else if (event.pageX >= positionProgress.right) {
 						newProgressValue = 1;
 					}
 					else{
-						newProgressValue = (event.pageX - spacePos.left)/(spacePos.right - spacePos.left);
+						newProgressValue = (event.pageX - positionProgress.left)/(positionProgress.right - positionProgress.left);
 					}
 					tempoAtual = newProgressValue;
 					$videoTag.trigger('seeking');
 					
 					// console.log('Começou-se um clique na barra de progresso.',
-					// '\nProgresso  atualizado para ',(event.pageX - spacePos.left)/(spacePos.right - spacePos.left),'%');
+					// '\nProgresso  atualizado para ',(event.pageX - positionProgress.left)/(positionProgress.right - positionProgress.left),'%');
+				});
 
-					$('body').on('mousemove', function(event) {
-						
-						if (event.pageX <= spacePos.left) {
+
+				$volumeInput.on('mousedown', function(event) {
+					$(this).trigger('focus')
+					event.preventDefault();
+					elUsingMouseEvents = 'volumeBar';
+					positionVolume = {
+						left: $volumeInput.offset().left,
+						right: $volumeInput.offset().left + $volumeInput.width()
+					};
+
+
+					var newVolumeValue;
+					if (event.pageX <= positionVolume.left) {
+						newVolumeValue = 0;
+					} else if (event.pageX >= positionVolume.right) {
+						newVolumeValue = 1;
+					}
+					else{
+						newVolumeValue = (event.pageX - positionVolume.left)/(positionVolume.right - positionVolume.left);
+					}
+					ajustarVolume(newVolumeValue);
+
+
+				});
+
+				$('body').on('mousemove', function(event) {
+
+					if (elUsingMouseEvents === 'progressBar') {
+						var newProgressValue;
+						if (event.pageX <= positionProgress.left) {
 							newProgressValue = 0;
-						} else if (event.pageX >= spacePos.right) {
+						} else if (event.pageX >= positionProgress.right) {
 							newProgressValue = 1;
 						}
 						else{
-							newProgressValue = (event.pageX - spacePos.left)/(spacePos.right - spacePos.left);
+							newProgressValue = (event.pageX - positionProgress.left)/(positionProgress.right - positionProgress.left);
 						}
 						tempoAtual = newProgressValue;
 						$videoTag.trigger('seeking');
+					} else if (elUsingMouseEvents === 'volumeBar') {
 
-						
-					});
-
-					// O evento que muda o tempo do video para o tempo escolhido. Como é um evento tão global, existe uma variavel impedindo de ativa-lo SEMPRE que houve um mouseup no body.
-					$('body').on('mouseup', function(event) {
-						if (progressIsClicked === true) {
-							// console.log('Terminado o ajuste com o mouse do progresso.')
-
-							$(this).off('mousemove mouseup');
-							// atualizarTempoVideo(tempoAtual);
-							progressIsClicked = false;
-							atualizarTempoVideo(tempoAtual);
+						var newVolumeValue;
+						if (event.pageX <= positionVolume.left) {
+							newVolumeValue = 0;
+						} else if (event.pageX >= positionVolume.right) {
+							newVolumeValue = 1;
 						}
-					});
+						else{
+							newVolumeValue = (event.pageX - positionVolume.left)/(positionVolume.right - positionVolume.left);
+						}
+						ajustarVolume(newVolumeValue);
+					}
+					
+					
+
+					
+				});
+
+				// O evento que muda o tempo do video para o tempo escolhido. Como é um evento tão global, existe uma variavel impedindo de ativa-lo SEMPRE que houve um mouseup no body.
+				$('body').on('mouseup', function(event) {
+					if (elUsingMouseEvents === 'progressBar') {
+						atualizarTempoVideo(tempoAtual);
+					} else if(elUsingMouseEvents === 'volumeBar'){
+						
+					}
+					elUsingMouseEvents = '';
+
 				});
 
 				
@@ -448,12 +534,12 @@ jQuery(document).ready(function($) {
 					var incremento;
 					var teclasCorretas = false;
 					switch(event.which){
-						case 37: teclasCorretas = true; incremento = -inputStep; break;
-						case 39: teclasCorretas = true; incremento = inputStep; break;
+						case 37: teclasCorretas = true; incremento = -ProgressInputStep; break;
+						case 39: teclasCorretas = true; incremento = ProgressInputStep; break;
 					}
 
 					if (teclasCorretas) {
-						var newPercentage = (parseInt($(this).attr('aria-valuenow'))+incremento)/inputMaxValue;
+						var newPercentage = (parseInt($(this).attr('aria-valuenow'))+incremento)/progressInputMaxValue;
 
 						if (newPercentage < 0) {
 							newPercentage = 0;
@@ -463,6 +549,27 @@ jQuery(document).ready(function($) {
 						
 						tempoAtual = newPercentage;
 						atualizarTempoVideo(tempoAtual);
+					}
+				});
+
+				$volumeInput.on('keydown', function(event) {
+					var incremento;
+					var teclasCorretas = false;
+					switch(event.which){
+						case 37: teclasCorretas = true; incremento = -volumeInputStep; break;
+						case 39: teclasCorretas = true; incremento = volumeInputStep; break;
+					}
+
+					if (teclasCorretas) {
+						var newVolume = (videoHTML.volume+(incremento/100));
+
+						if (newVolume < 0) {
+							newVolume = 0;
+						} else if (newVolume > 1){
+							newVolume = 1;
+						}
+						
+						ajustarVolume(newVolume);
 					}
 				});
 			}
