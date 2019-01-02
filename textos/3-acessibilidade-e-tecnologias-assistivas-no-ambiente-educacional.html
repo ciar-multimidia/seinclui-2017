@@ -65,6 +65,27 @@
 
 <main>
 
+	<svg id='svg-definitions'>
+		<defs id='play-pause-icons'>
+			<path 	class='pause' 	d='M0,0 L20,0 L20,50 L0,50z 		M30,0 L50,0 L50,50 L30,50z'/>
+			<path 	class='play' 	d='M0,0 L25,12.5 L25,37.5 L0,50 	M25,12.5 L50,25 L50,25 L25,37.5z'/>
+		</defs>
+
+		<defs id="volume-icon">
+			<path d="M270 0L136.12 153h-135L0 447h135l135 153z"/>
+			
+			<path class='volume-alto' d="M600 300C600 144.44 481.6 16.54 330 1.49v75.5C440.08 91.66 525 185.91 525 300s-84.92 208.34-195 223v75.51C481.6 583.46 600 455.56 600 300z"/>
+
+			<path class='volume-baixo' d="M450 300c0-72.57-51.53-133.1-120-147v294c68.47-13.9 120-74.43 120-147z"/>
+			
+			<path class='volume-mudo' d="M600 209.31L555.69 165 465 255.69 374.31 165 330 209.31 420.69 300 330 390.69 374.31 435 465 344.31 555.69 435 600 390.69 509.31 300z"/>
+		</defs>
+
+		<defs id="volume-slider">
+			<path d="M150,0 L150,50 L0,50 L0,45z"/>
+		</defs>
+	</svg>
+
 	<section class="sessao texto-interno">
 		<article>
 			<div class="conteudo">
@@ -80,7 +101,7 @@
 
 				<div class="ajuste-altura"></div>
 				<div class="controls">
-					<p class="contagem" aria-relevant='text' aria-atomic='true'><span class='span-contagem'>1</span> de 10</p>
+					<p class="contagem" aria-relevant='text' aria-atomic='true'><span class='span-contagem'>1</span> de 9</p>
 				</div>
 
 				<div class='slider-items' aria-relevant='additions' aria-atomic='false' id='boxslide1'>
@@ -120,10 +141,6 @@
 						><figure>
 							<img src="imagens/9-regua-de-assinatura-para-cego-ou-baixa-visao.jpg" alt="">
 							<figcaption>Régua de assinatura para cego ou baixa visão.</figcaption>
-						</figure
-						><figure>
-							<video src="../videos/lai.mp4" preload="none" poster="../videos/lai.jpg" controls="true"></video>
-							<figcaption>Vídeo de apresentação do Laboratório de Acessibilidade Informacional da UFG.</figcaption>
 						</figure>
 					</div>
 					</div>
@@ -134,10 +151,10 @@
 					<input type="range" aria-controls='#boxslide1'
 					value='1' 
 					min='1' 
-					max='10' 
+					max='9' 
 					step='1'
 					aria-valuemin='1'
-					aria-valuemax='10'
+					aria-valuemax='9'
 					aria-valuenow='1'
 					aria-valuetext='Item 1'>
 				</div>
@@ -145,14 +162,57 @@
 				
 			</div>
 
-			<article>
-				<div class="conteudo">
-					<p>Também existem tecnologias de baixo custo que muitas vezes são produzidas pelos próprios professores ou pela equipe de atendimento educacional especializado das instituições. Alguns exemplos são gráficos, desenhos e figuras que tem seus contornos elevados por algum material alternativo, e que podem permitir que alunos cegos e com baixa visão percebam as formas pelo tato. Esses contornos podem ser elevados por um barbante colado, por cola 3D (como se pode ver na foto abaixo) que é comprada em qualquer papelaria por preço muito barato, ou reforçando o desenho em cima de alguma tela, como a tela que utilizamos na janela para evitar entrada de mosquito.</p>
-					<p>Peças em 3D podem favorecer os alunos com baixa visão e cegos a obter o conhecimento por meio do tato. Muitos cursos utilizam o estudo de formas geométricas e outras formas específicas, caso de cursos como matemática, engenharia, arquitetura, entre outros. Peças anatômicas de resina compradas prontas ou elementos em 3D podem ser produzidas para cursos relacionados a ciências biológicas, como medicina, fisioterapia, educação física e outros, ajudam todos a compreender as estruturas do corpo humano. Formas feitas em 3D em uma impressora própria que na maioria das vezes utiliza-se de filamentos de plástico. </p>
-					<p>Caso sua instituição não tenha impressora 3D com criatividade e empenho é possível produzir muitos elementos com materiais recicláveis e dobraduras. Muitos alunos cegos e com baixa visão utilizam um programa específico que tem como função fazer leitura com voz de tudo que o mouse ou o cursor passar por cima. É bem interessante que os professores baixem um desses programas em seus computadores para perceberem como os alunos leem os textos e livros indicados nas disciplinas. Indicamos o Dosvox que é um programa gratuito, criado pelo Núcleo de Computação Eletrônica da Universidade Federal do Rio de Janeiro (UFRJ), que pode ser encontrado no <a href="http://intervox.nce.ufrj.br/dosvox/" target="blank">site do Dosvox.</a></p>
+			<div class="conteudo">
+				<p>Também existem tecnologias de baixo custo que muitas vezes são produzidas pelos próprios professores ou pela equipe de atendimento educacional especializado das instituições. Alguns exemplos são gráficos, desenhos e figuras que tem seus contornos elevados por algum material alternativo, e que podem permitir que alunos cegos e com baixa visão percebam as formas pelo tato. Esses contornos podem ser elevados por um barbante colado, por cola 3D (como se pode ver na foto abaixo) que é comprada em qualquer papelaria por preço muito barato, ou reforçando o desenho em cima de alguma tela, como a tela que utilizamos na janela para evitar entrada de mosquito.</p>
+				<p>Peças em 3D podem favorecer os alunos com baixa visão e cegos a obter o conhecimento por meio do tato. Muitos cursos utilizam o estudo de formas geométricas e outras formas específicas, caso de cursos como matemática, engenharia, arquitetura, entre outros. Peças anatômicas de resina compradas prontas ou elementos em 3D podem ser produzidas para cursos relacionados a ciências biológicas, como medicina, fisioterapia, educação física e outros, ajudam todos a compreender as estruturas do corpo humano. Formas feitas em 3D em uma impressora própria que na maioria das vezes utiliza-se de filamentos de plástico. </p>
+				<p>Caso sua instituição não tenha impressora 3D com criatividade e empenho é possível produzir muitos elementos com materiais recicláveis e dobraduras. Muitos alunos cegos e com baixa visão utilizam um programa específico que tem como função fazer leitura com voz de tudo que o mouse ou o cursor passar por cima. É bem interessante que os professores baixem um desses programas em seus computadores para perceberem como os alunos leem os textos e livros indicados nas disciplinas. Indicamos o Dosvox que é um programa gratuito, criado pelo Núcleo de Computação Eletrônica da Universidade Federal do Rio de Janeiro (UFRJ), que pode ser encontrado no <a href="http://intervox.nce.ufrj.br/dosvox/" target="blank">site do Dosvox.</a></p>
+				<p>Na Universidade Federal de Goiás existe o Laboratório de Acessibilidade Informacional que faz adaptação de materiais bibliográficos para os estudantes com deficiência da instituição e também possui espaço de estudo com equipamentos de tecnologia assistiva aberto à toda comunidade. Conheça esse espaço no vídeo a seguir.</p>
 
+			</div>
+
+			<div class="video maior">
+			<video src="../videos/lai.mp4" poster="../videos/lai.jpg"></video>
+				<div class="video-controls">
+					<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+						<svg viewbox='0 0 50 50' aria-hidden="true"></svg>
+					</button>
+					
+					<h2>Vídeo de apresentação do Laboratório de Acessibilidade Informacional da UFG</h2>
+
+					<div class="loading-anim">
+						<img src="../assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+					</div>
+
+					<div class="progress-space">
+
+						<div class="progress-number">
+							<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+							<p>•</p>
+							<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+						</div>
+
+						<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+							<div class="progress-full"></div>
+							<div class="progress-view"></div>
+							<div class="progress-handle"></div>
+						</div>
+
+						<div class="volume-container">
+							<button class='mute-button' title='Desativar o som do vídeo' data-title-mute='Reativar o som do vídeo' data-title-nomute='Desativar o som do vídeo'>
+								<svg viewbox='0 0 600 600' aria-hidden="true"></svg>
+							</button>
+
+							<div class="volume-slider" data-texto-padrao='O volume do vídeo está em' tabindex="0" role='slider' step='10' aria-valuemin='0' aria-valuemax='100' aria-valuenow='100' aria-valuetext='O volume do vídeo está em 100%'>
+								<div class="progress-full"></div>
+								<div class="progress-view"></div>
+								<div class="progress-handle"></div>
+							</div>
+						</div>
+
+						<a href="https://www.youtube.com/watch?v=S9xaixy8WYU" target="blank" class="youtube-link" title='Link do YouTube para esse vídeo.'><img src="../assets/img/logo-youtube.svg"></a>
+					</div>	
 				</div>
-			</article>
+			</div>
 		</article>
 	</section>
 
@@ -225,7 +285,10 @@
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script src='../assets/js/svg-injector.js'></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="../assets/js/jquery.svg.min.js"></script>
+<script src="../assets/js/jquery.svgdom.min.js"></script>
+<script src='../assets/js/raf_polyfill.js'></script>
 <script src='../assets/js/app.js'></script>
 </body>
 </html>

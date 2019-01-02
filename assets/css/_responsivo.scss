@@ -163,6 +163,20 @@
     padding-bottom: 50px;
   }
 
+  .video{
+    @include animation(none);
+
+    video{
+      opacity: 1;
+    }
+
+    &.loaded{
+      .video-controls{
+        display: none;
+      }
+    }
+  }
+
 
   .sessao {
     &.texto-video {

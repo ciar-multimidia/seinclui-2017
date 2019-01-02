@@ -108,13 +108,16 @@
 				<div class="wrap-video">
 					<section class="video" aria-label='Vídeo de libras dessa sessão.'>
 						<video  src="videos/boas-vindas.mp4" muted="true" poster="videos/interprete-1.jpg"></video>
-						<div class="controls">
+						<div class="video-controls">
 							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
-								<svg viewbox='0 0 50 50'></svg>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
 							</button>
 
-							<div class="progress-space">
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
 
+							<div class="progress-space">
 								<div class="progress-number">
 									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
 									<p>•</p>
@@ -126,13 +129,8 @@
 									<div class="progress-view"></div>
 									<div class="progress-handle"></div>
 								</div>
-
-
 							</div>
 
-							<div class="loading-anim">
-								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
-							</div>
 						</div>
 					</section>
 				</div>
@@ -147,10 +145,16 @@
 
 			<div class="video maior">
 				<video src="videos/video_cotidiano.mp4" poster="videos/thumb_cotidiano.jpg"></video>
-				<div class="controls">
+				<div class="video-controls">
 					<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
-						<svg viewbox='0 0 50 50'></svg>
+						<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
 					</button>
+					
+					<h2>Cotidiano de Alunos e Professores</h2>
+
+					<div class="loading-anim">
+						<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+					</div>
 
 					<div class="progress-space">
 
@@ -168,9 +172,7 @@
 
 						<div class="volume-container">
 							<button class='mute-button' title='Desativar o som do vídeo' data-title-mute='Reativar o som do vídeo' data-title-nomute='Desativar o som do vídeo'>
-								<svg viewbox='0 0 600 600'>
-									
-								</svg>
+								<svg viewbox='0 0 600 600' aria-hidden='true'></svg>
 							</button>
 
 							<div class="volume-slider" data-texto-padrao='O volume do vídeo está em' tabindex="0" role='slider' step='10' aria-valuemin='0' aria-valuemax='100' aria-valuenow='100' aria-valuetext='O volume do vídeo está em 100%'>
@@ -185,9 +187,7 @@
 						
 					</div>
 
-					<div class="loading-anim">
-						<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
-					</div>
+					
 				</div>
 			</div>
 
@@ -215,6 +215,29 @@
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
 						<video src="videos/movimentos-pessoa-com-deficiencia.mp4" poster="videos/interprete-1.jpg" muted="true"></video>
+						<div class="video-controls">
+							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+							</button>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+
+							<div class="progress-space">
+								<div class="progress-number">
+									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+									<p>•</p>
+									<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+								</div>
+
+								<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+									<div class="progress-full"></div>
+									<div class="progress-view"></div>
+									<div class="progress-handle"></div>
+								</div>
+							</div>
+						</div>
 					</section >
 				</div>
 			</div>
@@ -226,8 +249,52 @@
 	<section class="sessao branco" aria-label='Relato de experiência da professora Renata.'>
 		<div class="container fullgrid">
 
-			<div class="video">
+			<div class="video maior">
 				<video src="videos/relato-renata.mp4" poster="videos/relato-renata.jpg"></video>
+				<div class="video-controls">
+					<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+						<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+					</button>
+					
+					<h2>Relato da Professora Renata</h2>
+
+					<div class="loading-anim">
+						<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+					</div>
+
+					<div class="progress-space">
+
+						<div class="progress-number">
+							<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+							<p>•</p>
+							<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+						</div>
+
+						<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+							<div class="progress-full"></div>
+							<div class="progress-view"></div>
+							<div class="progress-handle"></div>
+						</div>
+
+						<div class="volume-container">
+							<button class='mute-button' title='Desativar o som do vídeo' data-title-mute='Reativar o som do vídeo' data-title-nomute='Desativar o som do vídeo'>
+								<svg viewbox='0 0 600 600' aria-hidden='true'></svg>
+							</button>
+
+							<div class="volume-slider" data-texto-padrao='O volume do vídeo está em' tabindex="0" role='slider' step='10' aria-valuemin='0' aria-valuemax='100' aria-valuenow='100' aria-valuetext='O volume do vídeo está em 100%'>
+								<div class="progress-full"></div>
+								<div class="progress-view"></div>
+								<div class="progress-handle"></div>
+							</div>
+						</div>
+
+						<a href="https://www.youtube.com/watch?v=OhzS-Tlej-U" target="blank" class="youtube-link" title='Link do YouTube para esse vídeo.'><img src="assets/img/logo-youtube.svg"></a>
+
+						
+					</div>
+
+					
+				</div>
 			</div>
 
 		</div>
@@ -254,6 +321,29 @@
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
 						<video src="videos/acessibilidade-e-tecnologias.mp4" poster="videos/interprete-4.jpg" muted="true"></video>
+						<div class="video-controls">
+							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+							</button>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+
+							<div class="progress-space">
+								<div class="progress-number">
+									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+									<p>•</p>
+									<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+								</div>
+
+								<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+									<div class="progress-full"></div>
+									<div class="progress-view"></div>
+									<div class="progress-handle"></div>
+								</div>
+							</div>
+						</div>
 					</section >
 				</div>
 			</div>
@@ -282,6 +372,29 @@
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
 						<video src="videos/diversidade-e-professor.mp4" poster="videos/interprete-3.jpg" muted="true"></video>
+						<div class="video-controls">
+							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+							</button>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+
+							<div class="progress-space">
+								<div class="progress-number">
+									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+									<p>•</p>
+									<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+								</div>
+
+								<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+									<div class="progress-full"></div>
+									<div class="progress-view"></div>
+									<div class="progress-handle"></div>
+								</div>
+							</div>
+						</div>
 					</section >
 				</div>
 			</div>
@@ -292,8 +405,52 @@
 	<section class="sessao branco" aria-label='Relato de experiência do professor Vanderlei.'>
 		<div class="container fullgrid">
 
-			<div class="video">
+			<div class="video maior">
 				<video src="videos/relato_vanderlei.mp4" poster="videos/thumb_vanderlei.jpg"></video>
+				<div class="video-controls">
+					<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+						<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+					</button>
+					
+					<h2>Relato do Professor Vanderlei</h2>
+
+					<div class="loading-anim">
+						<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+					</div>
+
+					<div class="progress-space">
+
+						<div class="progress-number">
+							<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+							<p>•</p>
+							<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+						</div>
+
+						<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+							<div class="progress-full"></div>
+							<div class="progress-view"></div>
+							<div class="progress-handle"></div>
+						</div>
+
+						<div class="volume-container">
+							<button class='mute-button' title='Desativar o som do vídeo' data-title-mute='Reativar o som do vídeo' data-title-nomute='Desativar o som do vídeo'>
+								<svg viewbox='0 0 600 600' aria-hidden='true'></svg>
+							</button>
+
+							<div class="volume-slider" data-texto-padrao='O volume do vídeo está em' tabindex="0" role='slider' step='10' aria-valuemin='0' aria-valuemax='100' aria-valuenow='100' aria-valuetext='O volume do vídeo está em 100%'>
+								<div class="progress-full"></div>
+								<div class="progress-view"></div>
+								<div class="progress-handle"></div>
+							</div>
+						</div>
+
+						<a href="https://www.youtube.com/watch?v=qrRxESOB31A" target="blank" class="youtube-link" title='Link do YouTube para esse vídeo.'><img src="assets/img/logo-youtube.svg"></a>
+
+						
+					</div>
+
+					
+				</div>
 			</div>
 
 		</div>
@@ -355,6 +512,29 @@
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
 						<video src="videos/diversidade-visual.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
+						<div class="video-controls">
+							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+							</button>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+
+							<div class="progress-space">
+								<div class="progress-number">
+									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+									<p>•</p>
+									<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+								</div>
+
+								<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+									<div class="progress-full"></div>
+									<div class="progress-view"></div>
+									<div class="progress-handle"></div>
+								</div>
+							</div>
+						</div>
 					</section >
 				</div>
 			</div>
@@ -380,15 +560,92 @@
 					</div>
 				</article>
 			</div>
-			<div class="area-video">
+			<div class="area-video detalhe-inferior">
 				<button class="deslizar" aria-label="Expandir vídeo de libras desse texto." data-txt-expand='Expandir vídeo de libras desse texto.' data-txt-collapse='Retrair vídeo de libras desse texto.'></button>
 
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
 						<video src="videos/diversidade-auditiva.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
+						<div class="video-controls">
+							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+							</button>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+
+							<div class="progress-space">
+								<div class="progress-number">
+									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+									<p>•</p>
+									<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+								</div>
+
+								<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+									<div class="progress-full"></div>
+									<div class="progress-view"></div>
+									<div class="progress-handle"></div>
+								</div>
+							</div>
+						</div>
 					</section >
 				</div>
 			</div>
+		</div>
+	</section>
+
+	<section class="sessao branco" aria-label='Relato de experiência da professora Nubia.'>
+		<div class="container fullgrid">
+
+			<div class="video maior">
+				<video src="videos/relato_nubia.mp4" poster="videos/thumb_nubia.jpg"></video>
+				<div class="video-controls">
+					<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+						<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+					</button>
+					
+					<h2>Relato da Professora Nubia</h2>
+
+					<div class="loading-anim">
+						<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+					</div>
+
+					<div class="progress-space">
+
+						<div class="progress-number">
+							<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+							<p>•</p>
+							<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+						</div>
+
+						<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+							<div class="progress-full"></div>
+							<div class="progress-view"></div>
+							<div class="progress-handle"></div>
+						</div>
+
+						<div class="volume-container">
+							<button class='mute-button' title='Desativar o som do vídeo' data-title-mute='Reativar o som do vídeo' data-title-nomute='Desativar o som do vídeo'>
+								<svg viewbox='0 0 600 600' aria-hidden='true'></svg>
+							</button>
+
+							<div class="volume-slider" data-texto-padrao='O volume do vídeo está em' tabindex="0" role='slider' step='10' aria-valuemin='0' aria-valuemax='100' aria-valuenow='100' aria-valuetext='O volume do vídeo está em 100%'>
+								<div class="progress-full"></div>
+								<div class="progress-view"></div>
+								<div class="progress-handle"></div>
+							</div>
+						</div>
+
+						<a href="https://www.youtube.com/watch?v=adA8IfiEO1M" target="blank" class="youtube-link" title='Link do YouTube para esse vídeo.'><img src="assets/img/logo-youtube.svg"></a>
+
+						
+					</div>
+
+					
+				</div>
+			</div>
+
 		</div>
 	</section>
 
@@ -417,6 +674,29 @@
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
 						<video src="videos/diversidade-motora.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
+						<div class="video-controls">
+							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+							</button>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+
+							<div class="progress-space">
+								<div class="progress-number">
+									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+									<p>•</p>
+									<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+								</div>
+
+								<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+									<div class="progress-full"></div>
+									<div class="progress-view"></div>
+									<div class="progress-handle"></div>
+								</div>
+							</div>
+						</div>
 					</section >
 				</div>
 			</div>
@@ -448,6 +728,29 @@
 				<div class="wrap-video">
 					<section aria-label='Vídeo de libras dessa sessão.' class="video">
 						<video src="videos/neurodiversidade.mp4" poster="videos/interprete-2.jpg" muted="true"></video>
+						<div class="video-controls">
+							<button class="bt-play-pause" title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Parar vídeo'>
+								<svg viewbox='0 0 50 50' aria-hidden='true'></svg>
+							</button>
+
+							<div class="loading-anim">
+								<img src="assets/img/anim-loading.svg" alt="Esse vídeo está carregando">
+							</div>
+
+							<div class="progress-space">
+								<div class="progress-number">
+									<p class="currentTime" data-texto-padrao='O vídeo está em' aria-label='O vídeo está em 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+									<p>•</p>
+									<p class="totalTime" data-texto-padrao='O vídeo possui' aria-label='O vídeo possui 0 minutos e 0 segundos'><span aria-hidden='true'>0:00</span></p>
+								</div>
+
+								<div class="progress-slider" data-texto-padrao='O vídeo está em' tabindex="0" role='slider' step='50' aria-valuemin='0' aria-valuemax='1000' aria-valuenow='0' aria-valuetext='O vídeo está em 0%'>
+									<div class="progress-full"></div>
+									<div class="progress-view"></div>
+									<div class="progress-handle"></div>
+								</div>
+							</div>
+						</div>
 					</section >
 				</div>
 			</div>

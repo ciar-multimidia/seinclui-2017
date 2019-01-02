@@ -24,14 +24,16 @@ jQuery(document).ready(function($) {
 	var slidersAll = $('.slider-txt, .slider-img');
 	slidersAll.each(function(index, el) {
 		var esseSlider = $(el);
-		var botoes = esseSlider.find('button');
-		var inputRange = esseSlider.find('input[type="range"]');
-		var pContagem = esseSlider.find('p.contagem');
-		var contagemSlide = esseSlider.find('p.contagem > span.span-contagem');
+		var sliderControls = esseSlider.children('.controls');
+		var botoes = sliderControls.find('button');
+		var inputRange = sliderControls.find('input[type="range"]');
+		var pContagem = sliderControls.find('p.contagem');
+		var contagemSlide = pContagem.children('span.span-contagem');
 		var containerSlides = esseSlider.find('.slider-items');
-		var textosSlides = esseSlider.find('.slider-items > div.scroller > p');
+		var textosSlides = containerSlides.children('div.scroller').children('p');
 		// var contTexto = esseSlider.find('p.cont-texto');
-		var imgSlides = esseSlider.find('.slider-items > div.scroller > figure');
+		var imgSlides = containerSlides.children('div.scroller').children('figure');
+
 		var slideAtual = 1;
 		var qtdeItens = textosSlides.length > 0 ? textosSlides.length : imgSlides.length > 0 ? imgSlides.length : undefined;
 		var nomeStorage = nomeHtml+'_'+index;
@@ -183,13 +185,15 @@ jQuery(document).ready(function($) {
 
 	$videos.length > 0 ? 
 	$videos.each(function(index, el) {
+		var minWidthControls = 768;
 		var $thisVideo = $(el); //Esse container
 		var $videoTag = $thisVideo.find('video'); // O video
 		var videoHTML = $videoTag[0]; // O html root do video, importante para manipular o video de forma geral
-		var $btPlayPause = $thisVideo.find('.bt-play-pause');
-		var $svgPlayPause = $btPlayPause.find('svg');
-		var $numberCurrentTime = $thisVideo.find('p.currentTime');
-		var $numberTotalTime = $thisVideo.find('p.totalTime');
+		var $youtubeLink = $thisVideo.find('a.youtube-link'); // botao que leva para o respectivo video no youtube
+		var $btPlayPause = $thisVideo.find('.bt-play-pause'); // Botão de play/pause
+		var $svgPlayPause = $btPlayPause.find('svg'); //SVG dentro do botão
+		var $numberCurrentTime = $thisVideo.find('p.currentTime'); // Numeros indicando o tempo atual do video
+		var $numberTotalTime = $thisVideo.find('p.totalTime'); // Numeros indicando o tempo total do video
 		var $btMuteVolume = $thisVideo.find('.volume-container > .mute-button'); // Botao de mute
 		var $volumeInput = $thisVideo.find('.volume-container > .volume-slider'); // Slider de volume
 		var $volumeHandle = $volumeInput.find('.progress-handle'); //bolinha que indica melhor o volume
@@ -200,11 +204,13 @@ jQuery(document).ready(function($) {
 		var elUsingMouseEvents = ''; //variavel que verifica se existe algum elemento interagindo com o disparo de mousedown e mousemove global
  		var progressInputMaxValue = parseFloat($progressInput.attr('aria-valuemax')); // Valor maximo do input
 		var ProgressInputStep = parseInt($progressInput.attr('step')); // Qtde de 'pulo' do input
-		var volumeInputStep = parseInt($volumeInput.attr('step'));
+		var volumeInputStep = parseInt($volumeInput.attr('step')); // Qtde de pulo do volume
 		var attProgresso; // Loop RAF que atualiza a barra de progresso de acordo com o progresso do video
 		var loopPodeContinuar = true; // O loop RAF pode ser bloqueado para alterações manuais no visual; Só quando essa alteração acontecer que o loop pode continuar novamente.
 		var tempoAtual = 0; // Armazena o tempo atual do video, varia de 0 a 1 (porcentagem!)
 		var volumeAtual = videoHTML.volume; //Armazena o o volume atual do video.
+		var volumeAntesMute = 1;
+		var volumeAntesAjuste;
 		var videoDuration = 0; // Armazena o tempo total do video em segundos
 		var funcionamentoAtivado = false; 
 		var checkWait; // Qnd o video emite o 'waiting', esse checkwait espera uma fração de segundo para colocar a animação de 'buffering', devido à grnade qtde de emissoes desse evento.
@@ -231,10 +237,28 @@ jQuery(document).ready(function($) {
 			var muteClone = $('#svg-definitions').find('#volume-icon').children().clone();
 			$btMuteVolume.children('svg').append(muteClone);	
 		}
-		
+
+		videoHTML.load();
+
+		var definirControles = function(){
+			// console.log($('body').width(), minWidthControls);
+
+			if ($('body').width() > minWidthControls) {
+				// console.log('controle custom pros videos');
+				videoHTML.controls = false;
+			} else{
+				// console.log('controle padrao pros videos');
+				videoHTML.controls = true;
+			}	
+		};
+
+		definirControles();
+
+		$(window).on('resize', definirControles);
 
 		// Verificar se os videos carregaram a cada 0.5 seg. Pior metodo de todos, mas é o que tem pra hoje...
 		var videoLoadChecker = setInterval(function(){
+			// console.log('verificando se carregou', videoHTML.readyState);
 			if (videoHTML.readyState > 0) {
 				funcionamentoVideos();
 			}
@@ -244,18 +268,18 @@ jQuery(document).ready(function($) {
 		var funcionamentoVideos = function(){
 			if (funcionamentoAtivado === false) {
 
+				// console.log('nome do vídeo: ',videoHTML.src, '\nduração do vídeo: ', videoHTML.duration);
+
 				funcionamentoAtivado = true;
 				clearInterval(videoLoadChecker);
 
-				// var events = ['abort','canplay','canplaythrough','durationchange','emptied','encrypted','ended','error','interruptbegin','interruptend','loadeddata','loadedmetadata','loadstart','mozaudioavailable','pause','play','playing',// 'progress','ratechange','seeked','seeking','stalled','suspend',// 'timeupdate',// 'volumechange','waiting'];
+				// var events = ['abort','canplay','canplaythrough','durationchange','emptied','encrypted','ended','error','interruptbegin','interruptend','loadeddata','loadedmetadata','loadstart','mozaudioavailable','pause','play','playing','progress','ratechange','seeked','seeking','stalled','suspend','volumechange','waiting'];
 
 				// for (var i = 0; i < events.length; i++) {
 				// 	$videoTag.on( events[i], function(event) {
-				// 		var porcentagem = (Math.round(($(this)[0].currentTime / $(this)[0].duration)*100));
-
-				// 		console.log(porcentagem, event['type']);
+				// 		console.log(event['type']);
 				// 	});
-				// }
+				// };
 
 				// função que transforma segundos em minutos
 				var secondsToMinutes = function(seconds){
@@ -345,19 +369,25 @@ jQuery(document).ready(function($) {
 					$volumeVisual.css('width', (arredondado*100)+'%');
 					$volumeHandle.css('left', (arredondado*100)+'%');
 					if (arredondado === 0) {
-						$btMuteVolume.addClass('volume-mudo').removeClass('volume-baixo')
+						$btMuteVolume.addClass('volume-mudo').removeClass('volume-baixo').attr({'title': $btMuteVolume.attr('data-title-mute')});
 					}
 
-					else if (arredondado > 0 && arredondado <= 0.5) {
-						$btMuteVolume.addClass('volume-baixo').removeClass('volume-mudo');
+					else if (arredondado > 0) {
+						$btMuteVolume.attr({'title': $btMuteVolume.attr('data-title-nomute')});
+						if (arredondado <= 0.5) {
+							$btMuteVolume.addClass('volume-baixo').removeClass('volume-mudo');
+						}
+
+						else if (arredondado > 0.5){
+							$btMuteVolume.removeClass('volume-mudo volume-baixo');
+						}
 					}
 
-					else if (arredondado > 0.5){
-						$btMuteVolume.removeClass('volume-mudo volume-baixo');
-					}
-					console.log(arredondado);
+					$volumeInput.attr('aria-valuetext', $volumeInput.attr('data-texto-padrao')+' '+Math.round(arredondado * 100)+'%');
+					
 
 					videoHTML.volume = arredondado;
+					volumeAtual = videoHTML.volume;
 				};
 
 
@@ -369,7 +399,7 @@ jQuery(document).ready(function($) {
 				});	
 
 				// 2. Se o video é tocavel novamente, remover animação de buffering.
-				$videoTag.on('canplay', function(event) {
+				$videoTag.on('canplay canplaythrough', function(event) {
 					$thisVideo.removeClass('buffering');
 					clearTimeout(checkWait);
 				});	
@@ -418,6 +448,12 @@ jQuery(document).ready(function($) {
 					atualizarProgresso(tempoAtual);
 				});
 
+
+				// 6. Quando o vídeo dar erro, re-carregar o video
+				$videoTag.on('error abort', function(event) {
+					videoHTML.load();
+				});
+
 				
 
 				// Botao de play/pause. Possui o efeito esperado. Eventos esperados desse clique estao nos listeners acima.
@@ -428,6 +464,28 @@ jQuery(document).ready(function($) {
 					} else{
 						videoHTML.pause();
 					}
+				});
+
+				// Botao de mutar o volume
+				$btMuteVolume.on('click', function(event){
+					if (volumeAtual > 0) {
+						// console.log('mutou');
+						volumeAntesMute = volumeAtual;
+						ajustarVolume(0);
+					}
+
+					else if(volumeAtual === 0){
+						// console.log('des-mutou');
+						ajustarVolume(volumeAntesMute);
+						volumeAntesAjuste = 0;
+						volumeAntesMute = 0;
+					}
+				});
+
+
+				// Ao abrir o video no Youtube, pausar o video no ebook
+				$youtubeLink.on('click', function(event) {
+					videoHTML.pause();
 				});
 
 				// Ao clicar na barra de progresso, arrastar a barra de acordo com a posição do cursor. 
@@ -460,8 +518,10 @@ jQuery(document).ready(function($) {
 
 
 				$volumeInput.on('mousedown', function(event) {
-					$(this).trigger('focus')
+					$(this).trigger('focus');
 					event.preventDefault();
+					volumeAntesAjuste = volumeAtual;
+					// console.log('Volume antes desse ajuste: ',volumeAntesAjuste);
 					elUsingMouseEvents = 'volumeBar';
 					positionVolume = {
 						left: $volumeInput.offset().left,
@@ -521,7 +581,10 @@ jQuery(document).ready(function($) {
 					if (elUsingMouseEvents === 'progressBar') {
 						atualizarTempoVideo(tempoAtual);
 					} else if(elUsingMouseEvents === 'volumeBar'){
-						
+						if (volumeAtual === 0) {
+							// console.log('mutou o volume pela barra!');
+							volumeAntesMute = volumeAntesAjuste;
+						}
 					}
 					elUsingMouseEvents = '';
 
@@ -553,6 +616,7 @@ jQuery(document).ready(function($) {
 				});
 
 				$volumeInput.on('keydown', function(event) {
+					volumeAntesAjuste = volumeAtual
 					var incremento;
 					var teclasCorretas = false;
 					switch(event.which){
@@ -568,6 +632,10 @@ jQuery(document).ready(function($) {
 						} else if (newVolume > 1){
 							newVolume = 1;
 						}
+
+						if (newVolume === 0) {
+							volumeAntesMute = volumeAntesAjuste;
+						}
 						
 						ajustarVolume(newVolume);
 					}
@@ -575,8 +643,4 @@ jQuery(document).ready(function($) {
 			}
 		}
 	}) : null;
-	
-
-
-
 });
